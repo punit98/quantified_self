@@ -1,0 +1,6 @@
+resources:
+  volumes:
+    landing_zone:
+      name: landing_zone
+      catalog_name: {var.catalog}
+      schema_name: {var.schema}

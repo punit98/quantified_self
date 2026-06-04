@@ -1,20 +1,14 @@
-# The main pipeline for quantified_self
-
-resources:
-  pipelines:
-    quantified_self_etl:
-      name: quantified_self_etl
-      catalog: ${var.catalog}
-      schema: ${var.schema}
-      serverless: true
-      root_path: "../src/quantified_self_etl"
-
-      libraries:
-        - glob:
-            include: ../src/quantified_self_etl/transformations/**
-
-      environment:
-        dependencies:
-          # We include every dependency defined by pyproject.toml by defining an editable environment
-          # that points to the folder where pyproject.toml is deployed.
-          - --editable ${workspace.file_path}
+id: 0e02ee96-9707-4dde-ae9a-d08a707b57d3
+pipeline_type: WORKSPACE
+name: quantified_self_etl
+libraries:
+  - glob:
+      include: /Workspace/Users/punit98@protonmail.com/quantified_self/src/**
+schema: default
+continuous: false
+development: false
+photon: true
+channel: CURRENT
+catalog: quantified_self
+serverless: true
+root_path: /Workspace/Users/punit98@protonmail.com/quantified_self

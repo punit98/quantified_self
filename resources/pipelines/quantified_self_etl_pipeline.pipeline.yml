@@ -1,0 +1,28 @@
+
+resources:
+  pipelines:
+    quantified_self_etl_pipeline:
+      name: quantified_self_etl_pipeline
+      catalog: ${var.catalog}
+      schema: default
+      serverless: true
+      continuous: true
+      channel: CURRENT
+
+      configuration:
+        catalog: ${var.catalog}
+        raw_schema: ${var.raw_schema}
+        bronze_schema: ${var.bronze_Schema}
+        silver_schema: ${var.silver_schema}
+        gold_schema: ${var.gold_Schema}
+
+      libraries:
+        - glob:
+            include: ../../src/pipelines/quantified_self_etl/transformations/**
+      root_path: ../../src/pipelines/quantified_self_etl/
+
+
+
+
+
+

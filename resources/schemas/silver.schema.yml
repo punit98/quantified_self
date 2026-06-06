@@ -1,0 +1,5 @@
+resources:
+  schemas:
+    silver_schema:
+      name: silver
+      catalog_name: ${var.catalog}

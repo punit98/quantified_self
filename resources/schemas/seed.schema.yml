@@ -1,5 +1,5 @@
 resources:
   schemas:
-  seed_schema:
-    name: seed
-    catalog_name: ${var.catalog}
+    seed_schema:
+      name: seed
+      catalog_name: ${var.catalog}

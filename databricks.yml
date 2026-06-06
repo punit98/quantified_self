@@ -33,6 +33,12 @@ targets:
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: quantified_self_dev
+    resources:
+      pipelines:
+        quantified_self_etl_pipeline:
+          continuous: false
 
   prod:
     mode: production
@@ -41,6 +47,14 @@ targets:
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self
+    resources:
+      pipelines:
+        quantified_self_etl_pipeline:
+          continuous: true
     permissions:
       - user_name: punit98@protonmail.com
         level: CAN_MANAGE
+
+
+
+        

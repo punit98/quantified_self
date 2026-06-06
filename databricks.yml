@@ -50,7 +50,7 @@ targets:
     resources:
       pipelines:
         quantified_self_etl_pipeline:
-          continuous: true
+          continuous: false
     permissions:
       - user_name: punit98@protonmail.com
         level: CAN_MANAGE

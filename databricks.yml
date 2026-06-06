@@ -3,26 +3,54 @@
 bundle:
   name: quantified_self
   uuid: 20386458-24aa-4b81-8281-e5cba1970d12
+  engine: direct
 
 include:
-  - resources/*.yml
+  - resources/*/*.yml
 
-
-resources:
-  pipelines:
-    quantified_self_etl:
-      name: quantified_self_etl
-
-# Variable declarations. These variables are assigned in the dev/prod targets below.
 variables:
   catalog:
     description: The catalog to use
-  schema:
-    description: The schema to use
+    default: ${bundle.name}_${bundle.target}
+  raw_schema:
+    description: The schema to use for raw data
+    default: raw
+  bronze_schema:
+    description: The schema to use for bronze data
+    default: bronze
+  silver_schema: 
+    description: The schema to use for silver data
+    default: silver
+  gold_schema: 
+    description: The schema to use for gold data
+    default: gold
+  seed_schema:
+    description: The schema to use for gold data
+    default: seed
+
+  
+  
+
 
 
 
 targets:
+
+  dev:
+    default: true
+    mode: development
+    workspace:
+      host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
+      root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
+
+    resources:
+      schemas:
+        seed_schema:
+
+
+
+
+
   prod:
     mode: production
     workspace:
@@ -35,3 +63,19 @@ targets:
     permissions:
       - user_name: punit98@protonmail.com
         level: CAN_MANAGE
+
+
+
+
+
+resources:
+  pipelines:
+    quantified_self_etl:
+      name: quantified_self_etl
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+
+
+
+
+

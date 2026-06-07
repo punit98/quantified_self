@@ -1,7 +1,7 @@
 bundle:
   name: quantified_self
   uuid: 20386458-24aa-4b81-8281-e5cba1970d12
-  engine: direct
+  # Removed: engine: direct (not a valid DABs bundle field)
 
 include:
   - resources/*/*.yml
@@ -38,8 +38,8 @@ targets:
       raw_schema: dev_punit98_raw
       bronze_schema: dev_punit98_bronze
       silver_schema: dev_punit98_silver
-      gold_schema: dev_punit98_bronze_gold
-      seed_schema: dev_punit98_bronze_seed
+      gold_schema: dev_punit98_gold        # Fixed: was dev_punit98_bronze_gold
+      seed_schema: dev_punit98_seed        # Fixed: was dev_punit98_bronze_seed
 
     resources:
       pipelines:
@@ -60,7 +60,3 @@ targets:
     permissions:
       - user_name: punit98@protonmail.com
         level: CAN_MANAGE
-
-
-
-        

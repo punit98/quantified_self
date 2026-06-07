@@ -17,4 +17,5 @@ resources:
       libraries:
         - glob:
             include: ../../src/pipelines/quantified_self_etl/transformations/**
-      root_path: ../../src/pipelines/quantified_self_etl/
+      # Removed: root_path (not a valid DLT pipeline resource key;
+      #           root_path belongs on workspace: in databricks.yml targets)

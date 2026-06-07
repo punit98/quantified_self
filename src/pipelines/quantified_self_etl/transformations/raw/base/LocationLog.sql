@@ -1,4 +1,4 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.base__LocationLog
+CREATE OR REFRESH STREAMING TABLE ${raw_schema}.LocationLog
 TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
 AS SELECT *
 FROM STREAM read_files(

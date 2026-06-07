@@ -1,4 +1,4 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.base__AppLog
+CREATE OR REFRESH STREAMING TABLE ${raw_schema}.AppLog
 TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
 AS SELECT *
 FROM STREAM read_files(

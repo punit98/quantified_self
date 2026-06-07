@@ -1,4 +1,4 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.base__WorkoutLog
+CREATE OR REFRESH STREAMING TABLE ${raw_schema}.TimestampLog
 TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
 AS SELECT *
 FROM STREAM read_files(
@@ -6,5 +6,5 @@ FROM STREAM read_files(
   format => "csv",
   header => "true",
   inferSchema => "true",
-  fileNamePattern => "WorkoutLog.csv"
+  fileNamePattern => "TimestampLog.csv"
 )

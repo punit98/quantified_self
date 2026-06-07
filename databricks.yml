@@ -53,6 +53,10 @@ targets:
           continuous: false
           configuration:
             raw_schema: dev_punit98_raw
+            bronze_schema: dev_punit98_bronze
+            silver_schema: dev_punit98_silver
+            gold_schema: dev_punit98_gold
+            seed_schema: dev_punit98_seed
             
 
   prod:

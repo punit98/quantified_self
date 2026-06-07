@@ -35,6 +35,12 @@ targets:
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self_dev
+      raw_schema: ${bundle.target}_punit98_${var.raw_schema}
+      bronze_schema: ${bundle.target}_punit98_${var.bronze_schema}
+      silver_schema: ${bundle.target}_punit98_${var.silver_schema}
+      gold_schema: ${bundle.target}_punit98_${var.gold_schema}
+      seed_schema: ${bundle.target}_punit98_${var.seed_schema}
+
     resources:
       pipelines:
         quantified_self_etl_pipeline:

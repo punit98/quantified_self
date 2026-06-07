@@ -3,7 +3,6 @@ resources:
     quantified_self_etl_pipeline:
       name: quantified_self_etl_pipeline
       catalog: ${var.catalog}
-      schema: ${var.gold_schema}
       serverless: true
       continuous: false
       channel: CURRENT

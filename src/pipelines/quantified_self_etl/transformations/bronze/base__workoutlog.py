@@ -1,5 +1,4 @@
 from pyspark import pipelines as dp
-from transformations.utilities import constants
 from transformations.utilities import paths
 from transformations.utilities import utils
 from pyspark.sql import types as types

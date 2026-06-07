@@ -1,4 +1,4 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.base__body_measurements
+CREATE OR REFRESH STREAMING TABLE ${raw_schema}.body_measurements
 TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
 AS SELECT *
 FROM STREAM read_files(

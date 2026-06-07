@@ -35,11 +35,14 @@ targets:
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self_dev
-      raw_schema: dev_punit98_raw
-      bronze_schema: dev_punit98_bronze
-      silver_schema: dev_punit98_silver
-      gold_schema: dev_punit98_gold        # Fixed: was dev_punit98_bronze_gold
-      seed_schema: dev_punit98_seed        # Fixed: was dev_punit98_bronze_seed
+      # Schema names are plain here; `mode: development` auto-prefixes them with
+      # `dev_<short_name>_` (e.g. dev_punit98_raw). Do NOT add the prefix manually
+      # or it doubles up (dev_punit98_dev_punit98_raw).
+      raw_schema: raw
+      bronze_schema: bronze
+      silver_schema: silver
+      gold_schema: gold
+      seed_schema: seed
 
     resources:
       pipelines:

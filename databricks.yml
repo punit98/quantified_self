@@ -30,14 +30,19 @@ targets:
   dev:
     default: true
     mode: development
+    # Disable dev-mode's automatic `dev_<short_name>_` name prefix. It only rewrites
+    # resource names (schemas/volumes/pipelines), NOT the schema strings passed via the
+    # pipeline `configuration:` block — so leaving it on makes the schema RESOURCE
+    # (dev_punit98_raw) and the CONFIG value (raw) diverge, and transformations fail to
+    # find the schema. Dev/prod isolation already comes from the separate catalog
+    # (quantified_self_dev vs quantified_self), so the prefix isn't needed.
+    presets:
+      name_prefix: ""
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self_dev
-      # Schema names are plain here; `mode: development` auto-prefixes them with
-      # `dev_<short_name>_` (e.g. dev_punit98_raw). Do NOT add the prefix manually
-      # or it doubles up (dev_punit98_dev_punit98_raw).
       raw_schema: raw
       bronze_schema: bronze
       silver_schema: silver

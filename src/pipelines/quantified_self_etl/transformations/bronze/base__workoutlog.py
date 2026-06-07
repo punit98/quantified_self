@@ -1,0 +1,41 @@
+from pyspark import pipelines as dp
+from transformations.utilities import constants, paths, utils
+from pyspark.sql import types as types
+from pyspark.sql.types import StructField, StructType
+from pyspark.sql import functions as sf
+
+
+base__workoutlog_schema = StructType([
+    StructField("date_time", types.TimestampType(), False),
+    StructField("muscle_group", types.StringType(), False),
+    StructField("exercise", types.StringType(), False),
+    StructField("variation", types.StringType(), False),
+    StructField("weight", types.FloatType(), False),
+    StructField("drop_weight", types.FloatType(), False),
+    StructField("second_drop_weight", types.FloatType(), False),
+    StructField("reps", types.IntegerType(), False),
+    StructField("drop_reps", types.IntegerType(), False),
+    StructField("second_drop_reps", types.IntegerType(), False),
+])
+
+
+@dp.table(name = paths.BASE__WORKOUTLOG_PATH)
+def base__workoutlog():
+    raw_workoutlog = spark.readstream.table(paths.RAW_WORKOUTLOG_PATH)
+
+    raw_workoutlog = (
+        raw_workoutlog
+        .withColumn("date_time", sf.regexp_replace("date_time", "at ", " "))
+        .cast(types.TimestampType)
+    )
+
+    lower_case_columns = ["muscle_group", "exercise", "variation"]
+    raw_workoutlog = utils.convert_column_values_to_lower_case(raw_workoutlog, lower_case_columns)
+
+    base__workoutlog = raw_workoutlog.dropDuplicates()
+
+
+    return base__workoutlog
+
+
+

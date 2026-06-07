@@ -35,8 +35,7 @@ targets:
     # `configuration:` block, so leaving it on makes the schema RESOURCE and the CONFIG
     # value diverge and transformations can't find the schema. We instead set the full
     # schema names explicitly below, and add the [dev punit98] pipeline label manually.
-    presets:
-      name_prefix: ""
+
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
@@ -53,6 +52,7 @@ targets:
         quantified_self_etl_pipeline:
           name: "[dev punit98] quantified_self_etl_pipeline"
           continuous: false
+            
 
   prod:
     mode: production

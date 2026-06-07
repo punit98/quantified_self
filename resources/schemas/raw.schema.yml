@@ -1,5 +1,5 @@
 resources:
   schemas:
     raw_schema:
-      name: raw
+      name: ${var.raw_schema}
       catalog_name: ${var.catalog}

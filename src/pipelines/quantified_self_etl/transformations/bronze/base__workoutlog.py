@@ -19,7 +19,13 @@ base__workoutlog_schema = StructType([
 ])
 
 
-@dp.table(name = paths.BASE__WORKOUTLOG_PATH)
+@dp.table(
+        name = paths.BASE__WORKOUTLOG_PATH
+        comment = 
+        """
+        The base table for workouts with cleaned columns, correct datatypes and deduplication
+        """
+        )
 def base__workoutlog():
     raw_workoutlog = spark.readstream.table(paths.RAW_WORKOUTLOG_PATH)
 

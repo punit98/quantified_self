@@ -7,7 +7,7 @@ spark = SparkSession.builder.getOrCreate()
 
 RAW_SCHEMA = spark.conf.get("raw_schema")
 BRONZE_SCHEMA = spark.conf.get("bronze_schema")
-SILVER_SCHEMA = spark.conf.get("silver__schema")
+SILVER_SCHEMA = spark.conf.get("silver_schema")
 GOLD_SCHEMA = spark.conf.get("gold_schema")
 SEED_SCHEMA = spark.conf.get("seed_schema")
 

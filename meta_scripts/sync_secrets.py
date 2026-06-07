@@ -13,7 +13,6 @@ the PAT to manage your secrets and never leaves your local machine)
 5. Once all the secrets in `.env.private` are added and `project_paths.py` file is updated, 
 run this script locally and your `.env.private` file will be synced to your databricks workspace without goint through git
 
-
 """
 
 

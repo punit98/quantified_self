@@ -4,7 +4,7 @@ from transformations.utilities import secrets
 
 
 
-######### Project Constatns #################
+######### Project Constants #################
 
 dates_to_generate = 28
 
@@ -16,7 +16,7 @@ calendar_end_date = sf.date_add(current_date, dates_to_generate)
 
 
 
-############ Personal Constatns ###############
+############ Personal Constants ###############
 
 date_of_birth = secrets.date_of_birth
 

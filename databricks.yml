@@ -50,7 +50,6 @@ targets:
     resources:
       pipelines:
         quantified_self_etl_pipeline:
-          name: "[dev punit98] quantified_self_etl_pipeline"
           continuous: false
             
 

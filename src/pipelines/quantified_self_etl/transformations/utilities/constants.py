@@ -1,6 +1,6 @@
 import pandas as pd
 from pyspark.sql import functions as sf
-
+from transformations.utilities import secrets
 
 
 
@@ -18,7 +18,7 @@ calendar_end_date = sf.date_add(current_date, dates_to_generate)
 
 ############ Personal Constatns ###############
 
-date_of_birth = dbutils.secrets.get("personal-details", "date_of_birth")
+date_of_birth = secrets.date_of_birth
 
-heaight_cm = dbutils.secrets.get("personal-details", "heaight_cm")
+heaight_cm = secrets.height_cm
 

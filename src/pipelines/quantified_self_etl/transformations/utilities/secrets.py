@@ -7,7 +7,7 @@ def load_env(path):
         for line in f:
             if "=" in line:
                 key, value = line.strip().split("=", 1)
-                os.environ[key] = value
+                os.environ[key.strip()] = value.strip().strip('"')
 
 load_env(env_path)
 

@@ -1,5 +1,7 @@
 from pyspark import pipelines as dp
-from transformations.utilities import constants, paths, utils
+from transformations.utilities import constants
+from transformations.utilities import paths
+from transformations.utilities import utils
 from pyspark.sql import types as types
 from pyspark.sql.types import StructField, StructType
 from pyspark.sql import functions as sf
@@ -20,19 +22,17 @@ base__workoutlog_schema = StructType([
 
 
 @dp.table(
-        name = paths.BASE__WORKOUTLOG_PATH
-        comment = 
-        """
+        name=paths.BASE__WORKOUTLOG_PATH,
+        comment="""
         The base table for workouts with cleaned columns, correct datatypes and deduplication
         """
         )
 def base__workoutlog():
-    raw_workoutlog = spark.readstream.table(paths.RAW_WORKOUTLOG_PATH)
+    raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)
 
     raw_workoutlog = (
         raw_workoutlog
-        .withColumn("date_time", sf.regexp_replace("date_time", "at ", " "))
-        .cast(types.TimestampType)
+        .withColumn("date_time", sf.to_timestamp(sf.regexp_replace("date_time", "at ", " ")))
     )
 
     lower_case_columns = ["muscle_group", "exercise", "variation"]

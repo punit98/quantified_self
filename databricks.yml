@@ -51,6 +51,8 @@ targets:
       pipelines:
         quantified_self_etl_pipeline:
           continuous: false
+          configuration:
+            raw_schema: dev_punit98_raw
             
 
   prod:

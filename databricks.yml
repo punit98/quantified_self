@@ -30,12 +30,11 @@ targets:
   dev:
     default: true
     mode: development
-    # Disable dev-mode's automatic `dev_<short_name>_` name prefix. It only rewrites
-    # resource names (schemas/volumes/pipelines), NOT the schema strings passed via the
-    # pipeline `configuration:` block — so leaving it on makes the schema RESOURCE
-    # (dev_punit98_raw) and the CONFIG value (raw) diverge, and transformations fail to
-    # find the schema. Dev/prod isolation already comes from the separate catalog
-    # (quantified_self_dev vs quantified_self), so the prefix isn't needed.
+    # Disable dev-mode's automatic `dev_<short_name>_` name prefix. It rewrites resource
+    # names (schemas/volumes/pipelines) but NOT the schema strings passed via the pipeline
+    # `configuration:` block, so leaving it on makes the schema RESOURCE and the CONFIG
+    # value diverge and transformations can't find the schema. We instead set the full
+    # schema names explicitly below, and add the [dev punit98] pipeline label manually.
     presets:
       name_prefix: ""
     workspace:
@@ -43,15 +42,16 @@ targets:
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self_dev
-      raw_schema: raw
-      bronze_schema: bronze
-      silver_schema: silver
-      gold_schema: gold
-      seed_schema: seed
+      raw_schema: dev_punit98_raw
+      bronze_schema: dev_punit98_bronze
+      silver_schema: dev_punit98_silver
+      gold_schema: dev_punit98_gold
+      seed_schema: dev_punit98_seed
 
     resources:
       pipelines:
         quantified_self_etl_pipeline:
+          name: "[dev punit98] quantified_self_etl_pipeline"
           continuous: false
 
   prod:

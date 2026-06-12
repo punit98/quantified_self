@@ -14,6 +14,8 @@ calendar_end_date = sf.date_add(current_date, dates_to_generate)
 
 ############ Personal Constants ###############
 
-date_of_birth = secrets.date_of_birth
+date_of_birth = secrets.DATE_OF_BIRTH
 
-heaight_cm = secrets.height_cm
+height_cm = secrets.HEIGHT_CM
+
+EMAIL = secrets.EMAIL

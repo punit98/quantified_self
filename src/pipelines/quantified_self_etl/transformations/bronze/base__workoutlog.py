@@ -25,7 +25,8 @@ schema_json = json.dumps(base__workoutlog_schema.jsonValue())
         name=paths.BASE__WORKOUTLOG_PATH,
         comment="""
         The base table for workouts with cleaned columns, correct datatypes and deduplication
-        """
+        """,
+        schema = schema_json
         )
 def base__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)

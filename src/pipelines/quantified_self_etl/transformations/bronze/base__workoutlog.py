@@ -13,11 +13,11 @@ base__workoutlog_schema = StructType([
     StructField("exercise", types.StringType(), False),
     StructField("variation", types.StringType(), False),
     StructField("weight", types.FloatType(), False),
-    StructField("drop_weight", types.FloatType(), False),
-    StructField("second_drop_weight", types.FloatType(), False),
+    StructField("drop_weight", types.FloatType(), True),
+    StructField("second_drop_weight", types.FloatType(), True),
     StructField("reps", types.IntegerType(), False),
-    StructField("drop_reps", types.IntegerType(), False),
-    StructField("second_drop_reps", types.IntegerType(), False),
+    StructField("drop_reps", types.IntegerType(), True),
+    StructField("second_drop_reps", types.IntegerType(), True),
 ])
 schema_json = json.dumps(base__workoutlog_schema.jsonValue())
 

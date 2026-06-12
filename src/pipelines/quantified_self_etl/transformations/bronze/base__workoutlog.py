@@ -24,7 +24,8 @@ base__workoutlog_schema = StructType([
         name=paths.BASE__WORKOUTLOG_PATH,
         comment="""
         The base table for workouts with cleaned columns, correct datatypes and deduplication
-        """
+        """,
+        schema = base__workoutlog_schema
         )
 def base__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)

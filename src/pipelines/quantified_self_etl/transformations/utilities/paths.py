@@ -39,17 +39,17 @@ RAW_WORKOUTLOG_PATH = f"{RAW_SCHEMA}.workoutlog"
 
 ########### Bronze ####################
 
-BASE__APPLOG_PATH = f"{BRONZE_SCHEMA}.base__applog"
+STG__APPLOG_PATH = f"{BRONZE_SCHEMA}.stg__applog"
 
-BASE__BODY_MEASUREMENTS_PATH = f"{BRONZE_SCHEMA}.base__body_measurements"
+STG__BODY_MEASUREMENTS_PATH = f"{BRONZE_SCHEMA}.stg__body_measurements"
 
-BASE__LOCATIONLOG_PATH = f"{BRONZE_SCHEMA}.base__locationlog"
+STG__LOCATIONLOG_PATH = f"{BRONZE_SCHEMA}.stg__locationlog"
 
-BASE__TIMESTAMPLOG_PATH = f"{BRONZE_SCHEMA}.base__timestamplog"
+STG__TIMESTAMPLOG_PATH = f"{BRONZE_SCHEMA}.stg__timestamplog"
 
-BASE__WEATHERLOG_PATH = f"{BRONZE_SCHEMA}.base__weatherlog"
+STG__WEATHERLOG_PATH = f"{BRONZE_SCHEMA}.stg__weatherlog"
 
-BASE__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.base__workoutlog"
+STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
 
 ############ Silver ####################
 

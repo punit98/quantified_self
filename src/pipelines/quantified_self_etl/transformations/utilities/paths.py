@@ -1,7 +1,5 @@
-#Contains the paths for all the source .csv files for the project
-import pandas as pd
+# Contains the paths for all the source .csv files for the project
 from pyspark.sql import SparkSession
-
 
 spark = SparkSession.builder.getOrCreate()
 
@@ -10,7 +8,6 @@ BRONZE_SCHEMA = spark.conf.get("bronze_schema")
 SILVER_SCHEMA = spark.conf.get("silver_schema")
 GOLD_SCHEMA = spark.conf.get("gold_schema")
 SEED_SCHEMA = spark.conf.get("seed_schema")
-
 
 
 ########### Seed ####################
@@ -35,7 +32,7 @@ RAW_WEATHERLOG_PATH = f"{RAW_SCHEMA}.weatherlog"
 RAW_WORKOUTLOG_PATH = f"{RAW_SCHEMA}.workoutlog"
 
 
-# SOURCE_LOCATION_LOG_PATH = 
+# SOURCE_LOCATION_LOG_PATH =
 
 ########### Bronze ####################
 
@@ -54,8 +51,4 @@ STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
 ############ Silver ####################
 
 
-
-
 ############ Gold ####################
-
-

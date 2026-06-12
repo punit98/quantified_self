@@ -4,6 +4,7 @@ from transformations.utilities import utils
 from pyspark.sql import types as types
 from pyspark.sql.types import StructField, StructType
 from pyspark.sql import functions as sf
+import json
 
 
 base__workoutlog_schema = StructType([
@@ -18,14 +19,13 @@ base__workoutlog_schema = StructType([
     StructField("drop_reps", types.IntegerType(), False),
     StructField("second_drop_reps", types.IntegerType(), False),
 ])
-
+schema_json = json.dumps(base__workoutlog_schema.jsonValue())
 
 @dp.table(
         name=paths.BASE__WORKOUTLOG_PATH,
         comment="""
         The base table for workouts with cleaned columns, correct datatypes and deduplication
-        """,
-        schema = base__workoutlog_schema
+        """
         )
 def base__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)

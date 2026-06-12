@@ -15,4 +15,4 @@ load_env(env_path)
 
 DATE_OF_BIRTH = os.environ["DATE_OF_BIRTH"]
 HEIGHT_CM = os.environ["HEIGHT_CM"]
-EMAIL = os.environ("EMAIL")
+EMAIL = os.environ["EMAIL"]

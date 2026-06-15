@@ -2,7 +2,7 @@ from pyspark.sql import functions as sf
 from pyspark.sql import types
 from pyspark import pipelines as dp
 from transformations.utilities import paths, secrets, constants
-
+from datetime import datetime
 
 
 
@@ -15,12 +15,17 @@ from transformations.utilities import paths, secrets, constants
         """
 )
 def calendar():
-    days_range = sf.datediff(sf.to_date(constants.CALENDAR_START_DATE), sf.to_date(constants.CALENDAR_END_DATE)+constants.DATES_TO_GENERATE)
 
-    calendar = (
-        spark.range(days_range)
-        .withColumn("date", sf.date_add(sf.lit(constants.CALENDAR_START_DATE), sf.col("id")))
-        .drop("id")
+    base = spark.createDataFrame([])    
+
+    calendar = base.withColumn("date"
+    sf.explode(
+        sf.sequence(
+            sf.to_date(sf.lit(constants.CALENDAR_START_DATE), "yyyy-MM-dd"),
+            sf.to_date(sf.lit(constants.CALENDAR_END_DATE), "yyyy-MM-dd"),
+            sf.expr("interval 1 day")
+        )
+    )
     )
 
 

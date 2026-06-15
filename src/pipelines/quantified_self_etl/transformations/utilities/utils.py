@@ -53,7 +53,7 @@ def type_cast_columns(dataframe: DataFrame, column_list: list[str], column_type:
     return dataframe
 
 
-def create_calendar_key(datefarme: DataFrame, timestamp_column: str):
+def create_calendar_key(dataframe: DataFrame, timestamp_column: str):
     """Generates the calendar+key for supplied dataframe form the supplied timestamp column
         The calendar_key will be in yyyymmdd format
     Args:
@@ -61,6 +61,6 @@ def create_calendar_key(datefarme: DataFrame, timestamp_column: str):
         timestamp_column (str): timestamp column
     """
     dataframe = dataframe.withColumn("calendar_key",
-                                     sf.date_format(sf.col("v_timestamp"), "yyyyMMdd"))
+                                     sf.date_format(sf.col(timestamp_column), "yyyyMMdd"))
     
     return dataframe

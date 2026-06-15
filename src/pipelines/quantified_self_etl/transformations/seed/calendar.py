@@ -16,10 +16,9 @@ from datetime import datetime
 )
 def calendar():
 
-    base = spark.createDataFrame([])    
-
-    calendar = base.withColumn("date"
-    sf.explode(
+    calendar = (
+    spark.range(1)  # dummy row
+    .withColumn("date", sf.explode(
         sf.sequence(
             sf.to_date(sf.lit(constants.CALENDAR_START_DATE), "yyyy-MM-dd"),
             sf.to_date(sf.lit(constants.CALENDAR_END_DATE), "yyyy-MM-dd"),
@@ -27,6 +26,7 @@ def calendar():
         )
     )
     )
+)
 
 
     # Basic components

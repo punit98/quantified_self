@@ -3,13 +3,15 @@ from transformations.utilities import secrets
 
 ######### Project Constants #################
 
-dates_to_generate = 28
+DATES_TO_GENERATE = 28
 
-current_date = sf.current_date()
+CURRENT_DATE = sf.current_date()
 
-calendar_start_date = "2023-02-18"
+CALENDAR_START_DATE = "2023-02-18"
 
-calendar_end_date = sf.date_add(current_date, dates_to_generate)
+CALENDAR_END_DATE = sf.date_add(CURRENT_DATE, DATES_TO_GENERATE)
+
+
 
 
 ############ Personal Constants ###############

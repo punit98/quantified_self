@@ -60,7 +60,8 @@ def create_calendar_key(dataframe: DataFrame, timestamp_column: str):
         datefarme (DataFrame): dataframe
         timestamp_column (str): timestamp column
     """
-    dataframe = dataframe.withColumn("calendar_key",
-                                     sf.date_format(sf.col(timestamp_column), "yyyyMMdd"))
-    
+    dataframe = dataframe.withColumn(
+        "calendar_key", sf.date_format(sf.col(timestamp_column), "yyyyMMdd")
+    )
+
     return dataframe

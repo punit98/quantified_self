@@ -1,7 +1,7 @@
 from pyspark.sql import functions as sf
 from pyspark.sql import types
 from pyspark import pipelines as dp
-from transformations.utilities import paths, secrets, constants
+from transformations.utilities import paths, secrets, constants, utils
 from datetime import datetime
 
 
@@ -27,6 +27,7 @@ def calendar():
     )
     )
 )
+    calendar = utils.create_calendar_key(calendar, "date")
 
 
     # Basic components

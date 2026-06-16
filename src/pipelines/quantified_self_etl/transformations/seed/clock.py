@@ -92,7 +92,6 @@ def clock():
     clock_df = clock_df.withColumn("minute_of_day", sf.col("hour") * 60 + sf.col("minute"))
     clock_df = clock_df.withColumn("second_of_day", sf.col("seconds_since_midnight"))
 
-
     clock_df = clock_df.withColumn("is_sleep_window", (sf.col("hour") >= 22) | (sf.col("hour") < 6))
 
     clock_df = clock_df.withColumn("is_work_window", (sf.col("hour") >= 9) & (sf.col("hour") < 17))

@@ -92,51 +92,6 @@ def clock():
     clock_df = clock_df.withColumn("minute_of_day", sf.col("hour") * 60 + sf.col("minute"))
     clock_df = clock_df.withColumn("second_of_day", sf.col("seconds_since_midnight"))
 
-    clock_df = clock_df.withColumn("rounded_to_5_min", sf.floor(sf.col("minute") / 5) * 5)
-
-    clock_df = clock_df.withColumn("rounded_to_15_min", sf.floor(sf.col("minute") / 15) * 15)
-
-    clock_df = clock_df.withColumn("rounded_to_30_min", sf.floor(sf.col("minute") / 30) * 30)
-
-    clock_df = clock_df.withColumn("rounded_to_hour", sf.col("hour"))
-
-    clock_df = clock_df.withColumn("next_second",
-                    (sf.col("seconds_since_midnight") + 1) % 86400)
-
-    clock_df = clock_df.withColumn("prev_second",
-                    (sf.col("seconds_since_midnight") - 1 + 86400) % 86400)
-
-    clock_df = clock_df.withColumn("next_minute",
-                    (sf.col("seconds_since_midnight") + 60) % 86400)
-
-    clock_df = clock_df.withColumn("prev_minute",
-                    (sf.col("seconds_since_midnight") - 60 + 86400) % 86400)
-
-    clock_df = clock_df.withColumn("next_hour",
-                    (sf.col("seconds_since_midnight") + 3600) % 86400)
-
-    clock_df = clock_df.withColumn("prev_hour",
-                    (sf.col("seconds_since_midnight") - 3600 + 86400) % 86400)
-
-
-    clock_df = clock_df.withColumn(
-        "hour_sin", sf.sin(2 * sf.lit(3.141592653589793) * sf.col("hour") / 24)
-    )
-    clock_df = clock_df.withColumn(
-        "hour_cos", sf.cos(2 * sf.lit(3.141592653589793) * sf.col("hour") / 24)
-    )
-    clock_df = clock_df.withColumn(
-        "minute_sin", sf.sin(2 * sf.lit(3.141592653589793) * sf.col("minute") / 60)
-    )
-    clock_df = clock_df.withColumn(
-        "minute_cos", sf.cos(2 * sf.lit(3.141592653589793) * sf.col("minute") / 60)
-    )
-    clock_df = clock_df.withColumn(
-        "second_sin", sf.sin(2 * sf.lit(3.141592653589793) * sf.col("second") / 60)
-    )
-    clock_df = clock_df.withColumn(
-        "second_cos", sf.cos(2 * sf.lit(3.141592653589793) * sf.col("second") / 60)
-    )
 
     clock_df = clock_df.withColumn("is_sleep_window", (sf.col("hour") >= 22) | (sf.col("hour") < 6))
 

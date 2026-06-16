@@ -1,6 +1,23 @@
 from pyspark import pipelines as dp
+from pyspark.sql import DataFrame
 from pyspark.sql import functions as sf
+from pyspark.sql.column import Column
 from transformations.utilities import paths
+
+
+def add_full_time(clock_df: DataFrame) -> DataFrame:
+    length_1_condition: Column = len(sf.col(column)) == sf.lit(1)
+    for column in clock_df.columns:
+        clock_df = clock_df.withColumn(sf.col(column)).cast("string")
+        clock_df = clock_df.withColumn(
+            column,
+            sf.when(length_1_condition, sf.concat(sf.lit("0"), sf.col(column))).otherwise(
+                sf.col(column)
+            ),
+        )
+    time_column: Column = sf.concat_ws(":", sf.col("hour"), sf.col("minute"), sf.col("second"))
+
+    return clock_df.withColumn(time_column)
 
 
 @dp.temporary_view
@@ -11,19 +28,19 @@ def hour():
 
 
 @dp.temporary_view
-def minutes():
+def minute():
     return (
         spark.range(1).withColumn(
-            "minutes", sf.explode(sf.sequence(sf.lit(0), sf.lit(59), sf.lit(1)))
+            "minute", sf.explode(sf.sequence(sf.lit(0), sf.lit(59), sf.lit(1)))
         )
     ).drop("id")
 
 
 @dp.temporary_view
-def seconds():
+def second():
     return (
         spark.range(1).withColumn(
-            "seconds", sf.explode(sf.sequence(sf.lit(0), sf.lit(59), sf.lit(1)))
+            "second", sf.explode(sf.sequence(sf.lit(0), sf.lit(59), sf.lit(1)))
         )
     ).drop("id")
 
@@ -36,7 +53,9 @@ def seconds():
 )
 def clock():
     hour_df = spark.read.table("hour")
-    minute_df = spark.read.table("minutes")
-    seconds_df = spark.read.table("seconds")
+    minute_df = spark.read.table("minute")
+    seconds_df = spark.read.table("second")
     clock_df = hour_df.crossJoin(minute_df).crossJoin(seconds_df)
+
+    clock_df = add_full_time()
     return clock_df

@@ -1,21 +1,22 @@
-from pyspark.sql import functions as sf
+from datetime import UTC, datetime, timedelta
+
 from transformations.utilities import secrets
 
 ######### Project Constants #################
 
-dates_to_generate = 28
+FUTURE_DATES_TO_GENERATE = 28
 
-current_date = sf.current_date()
+CURRENT_DATE = datetime.now(UTC).date()
 
-calendar_start_date = "2023-02-18"
+CALENDAR_START_DATE = "2023-02-18"
 
-calendar_end_date = sf.date_add(current_date, dates_to_generate)
+CALENDAR_END_DATE = datetime.now(UTC).date() + timedelta(days=FUTURE_DATES_TO_GENERATE)
 
 
 ############ Personal Constants ###############
 
-date_of_birth = secrets.DATE_OF_BIRTH
+DATE_OF_BIRTH = secrets.DATE_OF_BIRTH
 
-height_cm = secrets.HEIGHT_CM
+HEIGHT_CM = secrets.HEIGHT_CM
 
 EMAIL = secrets.EMAIL

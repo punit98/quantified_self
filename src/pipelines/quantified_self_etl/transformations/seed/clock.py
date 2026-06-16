@@ -6,9 +6,9 @@ from transformations.utilities import paths
 
 
 def add_full_time(clock_df: DataFrame) -> DataFrame:
-    length_1_condition: Column = len(sf.col(column)) == sf.lit(1)
     for column in clock_df.columns:
-        clock_df = clock_df.withColumn(sf.col(column)).cast("string")
+        length_1_condition: Column = sf.length(sf.col(column)) == sf.lit(1)
+        clock_df = clock_df.withColumn(column, sf.col(column).cast("string"))
         clock_df = clock_df.withColumn(
             column,
             sf.when(length_1_condition, sf.concat(sf.lit("0"), sf.col(column))).otherwise(
@@ -17,7 +17,7 @@ def add_full_time(clock_df: DataFrame) -> DataFrame:
         )
     time_column: Column = sf.concat_ws(":", sf.col("hour"), sf.col("minute"), sf.col("second"))
 
-    return clock_df.withColumn(time_column)
+    return clock_df.withColumn("clock_time", time_column)
 
 
 @dp.temporary_view
@@ -57,5 +57,5 @@ def clock():
     seconds_df = spark.read.table("second")
     clock_df = hour_df.crossJoin(minute_df).crossJoin(seconds_df)
 
-    clock_df = add_full_time()
+    clock_df = add_full_time(clock_df)
     return clock_df

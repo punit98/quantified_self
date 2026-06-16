@@ -100,12 +100,24 @@ def clock():
 
     clock_df = clock_df.withColumn("rounded_to_hour", sf.col("hour"))
 
-    clock_df = clock_df.withColumn("next_second", sf.col("seconds_since_midnight") + 1)
-    clock_df = clock_df.withColumn("prev_second", sf.col("seconds_since_midnight") - 1)
-    clock_df = clock_df.withColumn("next_minute", sf.col("seconds_since_midnight") + 60)
-    clock_df = clock_df.withColumn("prev_minute", sf.col("seconds_since_midnight") - 60)
-    clock_df = clock_df.withColumn("next_hour", sf.col("seconds_since_midnight") + 3600)
-    clock_df = clock_df.withColumn("prev_hour", sf.col("seconds_since_midnight") - 3600)
+    clock_df = clock_df.withColumn("next_second",
+                    (sf.col("seconds_since_midnight") + 1) % 86400)
+
+    clock_df = clock_df.withColumn("prev_second",
+                    (sf.col("seconds_since_midnight") - 1 + 86400) % 86400)
+
+    clock_df = clock_df.withColumn("next_minute",
+                    (sf.col("seconds_since_midnight") + 60) % 86400)
+
+    clock_df = clock_df.withColumn("prev_minute",
+                    (sf.col("seconds_since_midnight") - 60 + 86400) % 86400)
+
+    clock_df = clock_df.withColumn("next_hour",
+                    (sf.col("seconds_since_midnight") + 3600) % 86400)
+
+    clock_df = clock_df.withColumn("prev_hour",
+                    (sf.col("seconds_since_midnight") - 3600 + 86400) % 86400)
+
 
     clock_df = clock_df.withColumn(
         "hour_sin", sf.sin(2 * sf.lit(3.141592653589793) * sf.col("hour") / 24)

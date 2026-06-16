@@ -17,7 +17,40 @@ def hour():
                 )
             )
         )
-    )
+    ).drop("id")
+
+@dp.temporary_view
+def minutes():
+    return (
+        spark.range(1)
+        .withColumn(
+            "minutes",
+            sf.explode(
+                sf.sequence(
+                    sf.lit(0),
+                    sf.lit(59),
+                    sf.lit(1)
+                )
+            )
+        )
+    ).drop("id")
+
+
+@dp.temporary_view
+def seconds():
+    return (
+        spark.range(1)
+        .withColumn(
+            "seconds",
+            sf.explode(
+                sf.sequence(
+                    sf.lit(0),
+                    sf.lit(59),
+                    sf.lit(1)
+                )
+            )
+        )
+    ).drop("id")
 
 
 @dp.table(
@@ -28,4 +61,7 @@ def hour():
 )
 def clock():
     hour_df = spark.read.table("hour")
-    return hour_df
+    minute_df = spark.read.table("minutes")
+    seconds_df = spark.read.table("seconds")
+    clock_df = hour_df.crossJoin(minute_df).crossJoin(seconds_df)
+    return clock_df

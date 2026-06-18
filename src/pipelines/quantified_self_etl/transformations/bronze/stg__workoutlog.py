@@ -7,7 +7,7 @@ from transformations.utilities import paths, utils
 stg__workoutlog_schema = StructType(
     [
         StructField("date_time", types.TimestampType(), False),
-        StructField("utc_offset", types.TimestamoType(), False),
+        StructField("utc_offset", types.StringType(), False),
         StructField("muscle_group", types.StringType(), False),
         StructField("exercise", types.StringType(), False),
         StructField("variation", types.StringType(), False),
@@ -36,8 +36,8 @@ def base__workoutlog():
     lower_case_columns = ["muscle_group", "exercise", "variation"]
     raw_workoutlog = utils.convert_column_values_to_lower_case(raw_workoutlog, lower_case_columns)
 
-    raw_workout_log = utils.preserve_timezone(raw_workout_log, "date_time")
-    raw_workout_log = utils.type_cast_columns(raw_workout_log, ["date_time"], "timestamp")
+    raw_workoutlog = utils.preserve_timezone(raw_workoutlog, "date_time")
+    raw_workoutlog = utils.type_cast_columns(raw_workoutlog, ["date_time"], "timestamp")
 
     float_columns = ["weight", "drop_weight", "second_drop_weight"]
     raw_workoutlog = utils.type_cast_columns(
@@ -62,5 +62,6 @@ def base__workoutlog():
             "second_drop_reps",
         ],
     )
+
 
     return stg__workoutlog

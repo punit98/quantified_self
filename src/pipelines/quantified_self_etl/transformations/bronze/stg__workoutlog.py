@@ -16,6 +16,10 @@ stg__workoutlog_schema = StructType(
         StructField("reps", types.IntegerType(), False),
         StructField("drop_reps", types.IntegerType(), True),
         StructField("second_drop_reps", types.IntegerType(), True),
+        StructField("source", types.StringType(), True),
+        StructField("calendar_key", types.StringType(), False),
+        StructField("clock_key", types.StringType(), False),
+        StructField("_rescued_data", types.StringType(), False),
     ]
 )
 ddl_schema = utils.struct_to_ddl(stg__workoutlog_schema)
@@ -47,7 +51,7 @@ def base__workoutlog():
         raw_workoutlog, column_list=int_columns, column_type="int"
     )
 
-    raw_workoutlog = raw_workoutlog.select([field.name for field in stg__workoutlog_schema.fields])
+    # raw_workoutlog = raw_workoutlog.select([field.name for field in stg__workoutlog_schema.fields])
 
     stg__workoutlog = raw_workoutlog.dropDuplicates().fillna(
         0,

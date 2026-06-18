@@ -5,6 +5,6 @@ FROM STREAM read_files(
   "/Volumes/${catalog}/${raw_schema}/landing_zone",
   format => "csv",
   header => "true",
-  inferSchema => "flase",
+  inferSchema => "false",
   fileNamePattern => "WeatherLog.csv"
 )

@@ -1,6 +1,6 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as sf
-from pyspark.sql import types
+from pyspark.sql import types, DataFrame
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
@@ -31,12 +31,15 @@ ddl_schema = utils.struct_to_ddl(stg__workoutlog_schema)
 def base__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)
 
-    raw_workoutlog = raw_workoutlog.withColumn(
-        "date_time", sf.to_timestamp(sf.col("date_time"), "dd MMM yyyy 'at' HH:mm")
-    )
+
+    #/TODO: call convert timestamp fomr utils
+
 
     lower_case_columns = ["muscle_group", "exercise", "variation"]
     raw_workoutlog = utils.convert_column_values_to_lower_case(raw_workoutlog, lower_case_columns)
+
+    raw_workout_log = utils.preserve_timezone(raw_workout_log, "date_time")
+    raw_workout_log = utils.type_cast_columns(raw_workout_log, ["date_time"], "timestamp")
 
     float_columns = ["weight", "drop_weight", "second_drop_weight"]
     raw_workoutlog = utils.type_cast_columns(

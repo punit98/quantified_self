@@ -51,8 +51,6 @@ def base__workoutlog():
         raw_workoutlog, column_list=int_columns, column_type="int"
     )
 
-    # raw_workoutlog = raw_workoutlog.select([field.name for field in stg__workoutlog_schema.fields])
-
     stg__workoutlog = raw_workoutlog.dropDuplicates().fillna(
         0,
         subset=[

@@ -7,6 +7,7 @@ from transformations.utilities import paths, utils
 stg__workoutlog_schema = StructType(
     [
         StructField("date_time", types.TimestampType(), False),
+        StructField("utc_offset", types.TimestamoType(), False),
         StructField("muscle_group", types.StringType(), False),
         StructField("exercise", types.StringType(), False),
         StructField("variation", types.StringType(), False),
@@ -30,9 +31,6 @@ ddl_schema = utils.struct_to_ddl(stg__workoutlog_schema)
 )
 def base__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)
-
-
-    #/TODO: call convert timestamp fomr utils
 
 
     lower_case_columns = ["muscle_group", "exercise", "variation"]

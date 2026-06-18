@@ -67,6 +67,20 @@ def create_calendar_key(dataframe: DataFrame, timestamp_column: str) -> DataFram
     return dataframe
 
 
+def create_clock_key(dataframe: DataFrame, timestamp_column: str) -> DataFrame:
+    """Generates the calendar+key for supplied dataframe form the supplied timestamp column
+        The calendar_key will be in HHmmss format
+    Args:
+        datefarme (DataFrame): dataframe
+        timestamp_column (str): timestamp column
+    """
+    dataframe = dataframe.withColumn(
+        "clock_key", sf.date_format(sf.col(timestamp_column), "HHmmss")
+    )
+
+    return dataframe
+
+
 def preserve_timezone(dataframe: DataFrame, timestamp_col: str) -> DataFrame:
     """Takes a timestamo column which is in the format `yyyy-MM-ddTHH:mm:ssXXX`
 
@@ -81,3 +95,26 @@ def preserve_timezone(dataframe: DataFrame, timestamp_col: str) -> DataFrame:
 
     return dataframe
 
+
+def prepare_for_export(
+    dataframe: DataFrame,
+    timestamp_column: str,
+    source_name: str = "",
+    select_columns: list[str] = "*",
+):
+    """returns the dataframe ready to export to UC
+
+    Args:
+        dataframe (DataFrame): dataframe to export
+        timestamp_column (str): the timestamo column to create `calendar_key` and `clock_key`
+        source_name (str, optional): String that you wnat to be added as the source for this table. Defaults to "".
+        select_columns (list[str], optional): the list of columns that you want to select in the output. Defaults to "*".
+
+    Returns:
+        _type_: _description_
+    """
+    dataframe = dataframe.withColumn("source", sf.lit(source_name))
+    dataframe = create_calendar_key(dataframe, timestamp_column)
+    dataframe = create_clock_key(dataframe, timestamp_column)
+    dataframe = dataframe.select(select_columns)
+    return dataframe

@@ -1,5 +1,4 @@
 from pyspark import pipelines as dp
-from pyspark.sql import functions as sf
 from pyspark.sql import types
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
@@ -7,6 +6,7 @@ from transformations.utilities import paths, utils
 stg__workoutlog_schema = StructType(
     [
         StructField("date_time", types.TimestampType(), False),
+        StructField("utc_offset", types.StringType(), False),
         StructField("muscle_group", types.StringType(), False),
         StructField("exercise", types.StringType(), False),
         StructField("variation", types.StringType(), False),
@@ -16,6 +16,10 @@ stg__workoutlog_schema = StructType(
         StructField("reps", types.IntegerType(), False),
         StructField("drop_reps", types.IntegerType(), True),
         StructField("second_drop_reps", types.IntegerType(), True),
+        StructField("source", types.StringType(), True),
+        StructField("calendar_key", types.StringType(), False),
+        StructField("clock_key", types.StringType(), False),
+        StructField("_rescued_data", types.StringType(), False),
     ]
 )
 ddl_schema = utils.struct_to_ddl(stg__workoutlog_schema)
@@ -31,12 +35,11 @@ ddl_schema = utils.struct_to_ddl(stg__workoutlog_schema)
 def base__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)
 
-    raw_workoutlog = raw_workoutlog.withColumn(
-        "date_time", sf.to_timestamp(sf.col("date_time"), "dd MMM yyyy 'at' HH:mm")
-    )
-
     lower_case_columns = ["muscle_group", "exercise", "variation"]
     raw_workoutlog = utils.convert_column_values_to_lower_case(raw_workoutlog, lower_case_columns)
+
+    raw_workoutlog = utils.preserve_timezone(raw_workoutlog, "date_time")
+    raw_workoutlog = utils.type_cast_columns(raw_workoutlog, ["date_time"], "timestamp")
 
     float_columns = ["weight", "drop_weight", "second_drop_weight"]
     raw_workoutlog = utils.type_cast_columns(
@@ -48,8 +51,6 @@ def base__workoutlog():
         raw_workoutlog, column_list=int_columns, column_type="int"
     )
 
-    raw_workoutlog = raw_workoutlog.select([field.name for field in stg__workoutlog_schema.fields])
-
     stg__workoutlog = raw_workoutlog.dropDuplicates().fillna(
         0,
         subset=[
@@ -60,6 +61,10 @@ def base__workoutlog():
             "drop_reps",
             "second_drop_reps",
         ],
+    )
+
+    stg__workoutlog = utils.prepare_for_export(
+        dataframe=stg__workoutlog, timestamp_column="date_time", source_name="workoutlog"
     )
 
     return stg__workoutlog

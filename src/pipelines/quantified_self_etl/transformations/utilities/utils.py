@@ -1,6 +1,8 @@
 from pyspark.sql import DataFrame
 from pyspark.sql import functions as sf
 from pyspark.sql.types import StructType
+from pyspark.sql.column import Column
+from typing import Callable
 
 
 def convert_column_values_to_lower_case(dataframe: DataFrame, columns_list: list[str]) -> DataFrame:
@@ -118,3 +120,33 @@ def prepare_for_export(
     dataframe = create_clock_key(dataframe, timestamp_column)
     dataframe = dataframe.select(select_columns)
     return dataframe
+
+
+def average_without_zeros(dataframe: DataFrame, columns_list: list[Column], output_col_name: str):
+    """Returns dataframe with the list of columns averaged without including zeros in the average.
+
+    Args:
+        dataframe (DataFrame): the Dataframe to transform
+        columns_list (list[Column]): list of columns to average
+        output_col_name (str): name of the output average column
+
+    Returns:
+        DataFrame: Dataframe with average column added
+    """
+    average = sum(sf.when(sf.col(column) != 0, sf.col(column)) for column in columns_list) / sum(
+        sf.when(sf.col(column) != 0, 1).otherwise(0) for column in columns_list
+    )
+    dataframe = dataframe.withColumn(output_col_name, average)
+    return dataframe
+
+
+def apply_transformation_steps(dataframe: DataFrame, *functions: Callable) -> DataFrame:
+    """Returns dataframe with transformation steps applied in order that they are supplied in.
+        Supply list of transformation functions using `functools.partial`.
+    Args:
+        dataframe (DataFrame): Dataframe to transforms
+        *functions (Callable): list of transformation functions to apply to dataframe
+
+    Returns:
+        DataFrame: Transformaed dataframe
+    """

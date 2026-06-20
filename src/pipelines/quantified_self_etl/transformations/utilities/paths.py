@@ -50,5 +50,7 @@ STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
 
 ############ Silver ####################
 
+INT_WORKOUT_DETAILS = f"{SILVER_SCHEMA}.int_workout_details"
+
 
 ############ Gold ####################

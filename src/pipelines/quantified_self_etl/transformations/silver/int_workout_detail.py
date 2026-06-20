@@ -1,4 +1,4 @@
-from pyspark import pipelines as do
+from pyspark import pipelines as dp
 from pyspark.sql import functions as sf
 from transformations.utilities import paths, utils
 from pyspark.sql import types
@@ -39,7 +39,7 @@ ddl_schema = utils.struct_to_ddl(int_workout_detail_schema)
     """The enriched workout detail table with added columns like volume and totals
     """
 )
-def int_workout_detail()
+def int_workout_detail():
     workoutlog_df = spark.readStream.table(paths.STG__WORKOUTLOG_PATH)
 
     weight_columns = [sf.col("weight"), sf.col("drop_weight"), sf.col("second_drop_weight")]
@@ -50,11 +50,11 @@ def int_workout_detail()
         (sf.col("drop_weight") * sf.col("drop_reps")) + 
         (sf.col("second_drop_weight") * sf.col("second_drop_reps"))
     )
-    int_workout_detail = int_workout_detail.withColumn("set_volume", set_volume)
+    int_workout_detail = workoutlog_df.withColumn("set_volume", set_volume)
 
     int_workout_detail = utils.apply_transformation_steps(
         int_workout_detail,
-        partial(utils.average_without_zeros, columns_list=weight_columns, output_column_name="average_weight")
+        partial(utils.average_without_zeros, columns_list=weight_columns, output_col_name="average_weight")
     )
     int_workout_detail = int_workout_detail.withColumn("total_reps", sum(rep_col for rep_col in reps_columns))
     int_workout_detail = int_workout_detail.withColumn("weight_per_rep", (sf.col("average_weight") / sf.col("total_reps")))    

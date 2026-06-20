@@ -133,8 +133,8 @@ def average_without_zeros(dataframe: DataFrame, columns_list: list[Column], outp
     Returns:
         DataFrame: Dataframe with average column added
     """
-    average = sum(sf.when(sf.col(column) != 0, sf.col(column)) for column in columns_list) / sum(
-        sf.when(sf.col(column) != 0, 1).otherwise(0) for column in columns_list
+    average = sum(sf.when(column != 0, column) for column in columns_list) / sum(
+        sf.when(column != 0, 1).otherwise(0) for column in columns_list
     )
     dataframe = dataframe.withColumn(output_col_name, average)
     return dataframe

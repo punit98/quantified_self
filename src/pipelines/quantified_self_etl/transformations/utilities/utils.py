@@ -140,7 +140,7 @@ def average_without_zeros(dataframe: DataFrame, columns_list: list[Column], outp
     return dataframe
 
 
-def apply_transformation_steps(dataframe: DataFrame, *functions: Callable) -> DataFrame:
+def apply_transformation_steps(dataframe: DataFrame, *transformation_functions: Callable) -> DataFrame:
     """Returns dataframe with transformation steps applied in order that they are supplied in.
         Supply list of transformation functions using `functools.partial`.
     Args:
@@ -150,3 +150,9 @@ def apply_transformation_steps(dataframe: DataFrame, *functions: Callable) -> Da
     Returns:
         DataFrame: Transformaed dataframe
     """
+    for step in transformation_functions:
+        dataframe = dataframe.transform(step)
+
+    return dataframe
+
+

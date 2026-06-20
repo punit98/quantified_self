@@ -1,10 +1,10 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.TimestampLog
+CREATE OR REFRESH STREAMING TABLE ${raw_schema}.TIMESTAMPLOG
 TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
 AS SELECT *
 FROM STREAM read_files(
-  "/Volumes/${catalog}/${raw_schema}/landing_zone",
-  format => "csv",
-  header => "true",
-  inferSchema => "false",
-  fileNamePattern => "TimestampLog.csv"
+    '/Volumes/${catalog}/${raw_schema}/landing_zone',
+    FORMAT => 'csv',
+    HEADER => 'true',
+    INFERSCHEMA => 'false',
+    FILENAMEPATTERN => 'TimestampLog.csv'
 )

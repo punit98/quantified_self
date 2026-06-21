@@ -1,11 +1,10 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.WorkoutLog
+CREATE OR REFRESH STREAMING TABLE ${raw_schema}.WORKOUTLOG
 TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
-AS SELECT 
-*
+AS SELECT *
 FROM STREAM read_files(
-  "/Volumes/${catalog}/${raw_schema}/landing_zone",
-  format => "csv",
-  header => "true",
-  inferSchema => "false",
-  fileNamePattern => "WorkoutLog.csv"
+    '/Volumes/${catalog}/${raw_schema}/landing_zone',
+    FORMAT => 'csv',
+    HEADER => 'true',
+    INFERSCHEMA => 'false',
+    FILENAMEPATTERN => 'WorkoutLog.csv'
 )

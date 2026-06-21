@@ -1,4 +1,4 @@
-name: Ruff Lint & Format
+name: SQLFluff Lint
 
 on:
   pull_request:
@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  ruff:
-    name: Run Ruff
+  sqlfluff:
+    name: Run SQLFluff
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.14"
+          python-version: "3.11"
 
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -26,8 +26,5 @@ jobs:
       - name: Sync dependencies
         run: uv sync --frozen
 
-      - name: Ruff lint
-        run: uv run ruff check .
-
-      - name: Ruff format check
-        run: uv run ruff format --check .
+      - name: Run SQLFluff lint
+        run: uv run sqlfluff lint .

@@ -8,7 +8,7 @@ on:
 
 jobs:
   ruff:
-    name: Run Ruff (lint + format check)
+    name: Run Ruff
     runs-on: ubuntu-latest
 
     steps:

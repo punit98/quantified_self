@@ -29,3 +29,4 @@ ignore = ["E501", "PLR0913", "PLR2004"]
 "__init__.py" = ["F401"]
 "tests/*" = ["S101"]
 "src/pipelines/quantified_self_etl/transformations/**/*.py" = ["F821"]
+

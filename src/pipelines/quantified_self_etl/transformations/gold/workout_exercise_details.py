@@ -50,7 +50,17 @@ def workout_exercise_details():
         "variation",
     ).agg(
         sf.min(sf.col("date_time")).alias("start_timestamp"),
-        sf.max(sf.col("date_time")).alias("end_timestamp")
+        sf.max(sf.col("date_time")).alias("end_timestamp"),
+        sf.count(sf.lit(1)).alias("number_of_sets"),
+        sf.mean(sf.col("average_weight")).alias("average_weight"),
+        sf.sum(sf.col("total_reps")).alias("number_of_reps"),
+        sf.max(sf.col("weight")).alias("max_weight"),
+        sf.min(sf.col("weight")).alias("min_weight"),
+        sf.max(sf.col("total_reps")).alias("max_reps"),
+        sf.min(sf.col("total_reps")).alias("min_reps")
+        sf.sum(sf.col("set_volume")).alias("total_volume"),
+        sf.max(sf.col("set_volume")).alias("max_volume"),
+        sf.min(sf.col("set_volume")).alias("min_volume"),
     )
 
     pass

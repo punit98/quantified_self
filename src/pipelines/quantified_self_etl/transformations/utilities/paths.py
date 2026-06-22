@@ -56,3 +56,5 @@ INT_WORKOUT_DETAILS = f"{SILVER_SCHEMA}.int_workout_details"
 ############ Gold ####################
 
 WORKOUT_SET_DETAILS = f"{GOLD_SCHEMA}.workout_set_details"
+
+WORKOUT_EXERCISE_DETAILS = f"{GOLD_SCHEMA}.workout_exercise_details"

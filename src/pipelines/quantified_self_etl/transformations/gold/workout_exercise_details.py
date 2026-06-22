@@ -42,4 +42,15 @@ def workout_exercise_details():
 
     workout_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS)
 
+    exercise_details = workout_details.groupBy(
+        "calendar_key",
+        "utc_offset",
+        "muscle_group",
+        "exercise",
+        "variation",
+    ).agg(
+        sf.min(sf.col("date_time")).alias("start_timestamp"),
+        sf.max(sf.col("date_time")).alias("end_timestamp")
+    )
+
     pass

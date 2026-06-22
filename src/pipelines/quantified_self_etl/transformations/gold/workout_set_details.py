@@ -19,9 +19,9 @@ workout_set_details_schema = StructType(
         StructField("drop_reps", types.IntegerType(), True),
         StructField("second_drop_reps", types.IntegerType(), True),
         StructField("set_volume", types.FloatType(), True),
-        StructField("average_weight", types.FloatType(), True),
+        StructField("average_weight", types.DoubleType(), True),
         StructField("total_reps", types.IntegerType(), True),
-        StructField("weight_per_rep", types.FloatType(), True),
+        StructField("weight_per_rep", types.DoubleType(), True),
         StructField("source", types.StringType(), True),
         StructField("_rescued_data", types.StringType(), False),
     ]

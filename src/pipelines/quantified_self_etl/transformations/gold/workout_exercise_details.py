@@ -1,5 +1,5 @@
 from pyspark import pipelines as dp
-from pyspark.sql import types
+from pyspark.sql import types, functions as sf
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
@@ -29,17 +29,17 @@ workout_set_details_schema = StructType(
 ddl_schema = utils.struct_to_ddl(workout_set_details_schema)
 
 
-
 @dp.table(
-    name = paths.WORKOUT_EXERCISE_DETAILS,
-    comment = 
-    """Exercise level detail of my workouts per day.
+    name=paths.WORKOUT_EXERCISE_DETAILS,
+    comment="""Exercise level detail of my workouts per day.
     Averages the weight and sums the reps.
     Replaces set volume to total volume for taht exercise for that day
     Recalculates weight_per_rep
     """,
-    schema = ddl_schema
-
+    schema=ddl_schema,
 )
 def workout_exercise_details():
+
+    workout_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS)
+
     pass

@@ -1,11 +1,7 @@
 from pyspark import pipelines as dp
-
-from pyspark import pipelines as dp
-from pyspark.sql import functions as sf
 from pyspark.sql import types
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
-
 
 workout_set_details_schema = StructType(
     [
@@ -34,14 +30,12 @@ ddl_schema = utils.struct_to_ddl(workout_set_details_schema)
 
 
 @dp.table(
-        name = paths.WORKOUT_SET_DETAILS,
-        comment = 
-    """The detailed workout table with each set as a separate record
+    name=paths.WORKOUT_SET_DETAILS,
+    comment="""The detailed workout table with each set as a separate record
     """,
-    schema = ddl_schema
+    schema=ddl_schema,
 )
 def workout_set_details():
     workout_set_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS)
 
     return workout_set_details
-    

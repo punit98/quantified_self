@@ -1,5 +1,6 @@
 from pyspark import pipelines as dp
-from pyspark.sql import types, functions as sf
+from pyspark.sql import functions as sf
+from pyspark.sql import types
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
@@ -57,10 +58,10 @@ def workout_exercise_details():
         sf.max(sf.col("weight")).alias("max_weight"),
         sf.min(sf.col("weight")).alias("min_weight"),
         sf.max(sf.col("total_reps")).alias("max_reps"),
-        sf.min(sf.col("total_reps")).alias("min_reps")
+        sf.min(sf.col("total_reps")).alias("min_reps"),
         sf.sum(sf.col("set_volume")).alias("total_volume"),
         sf.max(sf.col("set_volume")).alias("max_volume"),
         sf.min(sf.col("set_volume")).alias("min_volume"),
     )
 
-    pass
+    return exercise_details

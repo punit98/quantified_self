@@ -4,12 +4,11 @@ from pyspark.sql import types
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
-workout_exercise_details_schema = StructType(
+workout_muscle_group_details_schema = StructType(
     [
         StructField("calendar_key", types.StringType(), False),
         StructField("utc_offset", types.StringType(), False),
         StructField("muscle_group", types.StringType(), False),
-        StructField("exercise", types.StringType(), False),
         StructField("start_timestamp", types.TimestampType(), False),
         StructField("end_timestamp", types.TimestampType(), False),
         StructField("number_of_sets", types.LongType(), False),
@@ -24,27 +23,26 @@ workout_exercise_details_schema = StructType(
         StructField("min_volume", types.FloatType(), True),
     ]
 )
-ddl_schema = utils.struct_to_ddl(workout_exercise_details_schema)
+ddl_schema = utils.struct_to_ddl(workout_muscle_group_details_schema)
 
 
 @dp.table(
-    name=paths.WORKOUT_EXERCISE_DETAILS_PATH,
-    comment="""Exercise level detail of my workouts per day.
+    name=paths.WORKOUT_MUSCLE_GROUP_DETAILS_PATH,
+    comment="""Muscle Group level detail of my workouts per day.
     Averages the weight and sums the reps.
     Replaces set volume to total volume for taht exercise for that day
     Recalculates weight_per_rep
     """,
     schema=ddl_schema,
 )
-def workout_exercise_details():
+def workout_muscle_group_details():
 
     workout_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
 
-    exercise_details = workout_details.groupBy(
+    muscle_group_details = workout_details.groupBy(
         "calendar_key",
         "utc_offset",
         "muscle_group",
-        "exercise",
     ).agg(
         sf.min(sf.col("date_time")).alias("start_timestamp"),
         sf.max(sf.col("date_time")).alias("end_timestamp"),
@@ -60,11 +58,11 @@ def workout_exercise_details():
         sf.min(sf.col("set_volume")).alias("min_volume"),
     )
 
-    exercise_details = utils.create_clock_key(
-        exercise_details, "start_timestamp"
+    muscle_group_details = utils.create_clock_key(
+        muscle_group_details, "start_timestamp"
     ).withColumnRenamed("clock_key", "start_clock_key")
-    exercise_details = utils.create_clock_key(exercise_details, "end_timestamp").withColumnRenamed(
-        "clock_key", "end_clock_key"
-    )
+    muscle_group_details = utils.create_clock_key(
+        muscle_group_details, "end_timestamp"
+    ).withColumnRenamed("clock_key", "end_clock_key")
 
-    return exercise_details
+    return muscle_group_details

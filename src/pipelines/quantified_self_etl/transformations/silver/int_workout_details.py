@@ -34,7 +34,7 @@ ddl_schema = utils.struct_to_ddl(int_workout_detail_schema)
 
 
 @dp.table(
-    name=paths.INT_WORKOUT_DETAILS,
+    name=paths.INT_WORKOUT_DETAILS_PATH,
     comment="""The enriched workout detail table with added columns like volume and totals
     """,
 )

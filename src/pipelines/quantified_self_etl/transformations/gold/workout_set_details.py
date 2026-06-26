@@ -30,12 +30,12 @@ ddl_schema = utils.struct_to_ddl(workout_set_details_schema)
 
 
 @dp.table(
-    name=paths.WORKOUT_SET_DETAILS,
+    name=paths.WORKOUT_SET_DETAILS_PATH,
     comment="""The detailed workout table with each set as a separate record
     """,
     schema=ddl_schema,
 )
 def workout_set_details():
-    workout_set_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS)
+    workout_set_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
 
     return workout_set_details

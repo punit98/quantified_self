@@ -6,25 +6,23 @@ from transformations.utilities import paths, utils
 
 workout_set_details_schema = StructType(
     [
-        StructField("date_time", types.TimestampType(), False),
-        StructField("utc_offset", types.StringType(), False),
         StructField("calendar_key", types.StringType(), False),
-        StructField("clock_key", types.StringType(), False),
+        StructField("utc_offset", types.StringType(), False),
         StructField("muscle_group", types.StringType(), False),
         StructField("exercise", types.StringType(), False),
         StructField("variation", types.StringType(), False),
-        StructField("weight", types.FloatType(), False),
-        StructField("drop_weight", types.FloatType(), True),
-        StructField("second_drop_weight", types.FloatType(), True),
-        StructField("reps", types.IntegerType(), False),
-        StructField("drop_reps", types.IntegerType(), True),
-        StructField("second_drop_reps", types.IntegerType(), True),
-        StructField("set_volume", types.FloatType(), True),
-        StructField("average_weight", types.DoubleType(), True),
-        StructField("total_reps", types.IntegerType(), True),
-        StructField("weight_per_rep", types.DoubleType(), True),
-        StructField("source", types.StringType(), True),
-        StructField("_rescued_data", types.StringType(), False),
+        StructField("start_timestamp", types.TimestampType(), False),
+        StructField("end_timestamp", types.TimestampType(), False),
+        StructField("number_of_Sets", types.IntegerType(), False),
+        StructField("average_weight", types.DoubleType(), False),
+        StructField("number_of_sets", types.FloatType(), True),
+        StructField("max_weight", types.FloatType(), True),
+        StructField("min_weight", types.FloatType(), True),
+        StructField("max_reps", types.FloatType(), True),
+        StructField("min_reps", types.FloatType(), True),
+        StructField("total_volume", types.FloatType(), True),
+        StructField("max_volume", types.FloatType(), True),
+        StructField("min_volume", types.FloatType(), True),
     ]
 )
 ddl_schema = utils.struct_to_ddl(workout_set_details_schema)

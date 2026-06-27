@@ -41,4 +41,8 @@ def workout_exercise_details():
         "clock_key", "end_clock_key"
     )
 
+    workout_daily = workout_daily.withColumn("hour_duration",
+        sf.timestamp_diff("HOUR", sf.col("start_timestamp"), sf.col("end_timestamp"))
+    )
+
     return workout_daily

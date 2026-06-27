@@ -9,7 +9,7 @@ from transformations.utilities import paths, utils
 
 
 @dp.table(
-    name = paths.DIM_MUSCLE_GROUPS_PATH
+    name = paths.DIM_MUSCLE_GROUPS_PATH,
     comment =
     """
     Unique muscle Groups from the workout_detail table

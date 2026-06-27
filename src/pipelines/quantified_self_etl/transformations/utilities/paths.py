@@ -67,3 +67,7 @@ WORKOUT_DAILY_PATH = f"{GOLD_SCHEMA}.workout_daily"
 ############ Gold Dim ####################
 
 DIM_MUSCLE_GROUPS_PATH = f"{GOLD_SCHEMA}.dim_muslce_group"
+
+DIM_EXERCISES_PATH = f"{GOLD_SCHEMA}.dim_exercises"
+
+DIM_VARIATIONS_PATH = f"{GOLD_SCHEMA}.dim_variations"

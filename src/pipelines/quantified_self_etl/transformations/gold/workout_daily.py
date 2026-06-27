@@ -5,7 +5,7 @@ from transformations.utilities import paths, utils
 
 @dp.table(
     name=paths.WORKOUT_DAILY_PATH,
-    comment="""Exercise level detail of my workouts per day.
+    comment="""Day level detail of my workouts per day.
     Averages the weight and sums the reps.
     Replaces set volume to total volume for taht exercise for that day
     Recalculates weight_per_rep
@@ -22,7 +22,7 @@ def workout_exercise_details():
         sf.min(sf.col("date_time")).alias("start_timestamp"),
         sf.max(sf.col("date_time")).alias("end_timestamp"),
         sf.count(sf.lit(1)).alias("number_of_sets"),
-        sf.count(sf.col("muscle_group").distint()).alias("number_of_muscle_groups"),
+        sf.countDistinct(sf.col("muscle_group")).alias("number_of_muscle_groups"),
         sf.mean(sf.col("average_weight")).alias("average_weight"),
         sf.sum(sf.col("total_reps")).alias("number_of_reps"),
         sf.max(sf.col("weight")).alias("max_weight"),

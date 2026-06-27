@@ -61,4 +61,4 @@ WORKOUT_EXERCISE_DETAILS_PATH = f"{GOLD_SCHEMA}.workout_exercise_details"
 
 WORKOUT_MUSCLE_GROUP_DETAILS_PATH = f"{GOLD_SCHEMA}.workout_muscle_group_details"
 
-WORKOUT_DAILY_SCHEMA_PATH = f"{GOLD_SCHEMA}.workout_daily"
+WORKOUT_DAILY_PATH = f"{GOLD_SCHEMA}.workout_daily"

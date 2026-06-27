@@ -4,26 +4,6 @@ from pyspark.sql import types
 from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
-workout_muscle_group_details_schema = StructType(
-    [
-        StructField("calendar_key", types.StringType(), False),
-        StructField("utc_offset", types.StringType(), False),
-        StructField("muscle_group", types.StringType(), False),
-        StructField("start_timestamp", types.TimestampType(), False),
-        StructField("end_timestamp", types.TimestampType(), False),
-        StructField("number_of_sets", types.LongType(), False),
-        StructField("average_weight", types.DoubleType(), False),
-        StructField("number_of_reps", types.LongType(), True),
-        StructField("max_weight", types.FloatType(), True),
-        StructField("min_weight", types.FloatType(), True),
-        StructField("max_reps", types.IntegerType(), True),
-        StructField("min_reps", types.IntegerType(), True),
-        StructField("total_volume", types.DoubleType(), True),
-        StructField("max_volume", types.FloatType(), True),
-        StructField("min_volume", types.FloatType(), True),
-    ]
-)
-ddl_schema = utils.struct_to_ddl(workout_muscle_group_details_schema)
 
 
 @dp.table(
@@ -33,7 +13,6 @@ ddl_schema = utils.struct_to_ddl(workout_muscle_group_details_schema)
     Replaces set volume to total volume for taht exercise for that day
     Recalculates weight_per_rep
     """,
-    schema=ddl_schema,
 )
 def workout_muscle_group_details():
 

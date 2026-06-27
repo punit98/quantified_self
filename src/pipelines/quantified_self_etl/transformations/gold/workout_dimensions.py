@@ -1,10 +1,5 @@
-from functools import partial
-
 from pyspark import pipelines as dp
-from pyspark.sql import functions as sf
-from pyspark.sql import types
-from pyspark.sql.types import StructField, StructType
-from transformations.utilities import paths, utils
+from transformations.utilities import paths
 
 
 @dp.table(

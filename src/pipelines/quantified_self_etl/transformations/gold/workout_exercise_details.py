@@ -43,9 +43,9 @@ def workout_exercise_details():
         "clock_key", "end_clock_key"
     )
 
-    workout_daily = workout_utils.add_duration_columns(
-        workout_daily, "start_timestamp", "end_timestamp"
+    exercise_details = workout_utils.add_duration_columns(
+        exercise_details, "start_timestamp", "end_timestamp"
     )
-    workout_daily = workout_utils.add_intensity_metrics(workout_daily)
+    exercise_details = workout_utils.add_intensity_metrics(exercise_details)
 
     return exercise_details

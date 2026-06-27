@@ -24,6 +24,7 @@ def workout_exercise_details():
         sf.min(sf.col("date_time")).alias("start_timestamp"),
         sf.max(sf.col("date_time")).alias("end_timestamp"),
         sf.count(sf.lit(1)).alias("number_of_sets"),
+        sf.count(sf.col("variation").distint()).alias("number_of_variations"),
         sf.mean(sf.col("average_weight")).alias("average_weight"),
         sf.sum(sf.col("total_reps")).alias("number_of_reps"),
         sf.max(sf.col("weight")).alias("max_weight"),

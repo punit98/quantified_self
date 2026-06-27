@@ -1,21 +1,7 @@
 from pyspark import pipelines as dp
-from pyspark.sql import functions as sf, DataFrame
-from transformations.utilities import paths, utils
-
-
-def add_duration_columns(dataframe: DataFrame):
-    dataframe = dataframe.withColumn("hour_duration",
-        sf.timestamp_diff("HOUR", sf.col("start_timestamp"), sf.col("end_timestamp"))
-    )
-
-    dataframe = dataframe.withColumn("total_minute_duration",
-        sf.timestamp_diff("MINUTE", sf.col("start_timestamp"), sf.col("end_timestamp"))
-    )
-
-    dataframe = dataframe.withColumn("remainder_minutes",
-        (sf.col("total_minute_duration") - (sf.col("hour_duration") * 60))
-    )
-    return dataframe
+from pyspark.sql import DataFrame
+from pyspark.sql import functions as sf
+from transformations.utilities import paths, utils, workout_utils
 
 
 def add_intensity_metrics(dataframe: DataFrame):
@@ -24,7 +10,6 @@ def add_intensity_metrics(dataframe: DataFrame):
         sf.col("weight") / sf.col("total_reps"),
     )
     return dataframe
-
 
 
 @dp.table(
@@ -66,7 +51,9 @@ def workout_exercise_details():
         "clock_key", "end_clock_key"
     )
 
-    
-
+    workout_daily = workout_utils.add_intensity_metrics(workout_daily)
+    workout_daily = workout_utils.add_duration_columns(
+        workout_daily, "start_timestamp", "end_timestamp"
+    )
 
     return workout_daily

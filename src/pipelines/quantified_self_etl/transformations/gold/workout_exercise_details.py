@@ -1,6 +1,6 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as sf
-from transformations.utilities import paths, utils
+from transformations.utilities import paths, utils, workout_utils
 
 
 @dp.table(
@@ -25,7 +25,7 @@ def workout_exercise_details():
         sf.max(sf.col("date_time")).alias("end_timestamp"),
         sf.count(sf.lit(1)).alias("number_of_sets"),
         sf.countDistinct(sf.col("variation")).alias("number_of_variations"),
-        sf.mean(sf.col("average_weight")).alias("average_weight"),
+        (sf.sum("set_volume") / sf.sum("total_reps")).alias("average_weight"),
         sf.sum(sf.col("total_reps")).alias("number_of_reps"),
         sf.max(sf.col("weight")).alias("max_weight"),
         sf.min(sf.col("weight")).alias("min_weight"),
@@ -41,6 +41,11 @@ def workout_exercise_details():
     ).withColumnRenamed("clock_key", "start_clock_key")
     exercise_details = utils.create_clock_key(exercise_details, "end_timestamp").withColumnRenamed(
         "clock_key", "end_clock_key"
+    )
+
+    exercise_details = workout_utils.add_intensity_metrics(exercise_details)
+    exercise_details = workout_utils.add_duration_columns(
+        exercise_details, "start_timestamp", "end_timestamp"
     )
 
     return exercise_details

@@ -42,9 +42,9 @@ def workout_muscle_group_details():
         muscle_group_details, "end_timestamp"
     ).withColumnRenamed("clock_key", "end_clock_key")
 
-    muscle_group_details = workout_utils.add_intensity_metrics(muscle_group_details)
-    muscle_group_details = workout_utils.add_duration_columns(
-        muscle_group_details, "start_timestamp", "end_timestamp"
+    workout_daily = workout_utils.add_duration_columns(
+        workout_daily, "start_timestamp", "end_timestamp"
     )
+    workout_daily = workout_utils.add_intensity_metrics(workout_daily)
 
     return muscle_group_details

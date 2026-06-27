@@ -1,0 +1,139 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 1.25
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 697.5,
+            "y": 98.333333333333371
+          },
+          "nodeIndex": "calendar",
+          "nodeLineageTag": "02dfa75c-bd09-42d3-906f-ac77e00e0432",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 695.90476190476193,
+            "y": 983.65079365079362
+          },
+          "nodeIndex": "clock",
+          "nodeLineageTag": "0665f270-f773-4dfe-87b0-98163b09882b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 402.46031746031753
+          },
+          "nodeIndex": "workout_daily",
+          "nodeLineageTag": "32af5c64-246d-4f23-9162-dc8712dcc387",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 830.873015873016
+          },
+          "nodeIndex": "workout_exercise_details",
+          "nodeLineageTag": "95e505df-caba-4a5e-b058-4dbb723a525d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1166.7142857142858,
+            "y": 208.88888888888891
+          },
+          "nodeIndex": "workout_muscle_group_details",
+          "nodeLineageTag": "e92e9505-fcf5-4c4f-afcc-391469c6b6ca",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1181.4285714285716,
+            "y": 813.41269841269855
+          },
+          "nodeIndex": "workout_set_details",
+          "nodeLineageTag": "6f5c5c9e-ebc3-4570-9ea7-9c7e8ba5a4bc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 688.76190476190493,
+            "y": 454.82539682539687
+          },
+          "nodeIndex": "dim_exercises",
+          "nodeLineageTag": "7e8ca605-f11b-41d7-a6f3-896fef8bf17b",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 686.0952380952383,
+            "y": 586.49206349206361
+          },
+          "nodeIndex": "dim_muslce_group",
+          "nodeLineageTag": "1a05eb62-a47d-450c-947f-dc8866c7fb86",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 685.09523809523807,
+            "y": 711.49206349206361
+          },
+          "nodeIndex": "dim_variations",
+          "nodeLineageTag": "d9a4fc26-9dc3-4470-954e-fbe52d096d0b",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 80,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

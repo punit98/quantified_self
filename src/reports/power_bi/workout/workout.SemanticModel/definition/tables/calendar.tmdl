@@ -1,0 +1,397 @@
+table calendar
+	lineageTag: 02dfa75c-bd09-42d3-906f-ac77e00e0432
+
+	column id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 5071760c-e2de-4a6d-a600-2e6fe3a1bfba
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 3f5ab021-78b3-496f-bd08-c39e4d57b4d1
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_key
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 5d7796ab-16f1-44a8-9032-281dc535a4dd
+		summarizeBy: none
+		sourceColumn: calendar_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 83e36587-3b71-4c3d-8496-c3b89dcb6118
+		summarizeBy: sum
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_month
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4f7fc612-e83e-4179-85e7-4d438525f8b8
+		summarizeBy: sum
+		sourceColumn: calendar_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_day
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4203a50f-fa45-4724-9028-1be2c8bc1949
+		summarizeBy: sum
+		sourceColumn: calendar_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 34cbd030-e338-4401-b0a1-66d78755b539
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 14d56d7f-b6a6-4cda-8378-d8ca45f72a0f
+		summarizeBy: sum
+		sourceColumn: day_of_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_of_year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f8097f97-3d95-436c-bb7f-9f19be9a86ee
+		summarizeBy: sum
+		sourceColumn: week_of_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 345cdf4f-3ae1-47bc-bcf0-11cfaf356b20
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b5215905-d46f-482e-a5c1-2e72c445d8c5
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: d5c4a1f0-3ba0-44d3-8c23-5a3fb3138446
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_month_start
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 24da9b3c-0901-4b79-bafe-f8833ccf4eb7
+		summarizeBy: none
+		sourceColumn: is_month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_month_end
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 67855be3-14e0-46bd-93a3-3855937cd663
+		summarizeBy: none
+		sourceColumn: is_month_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_quarter_start
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: dfc70cb9-5cf0-4547-b8b2-0823c47d5f34
+		summarizeBy: none
+		sourceColumn: is_quarter_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_quarter_end
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 50b0dc50-1120-47a1-b0f4-2ea24518ae9b
+		summarizeBy: none
+		sourceColumn: is_quarter_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_year_start
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 4bb62d81-a913-4c18-9ce2-c32ea2948119
+		summarizeBy: none
+		sourceColumn: is_year_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_year_end
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: a6a328fc-f1f5-439a-8efb-b4450a5f8de7
+		summarizeBy: none
+		sourceColumn: is_year_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_start_date
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: b1af7aed-88ad-40ca-947e-aa5672d4090c
+		summarizeBy: none
+		sourceColumn: week_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_end_date
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: f7be420f-b4c8-4b5f-ad43-6ccf4c675b5d
+		summarizeBy: none
+		sourceColumn: week_end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_day
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 8d1439b5-eb5f-46ba-91cc-0e2419ec2e76
+		summarizeBy: none
+		sourceColumn: next_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column prev_day
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: b4211e74-19d1-4b76-af0c-5c9519ffb533
+		summarizeBy: none
+		sourceColumn: prev_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_week
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 177e4237-490d-460c-b421-a8e30a0254fe
+		summarizeBy: none
+		sourceColumn: next_week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column prev_week
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 3a802f87-e9dc-44af-b0a7-03579d7c2a38
+		summarizeBy: none
+		sourceColumn: prev_week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_month
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 779f78f3-5b89-498a-93ef-78dab4c7ae2b
+		summarizeBy: none
+		sourceColumn: next_month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column prev_month
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 59aa24bf-9995-4cd2-811d-9af993a25e1b
+		summarizeBy: none
+		sourceColumn: prev_month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_quarter
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: f3fd1e21-c331-4ebe-90c6-9d21c03c07c3
+		summarizeBy: none
+		sourceColumn: next_quarter
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column prev_quarter
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 10270b59-5bfb-4d4e-a040-8a54a2945977
+		summarizeBy: none
+		sourceColumn: prev_quarter
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_year
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: a6764cf5-dd9c-4892-abfe-d1bcadd7452d
+		summarizeBy: none
+		sourceColumn: next_year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column prev_year
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: a0776059-4874-4466-8f7a-12ad24af4b95
+		summarizeBy: none
+		sourceColumn: prev_year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 835622c4-21f7-4374-8243-8dcc14bb4324
+		summarizeBy: none
+		sourceColumn: is_current_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_past_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: ac3cdc16-1184-4776-bd13-08239c21ffab
+		summarizeBy: none
+		sourceColumn: is_past_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_future_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: ad6abc26-177b-4fb5-b14d-cf32bdd238e4
+		summarizeBy: none
+		sourceColumn: is_future_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_years
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: ab37d286-013d-40a2-a762-da2e9bf16496
+		summarizeBy: sum
+		sourceColumn: age_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_months
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: d269582e-e79b-4ef7-ac45-8a1ac650039a
+		summarizeBy: sum
+		sourceColumn: age_months
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_days
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 07e28e70-5304-4338-bb66-0a13986f2c32
+		summarizeBy: sum
+		sourceColumn: age_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition calendar = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    seed_Schema = quantified_self_Database{[Name="seed",Kind="Schema"]}[Data],
+				    calendar_View = seed_Schema{[Name="calendar",Kind="View"]}[Data]
+				in
+				    calendar_View
+

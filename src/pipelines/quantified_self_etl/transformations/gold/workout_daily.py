@@ -1,7 +1,5 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as sf
-from pyspark.sql import types
-from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
 
@@ -35,11 +33,11 @@ def workout_exercise_details():
         sf.min(sf.col("set_volume")).alias("min_volume"),
     )
 
-    workout_daily = utils.create_clock_key(
-        workout_daily, "start_timestamp"
-    ).withColumnRenamed("clock_key", "start_clock_key")
-    workout_daily = utils.create_clock_key(
-        workout_daily, "end_timestamp"
-    ).withColumnRenamed("clock_key", "end_clock_key")
+    workout_daily = utils.create_clock_key(workout_daily, "start_timestamp").withColumnRenamed(
+        "clock_key", "start_clock_key"
+    )
+    workout_daily = utils.create_clock_key(workout_daily, "end_timestamp").withColumnRenamed(
+        "clock_key", "end_clock_key"
+    )
 
     return workout_daily

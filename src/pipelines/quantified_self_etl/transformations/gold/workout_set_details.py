@@ -1,7 +1,6 @@
 from pyspark import pipelines as dp
-from pyspark.sql import types
-from pyspark.sql.types import StructField, StructType
-from transformations.utilities import paths, utils
+from transformations.utilities import paths
+
 
 @dp.table(
     name=paths.WORKOUT_SET_DETAILS_PATH,

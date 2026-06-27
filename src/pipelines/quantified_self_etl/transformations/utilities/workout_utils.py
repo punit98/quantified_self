@@ -73,8 +73,4 @@ def add_intensity_metrics(dataframe: DataFrame) -> DataFrame:
         "sets_per_hour", sf.col("number_of_sets") / sf.col("total_hours_duration")
     )
 
-    dataframe = dataframe.withColumn(
-        "effort_score", sf.col("total_volume") * sf.col("number_of_sets")
-    )
-
     return dataframe

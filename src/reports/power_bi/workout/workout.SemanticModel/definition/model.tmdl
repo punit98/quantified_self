@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["workout_daily","workout_exercise_details","workout_muscle_group_details","workout_set_details","calendar","clock","dim_exercises","dim_muslce_group","dim_variations"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table workout_daily
+ref table workout_exercise_details
+ref table workout_muscle_group_details
+ref table workout_set_details
+ref table calendar
+ref table clock
+ref table dim_exercises
+ref table dim_muslce_group
+ref table dim_variations
+
+ref cultureInfo en-US
+

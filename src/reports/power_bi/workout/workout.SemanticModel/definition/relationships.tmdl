@@ -1,0 +1,61 @@
+relationship eba33263-87ee-339a-635b-ab717fbe2267
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: workout_daily.calendar_key
+	toColumn: calendar.calendar_key
+
+relationship c28608a9-766c-5deb-baff-e343e96c677d
+	fromColumn: workout_daily.start_clock_key
+	toColumn: clock.time_id
+
+relationship fed41510-1bd1-a3d0-c1bf-bab4fb3257d9
+	fromColumn: workout_exercise_details.calendar_key
+	toColumn: calendar.calendar_key
+
+relationship 9e05bc6d-af67-5ec7-4cbb-d461a738cbbe
+	isActive: false
+	fromColumn: workout_exercise_details.start_clock_key
+	toColumn: clock.time_id
+
+relationship 2f112809-5068-586c-a497-a7aa38267405
+	fromColumn: workout_set_details.calendar_key
+	toColumn: calendar.calendar_key
+
+relationship dd25a1da-04ee-99b3-179e-7f469c1a27e7
+	fromColumn: workout_muscle_group_details.calendar_key
+	toColumn: calendar.calendar_key
+
+relationship 6d78dd28-6dff-67d4-8af7-98a592eb23ff
+	isActive: false
+	fromColumn: workout_set_details.clock_key
+	toColumn: clock.time_id
+
+relationship e61dbe23-fde0-1570-ab42-46036302e266
+	isActive: false
+	fromColumn: workout_muscle_group_details.start_clock_key
+	toColumn: clock.time_id
+
+relationship dc8fb8bb-2a57-ec59-fb0b-9686c9b90aa3
+	fromColumn: workout_exercise_details.exercise
+	toColumn: dim_exercises.exercise
+
+relationship 950ee92b-0d7d-3872-11fc-e20d84bc25df
+	fromColumn: workout_exercise_details.muscle_group
+	toColumn: dim_muslce_group.muscle_group
+
+relationship f5f0f5ff-3bad-fc66-f8a7-c03f383a2db8
+	fromColumn: workout_muscle_group_details.muscle_group
+	toColumn: dim_muslce_group.muscle_group
+
+relationship e6c08d0c-20e9-36d2-8c7a-e0d36149d192
+	fromColumn: workout_set_details.muscle_group
+	toColumn: dim_muslce_group.muscle_group
+
+relationship 8dc4b0e8-2d45-1639-105e-a5cd19621d89
+	fromColumn: workout_set_details.exercise
+	toColumn: dim_exercises.exercise
+
+relationship 0ccb4f37-6eea-4fae-23e7-52e8eed92302
+	fromColumn: workout_set_details.variation
+	toColumn: dim_variations.variation
+

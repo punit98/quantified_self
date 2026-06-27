@@ -1,0 +1,238 @@
+table clock
+	lineageTag: 0665f270-f773-4dfe-87b0-98163b09882b
+
+	column hour
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c40d6086-83a7-48e2-8af8-f2788ec425cc
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1c9f4c50-d6c8-41b9-a4e2-04923b9dc588
+		summarizeBy: none
+		sourceColumn: minute
+
+		annotation SummarizationSetBy = Automatic
+
+	column second
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: df15cabf-3049-4fa0-a7e6-8026f6b88a8f
+		summarizeBy: none
+		sourceColumn: second
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_str
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 9e15fee1-e71d-41a2-a9be-41c86851a6dd
+		summarizeBy: none
+		sourceColumn: hour_str
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute_str
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 7e997f24-8ebe-45e2-a36b-21c3a985b352
+		summarizeBy: none
+		sourceColumn: minute_str
+
+		annotation SummarizationSetBy = Automatic
+
+	column second_str
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 4ce80533-a203-4d3a-a186-c19ca5bd9857
+		summarizeBy: none
+		sourceColumn: second_str
+
+		annotation SummarizationSetBy = Automatic
+
+	column clock_time
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 49bf46f3-fc99-416a-97d9-547f8cff3074
+		summarizeBy: none
+		sourceColumn: clock_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column seconds_since_midnight
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6cc2e178-f0ab-4993-94e7-8a5bb6224c4d
+		summarizeBy: none
+		sourceColumn: seconds_since_midnight
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fe31b47d-8005-4159-af53-9932fc38368a
+		summarizeBy: none
+		sourceColumn: time_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hhmm
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 250ad7c3-f4e3-4b51-b4b2-67b9680b8c3e
+		summarizeBy: none
+		sourceColumn: hhmm
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_12h
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: ee77dafc-b97e-4546-ab6f-903f83fb312a
+		summarizeBy: none
+		sourceColumn: time_12h
+
+		annotation SummarizationSetBy = Automatic
+
+	column am_pm
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 1e1a73b2-ea6d-4677-acff-eecb58d7460d
+		summarizeBy: none
+		sourceColumn: am_pm
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_12
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 29af7b86-fb48-40d0-9184-a0ea18dc9d96
+		summarizeBy: none
+		sourceColumn: hour_12
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_of_day
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: f22d4cc3-1a0f-471c-840b-2562bcf7f655
+		summarizeBy: none
+		sourceColumn: time_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_morning
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 5e89b0d4-1cd8-49ff-b134-ebe43c29a4b4
+		summarizeBy: none
+		sourceColumn: is_morning
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_afternoon
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: e0634424-81cc-4d7e-8b54-62221bccea14
+		summarizeBy: none
+		sourceColumn: is_afternoon
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_evening
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 412b0fc3-1378-4862-b3ad-12362cb9230b
+		summarizeBy: none
+		sourceColumn: is_evening
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_night
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 0ebd9e92-0314-49ab-8f3a-40b4a5035c8a
+		summarizeBy: none
+		sourceColumn: is_night
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute_of_day
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bdeec221-8aa5-4b73-bf4a-3a89f670ee1e
+		summarizeBy: none
+		sourceColumn: minute_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column second_of_day
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 11416cc3-b004-42b1-902b-401d4042d40b
+		summarizeBy: none
+		sourceColumn: second_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_sleep_window
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: e678f65c-6436-4eaa-892a-5f6af0c3d790
+		summarizeBy: none
+		sourceColumn: is_sleep_window
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_work_window
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: d237634d-999a-4d0a-b5d7-eba61ab05a2c
+		summarizeBy: none
+		sourceColumn: is_work_window
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_meal_window
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: c47fbac9-4d5d-40cf-a932-4e1718cd24bb
+		summarizeBy: none
+		sourceColumn: is_meal_window
+
+		annotation SummarizationSetBy = Automatic
+
+	partition clock = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    seed_Schema = quantified_self_Database{[Name="seed",Kind="Schema"]}[Data],
+				    clock_View = seed_Schema{[Name="clock",Kind="View"]}[Data]
+				in
+				    clock_View
+
+	annotation PBI_ResultType = Table
+

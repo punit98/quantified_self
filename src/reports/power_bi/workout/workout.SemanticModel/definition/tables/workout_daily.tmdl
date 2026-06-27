@@ -1,0 +1,311 @@
+table workout_daily
+	lineageTag: 32af5c64-246d-4f23-9162-dc8712dcc387
+
+	column calendar_key
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: b252e0b2-59cf-4800-a863-e74acc188d55
+		summarizeBy: none
+		sourceColumn: calendar_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column utc_offset
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 9b5e8d85-86bd-40bd-98c8-bd218a7d6276
+		summarizeBy: none
+		sourceColumn: utc_offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_timestamp
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 2aa3b4ed-8d4c-4b81-9f83-5f808941e32e
+		summarizeBy: none
+		sourceColumn: start_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_timestamp
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 657d49ca-aab9-40c7-a2c0-30ed352d499f
+		summarizeBy: none
+		sourceColumn: end_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column number_of_sets
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: fdc8e812-852a-430e-a4b6-4f98b4db839d
+		summarizeBy: sum
+		sourceColumn: number_of_sets
+
+		annotation SummarizationSetBy = Automatic
+
+	column number_of_muscle_groups
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 147c14c3-38b7-4610-b515-a35bf9eca586
+		summarizeBy: sum
+		sourceColumn: number_of_muscle_groups
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_muscle_group
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 96c4f5d4-4be6-42bf-85fa-c61cd9a3e4b6
+		summarizeBy: none
+		sourceColumn: primary_muscle_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 447c437b-5c92-4890-87eb-c15bd90c7081
+		summarizeBy: sum
+		sourceColumn: average_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column number_of_reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 44b204e7-d4c5-4e12-be61-787796bcba24
+		summarizeBy: sum
+		sourceColumn: number_of_reps
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 0b2455c4-5317-45fc-aa94-45e61440598c
+		summarizeBy: sum
+		sourceColumn: max_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: b68ccf6c-a936-4256-a03c-471070acee50
+		summarizeBy: sum
+		sourceColumn: min_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fac16770-c72f-4c9b-8638-504e56a8e1c2
+		summarizeBy: sum
+		sourceColumn: max_reps
+
+		annotation SummarizationSetBy = Automatic
+
+	column min_reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3d1199b9-bace-4c5d-8c62-5332b990717c
+		summarizeBy: sum
+		sourceColumn: min_reps
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_volume
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 1039b5d0-b8b9-4c8f-9590-be78593d8128
+		summarizeBy: sum
+		sourceColumn: total_volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_volume
+		dataType: double
+		sourceProviderType: double
+		lineageTag: e6524d2f-8669-4727-9a95-aa61446fecf5
+		summarizeBy: sum
+		sourceColumn: max_volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_volume
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 599f92e1-4ba9-4031-87e9-7d7ffd4be057
+		summarizeBy: sum
+		sourceColumn: min_volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column start_clock_key
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 8f166e66-4b68-4ba9-85ad-a34271938f6e
+		summarizeBy: none
+		sourceColumn: start_clock_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_clock_key
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: c84ccb74-3c67-4e92-bf4b-5d0daa0f8aa7
+		summarizeBy: none
+		sourceColumn: end_clock_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_hours_duration
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 63a0785c-4eec-4772-921c-f13f6fda24a9
+		summarizeBy: sum
+		sourceColumn: total_hours_duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_minutes_duration
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: d94a0d98-aecd-4e7b-8d99-91afdd53e2c0
+		summarizeBy: sum
+		sourceColumn: total_minutes_duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_seconds_duration
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 22d16ded-125d-418a-b2f4-9321a2b77d67
+		summarizeBy: sum
+		sourceColumn: total_seconds_duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column remainder_minutes
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: d6990823-6c49-4130-8b81-2f14c44756c9
+		summarizeBy: sum
+		sourceColumn: remainder_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column remainder_seconds
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 1ddda435-2d2f-4f9b-b861-c0fad3f46928
+		summarizeBy: sum
+		sourceColumn: remainder_seconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column weight_per_rep
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 42472461-53f3-46ac-b698-6e86e19d3fe5
+		summarizeBy: sum
+		sourceColumn: weight_per_rep
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column average_reps_per_set
+		dataType: double
+		sourceProviderType: double
+		lineageTag: ca1899d7-4655-466f-ba10-26c94cc7cee6
+		summarizeBy: sum
+		sourceColumn: average_reps_per_set
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column average_volume_per_set
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 5aa1ffd4-f288-4477-91b9-c4007427f51b
+		summarizeBy: sum
+		sourceColumn: average_volume_per_set
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_per_minute
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 00cdaddd-9bc6-494b-9f48-e4b1c9d70e81
+		summarizeBy: sum
+		sourceColumn: volume_per_minute
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reps_per_minute
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 659c82d0-57f2-4d9c-8671-9a37f121570e
+		summarizeBy: sum
+		sourceColumn: reps_per_minute
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sets_per_hour
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 668ef2e5-5be8-4048-ad37-19adcab40a8b
+		summarizeBy: sum
+		sourceColumn: sets_per_hour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition workout_daily = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    gold_Schema = quantified_self_Database{[Name="gold",Kind="Schema"]}[Data],
+				    workout_daily_View = gold_Schema{[Name="workout_daily",Kind="View"]}[Data]
+				in
+				    workout_daily_View
+

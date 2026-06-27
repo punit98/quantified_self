@@ -1,6 +1,6 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as sf
-from transformations.utilities import paths, utils
+from transformations.utilities import paths, utils, workout_utils
 
 
 @dp.table(
@@ -13,7 +13,7 @@ from transformations.utilities import paths, utils
 )
 def workout_muscle_group_details():
 
-    workout_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
+    workout_details = spark.read.table(paths.INT_WORKOUT_DETAILS_PATH)
 
     muscle_group_details = workout_details.groupBy(
         "calendar_key",
@@ -23,7 +23,8 @@ def workout_muscle_group_details():
         sf.min(sf.col("date_time")).alias("start_timestamp"),
         sf.max(sf.col("date_time")).alias("end_timestamp"),
         sf.count(sf.lit(1)).alias("number_of_sets"),
-        sf.mean(sf.col("average_weight")).alias("average_weight"),
+        sf.countDistinct(sf.col("exercise")).alias("number_of_exercises"),
+        (sf.sum("set_volume") / sf.sum("total_reps")).alias("average_weight"),
         sf.sum(sf.col("total_reps")).alias("number_of_reps"),
         sf.max(sf.col("weight")).alias("max_weight"),
         sf.min(sf.col("weight")).alias("min_weight"),
@@ -40,5 +41,10 @@ def workout_muscle_group_details():
     muscle_group_details = utils.create_clock_key(
         muscle_group_details, "end_timestamp"
     ).withColumnRenamed("clock_key", "end_clock_key")
+
+    muscle_group_details = workout_utils.add_duration_columns(
+        muscle_group_details, "start_timestamp", "end_timestamp"
+    )
+    muscle_group_details = workout_utils.add_intensity_metrics(muscle_group_details)
 
     return muscle_group_details

@@ -7,13 +7,11 @@ from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
 
-
 @dp.table(
-    name = paths.DIM_MUSCLE_GROUPS_PATH,
-    comment =
-    """
+    name=paths.DIM_MUSCLE_GROUPS_PATH,
+    comment="""
     Unique muscle Groups from the workout_detail table
-    """
+    """,
 )
 def dim_muscle_groups():
     workout_detail = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
@@ -21,13 +19,11 @@ def dim_muscle_groups():
     return muscle_groups
 
 
-
 @dp.table(
-    name = paths.DIM_EXERCISES_PATH,
-    comment =
-    """
+    name=paths.DIM_EXERCISES_PATH,
+    comment="""
     Unique exercises for muscle groups from the workout_detail table
-    """
+    """,
 )
 def dim_exercises():
     workout_detail = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
@@ -36,13 +32,12 @@ def dim_exercises():
 
 
 @dp.table(
-    name = paths.DIM_VARIATIONS_PATH,
-    comment =
-    """
+    name=paths.DIM_VARIATIONS_PATH,
+    comment="""
     Unique variations of exercises from the workout_detail table
-    """
+    """,
 )
-def dim_exercises():
+def dim_variations():
     workout_detail = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
     variations = workout_detail.select("variation").distinct()
     return variations

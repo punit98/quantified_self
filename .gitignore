@@ -182,9 +182,9 @@ cython_debug/
 
 
 .vscode/
-/src/resources/data/**
 **/**/.DS_Store
 resources/.DS_Store
 /scratch
 
 .env.private
+/src/data

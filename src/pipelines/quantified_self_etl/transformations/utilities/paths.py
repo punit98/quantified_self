@@ -50,7 +50,15 @@ STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
 
 ############ Silver ####################
 
-INT_WORKOUT_DETAILS = f"{SILVER_SCHEMA}.int_workout_details"
+INT_WORKOUT_DETAILS_PATH = f"{SILVER_SCHEMA}.int_workout_details"
 
 
 ############ Gold ####################
+
+WORKOUT_SET_DETAILS_PATH = f"{GOLD_SCHEMA}.workout_set_details"
+
+WORKOUT_EXERCISE_DETAILS_PATH = f"{GOLD_SCHEMA}.workout_exercise_details"
+
+WORKOUT_MUSCLE_GROUP_DETAILS_PATH = f"{GOLD_SCHEMA}.workout_muscle_group_details"
+
+WORKOUT_DAILY_PATH = f"{GOLD_SCHEMA}.workout_daily"

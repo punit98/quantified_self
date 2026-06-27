@@ -13,7 +13,7 @@ from transformations.utilities import paths, utils
 )
 def workout_muscle_group_details():
 
-    workout_details = spark.readStream.table(paths.INT_WORKOUT_DETAILS_PATH)
+    workout_details = spark.read.table(paths.INT_WORKOUT_DETAILS_PATH)
 
     muscle_group_details = workout_details.groupBy(
         "calendar_key",

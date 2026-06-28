@@ -21,6 +21,7 @@ ref table clock
 ref table dim_exercises
 ref table dim_muslce_group
 ref table dim_variations
+ref table measures_table
 
 ref cultureInfo en-US
 

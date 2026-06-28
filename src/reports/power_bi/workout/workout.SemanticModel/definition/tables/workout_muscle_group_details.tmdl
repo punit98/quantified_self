@@ -309,3 +309,5 @@ table workout_muscle_group_details
 				in
 				    workout_muscle_group_details_View
 
+	annotation PBI_ResultType = Table
+

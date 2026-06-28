@@ -21,3 +21,5 @@ table dim_muslce_group
 				in
 				    dim_muslce_group_View
 
+	annotation PBI_ResultType = Table
+

@@ -318,3 +318,5 @@ table workout_exercise_details
 				in
 				    workout_exercise_details_View
 
+	annotation PBI_ResultType = Table
+

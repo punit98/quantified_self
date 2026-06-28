@@ -1,0 +1,8 @@
+{
+  "name": "all-black",
+  "textClasses": {
+    "label": {
+      "fontFace": "'Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif"
+    }
+  }
+}

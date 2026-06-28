@@ -5,13 +5,13 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 1.25
+        "y": 147.50000000000011
       },
       "nodes": [
         {
           "location": {
             "x": 697.5,
-            "y": 98.333333333333371
+            "y": 147.50000000000011
           },
           "nodeIndex": "calendar",
           "nodeLineageTag": "02dfa75c-bd09-42d3-906f-ac77e00e0432",
@@ -19,12 +19,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 9
         },
         {
           "location": {
             "x": 695.90476190476193,
-            "y": 983.65079365079362
+            "y": 1032.8174603174602
           },
           "nodeIndex": "clock",
           "nodeLineageTag": "0665f270-f773-4dfe-87b0-98163b09882b",
@@ -32,12 +32,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
             "x": 0,
-            "y": 402.46031746031753
+            "y": 451.62698412698427
           },
           "nodeIndex": "workout_daily",
           "nodeLineageTag": "32af5c64-246d-4f23-9162-dc8712dcc387",
@@ -45,12 +45,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
             "x": 0,
-            "y": 830.873015873016
+            "y": 880.03968253968276
           },
           "nodeIndex": "workout_exercise_details",
           "nodeLineageTag": "95e505df-caba-4a5e-b058-4dbb723a525d",
@@ -58,12 +58,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         },
         {
           "location": {
             "x": 1166.7142857142858,
-            "y": 208.88888888888891
+            "y": 258.05555555555566
           },
           "nodeIndex": "workout_muscle_group_details",
           "nodeLineageTag": "e92e9505-fcf5-4c4f-afcc-391469c6b6ca",
@@ -71,12 +71,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         },
         {
           "location": {
             "x": 1181.4285714285716,
-            "y": 813.41269841269855
+            "y": 862.57936507936529
           },
           "nodeIndex": "workout_set_details",
           "nodeLineageTag": "6f5c5c9e-ebc3-4570-9ea7-9c7e8ba5a4bc",
@@ -84,12 +84,12 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 5
         },
         {
           "location": {
             "x": 688.76190476190493,
-            "y": 454.82539682539687
+            "y": 503.99206349206361
           },
           "nodeIndex": "dim_exercises",
           "nodeLineageTag": "7e8ca605-f11b-41d7-a6f3-896fef8bf17b",
@@ -97,12 +97,12 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
         },
         {
           "location": {
             "x": 686.0952380952383,
-            "y": 586.49206349206361
+            "y": 635.65873015873035
           },
           "nodeIndex": "dim_muslce_group",
           "nodeLineageTag": "1a05eb62-a47d-450c-947f-dc8866c7fb86",
@@ -110,17 +110,29 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 7
         },
         {
           "location": {
             "x": 685.09523809523807,
-            "y": 711.49206349206361
+            "y": 760.65873015873035
           },
           "nodeIndex": "dim_variations",
           "nodeLineageTag": "d9a4fc26-9dc3-4470-954e-fbe52d096d0b",
           "size": {
             "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1465.4285714285716,
+            "y": 541.82539682539687
+          },
+          "nodeIndex": "measures_table",
+          "size": {
+            "height": 200,
             "width": 234
           },
           "zIndex": 0

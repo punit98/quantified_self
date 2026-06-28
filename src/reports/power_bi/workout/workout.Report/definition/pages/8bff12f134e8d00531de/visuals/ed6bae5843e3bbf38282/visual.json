@@ -1,0 +1,365 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ed6bae5843e3bbf38282",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 2,
+    "height": 144,
+    "width": 1920.0000000000002,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_daily"
+                    }
+                  },
+                  "Property": "Workouts last year"
+                }
+              },
+              "queryRef": "workout_daily.Workouts last year",
+              "nativeQueryRef": "Workouts last year"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_daily"
+                    }
+                  },
+                  "Property": "Workouts this year"
+                }
+              },
+              "queryRef": "workout_daily.Workouts this year",
+              "nativeQueryRef": "Workouts this year"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_daily"
+                    }
+                  },
+                  "Property": "Workouts last 90 days"
+                }
+              },
+              "queryRef": "workout_daily.Workouts last 90 days",
+              "nativeQueryRef": "Workouts rolling 90 days",
+              "displayName": "Workouts rolling 90 days"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_daily"
+                    }
+                  },
+                  "Property": "Workouts this month"
+                }
+              },
+              "queryRef": "workout_daily.Workouts this month",
+              "nativeQueryRef": "Workouts rolling month",
+              "displayName": "Workouts rolling month"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_daily"
+                    }
+                  },
+                  "Property": "Workouts this week"
+                }
+              },
+              "queryRef": "workout_daily.Workouts this week",
+              "nativeQueryRef": "Workouts rolling week",
+              "displayName": "Workouts rolling week"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "fillCustom": [
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "30D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "backgroundShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c0555f0aa37db2e6b8e0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_daily"
+              }
+            },
+            "Property": "Workouts this month"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1169dbd235884fdf9cce",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_daily"
+              }
+            },
+            "Property": "Workouts this week"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "08f0990676ef3b2ed0fe",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_daily"
+              }
+            },
+            "Property": "Workouts last 90 days"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8679502b46e108966358",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_daily"
+              }
+            },
+            "Property": "Workouts last year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8e17fe31dc72fe5c2ca5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_daily"
+              }
+            },
+            "Property": "Workouts this year"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

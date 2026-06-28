@@ -13,7 +13,7 @@ table calendar
 
 	column date
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd mmmm yyyy
 		sourceProviderType: date
 		lineageTag: 3f5ab021-78b3-496f-bd08-c39e4d57b4d1
 		summarizeBy: none
@@ -22,6 +22,8 @@ table calendar
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	column calendar_key
 		dataType: string
@@ -394,4 +396,6 @@ table calendar
 				    calendar_View = seed_Schema{[Name="calendar",Kind="View"]}[Data]
 				in
 				    calendar_View
+
+	annotation PBI_ResultType = Table
 

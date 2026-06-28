@@ -200,3 +200,5 @@ table workout_set_details
 				in
 				    workout_set_details_View
 
+	annotation PBI_ResultType = Table
+

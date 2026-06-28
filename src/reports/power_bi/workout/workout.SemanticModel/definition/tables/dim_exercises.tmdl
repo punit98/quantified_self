@@ -21,3 +21,5 @@ table dim_exercises
 				in
 				    dim_exercises_View
 
+	annotation PBI_ResultType = Table
+

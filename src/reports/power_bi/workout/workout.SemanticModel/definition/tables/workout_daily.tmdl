@@ -1,6 +1,82 @@
 table workout_daily
 	lineageTag: 32af5c64-246d-4f23-9162-dc8712dcc387
 
+	measure 'total days worked out text' = CONCATENATE(DISTINCTCOUNT(workout_daily[calendar_key]), CONCATENATE(" / ", DISTINCTCOUNT('calendar'[calendar_key])))
+		lineageTag: 00e64c1b-a26e-4158-b1a6-f19b3b9dbc5c
+
+	measure 'Workouts this month' =
+			
+			CALCULATE(
+			    CONCATENATE(
+			        DISTINCTCOUNT(workout_daily[calendar_key]),
+			        CONCATENATE(" / ", DISTINCTCOUNT('calendar'[calendar_key]))
+			    ),
+			    FILTER(
+			        ALL('calendar'),
+			        YEAR('calendar'[Date]) = YEAR(TODAY()) &&
+			        MONTH('calendar'[Date]) = MONTH(TODAY())
+			    )
+			)
+		lineageTag: aff17194-02d9-4c7e-8665-073d18e6bdb4
+
+	measure 'Workouts this week' =
+			
+			CALCULATE(
+			    CONCATENATE(
+			        DISTINCTCOUNT(workout_daily[calendar_key]),
+			        CONCATENATE(" / ", DISTINCTCOUNT('calendar'[calendar_key]))
+			    ),
+			    FILTER(
+			        ALL('calendar'),
+			        YEAR('calendar'[Date]) = YEAR(TODAY()) &&
+			        WEEKNUM('calendar'[Date], 2) = WEEKNUM(TODAY(), 2)
+			    )
+			)
+		lineageTag: e9f6f115-a43e-4081-85e8-d744e0205be0
+
+	measure 'Workouts last 90 days' =
+			
+			CALCULATE(
+			    CONCATENATE(
+			        DISTINCTCOUNT(workout_daily[calendar_key]),
+			        CONCATENATE(" / ", DISTINCTCOUNT('calendar'[calendar_key]))
+			    ),
+			    FILTER(
+			        ALL('calendar'),
+			        'calendar'[Date] >= TODAY() - 90 &&
+			        'calendar'[Date] <= TODAY()
+			    )
+			)
+		lineageTag: 7859f365-f862-4ecf-a4b6-56f080090929
+
+	measure 'Workouts last year' =
+			
+			CALCULATE(
+			    CONCATENATE(
+			        DISTINCTCOUNT(workout_daily[calendar_key]),
+			        CONCATENATE(" / ", DISTINCTCOUNT('calendar'[calendar_key]))
+			    ),
+			    FILTER(
+			        ALL('calendar'),
+			        'calendar'[calendar_year] = YEAR(TODAY()) - 1
+			    )
+			)
+		lineageTag: 8678402e-d318-4d74-b1a1-c835ca7fb1ab
+
+	measure 'Workouts this year' =
+			
+			CALCULATE(
+			    CONCATENATE(
+			        DISTINCTCOUNT(workout_daily[calendar_key]),
+			        CONCATENATE(" / ", DISTINCTCOUNT('calendar'[calendar_key]))
+			    ),
+			    FILTER(
+			        ALL('calendar'),
+			        'calendar'[calendar_year] = YEAR(TODAY())
+			    )
+			)
+		lineageTag: 3ef5f7f7-ab93-48c8-8658-3f87094b51d8
+
 	column calendar_key
 		dataType: string
 		sourceProviderType: nvarchar(max)
@@ -308,4 +384,6 @@ table workout_daily
 				    workout_daily_View = gold_Schema{[Name="workout_daily",Kind="View"]}[Data]
 				in
 				    workout_daily_View
+
+	annotation PBI_ResultType = Table
 

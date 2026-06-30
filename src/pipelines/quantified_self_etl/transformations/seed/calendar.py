@@ -33,6 +33,8 @@ def calendar():
         .withColumn("week_of_year", sf.weekofyear("date"))
         .withColumn("month_name", sf.date_format("date", "MMMM"))
         .withColumn("quarter", sf.quarter("date"))
+        .withColumn("date_day", sf.date_format("dd"))
+        .withColumn("date_month", sf.date_format("MM"))
     )
 
     # Flags

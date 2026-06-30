@@ -209,6 +209,7 @@ table workout_daily
 
 	column total_volume
 		dataType: double
+		formatString: 0
 		sourceProviderType: double
 		lineageTag: 1039b5d0-b8b9-4c8f-9590-be78593d8128
 		summarizeBy: sum
@@ -216,7 +217,7 @@ table workout_daily
 
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	column max_volume
 		dataType: double
@@ -386,4 +387,6 @@ table workout_daily
 				    workout_daily_View
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "b9ab56890a556fdbad6c",
+  "name": "effef732dfbf0897e461",
   "position": {
     "x": 0,
-    "y": 0,
-    "z": 2000,
-    "height": 144.28571428571431,
-    "width": 288.57142857142861,
-    "tabOrder": 2000
+    "y": 111.66666666666667,
+    "z": 2,
+    "height": 111.66666666666667,
+    "width": 288.33333333333337,
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "slicer",
@@ -20,35 +20,20 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendar"
+                      "Entity": "workout_exercise_details"
                     }
                   },
-                  "Property": "date"
+                  "Property": "muscle_group"
                 }
               },
-              "queryRef": "calendar.date",
-              "nativeQueryRef": "date",
+              "queryRef": "workout_exercise_details.muscle_group",
+              "nativeQueryRef": "muscle_group",
               "active": true
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "calendar"
-                  }
-                },
-                "Property": "date"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -59,28 +44,28 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Relative'"
+                  "Value": "'Dropdown'"
                 }
               }
             },
             "relativeRange": {
               "expr": {
                 "Literal": {
-                  "Value": "'Last'"
+                  "Value": "'This'"
                 }
               }
             },
             "relativeDuration": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "0D"
                 }
               }
             },
             "relativePeriod": {
               "expr": {
                 "Literal": {
-                  "Value": "'Months'"
+                  "Value": "'Years'"
                 }
               }
             }
@@ -102,66 +87,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "c",
-                    "Entity": "calendar",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Between": {
-                        "Expression": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "c"
-                              }
-                            },
-                            "Property": "date"
-                          }
-                        },
-                        "LowerBound": {
-                          "DateSpan": {
-                            "Expression": {
-                              "DateAdd": {
-                                "Expression": {
-                                  "DateAdd": {
-                                    "Expression": {
-                                      "Now": {}
-                                    },
-                                    "Amount": 1,
-                                    "TimeUnit": 0
-                                  }
-                                },
-                                "Amount": -12,
-                                "TimeUnit": 2
-                              }
-                            },
-                            "TimeUnit": 0
-                          }
-                        },
-                        "UpperBound": {
-                          "DateSpan": {
-                            "Expression": {
-                              "Now": {}
-                            },
-                            "TimeUnit": 0
-                          }
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "numericInputStyle": [
@@ -201,6 +127,35 @@
               "expr": {
                 "Literal": {
                   "Value": "'Date'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
                 }
               }
             }
@@ -261,7 +216,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "date",
+      "groupName": "muscle_group",
       "fieldChanges": true,
       "filterChanges": true
     },

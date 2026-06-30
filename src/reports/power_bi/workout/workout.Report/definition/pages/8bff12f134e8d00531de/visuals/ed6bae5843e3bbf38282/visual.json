@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "ed6bae5843e3bbf38282",
   "position": {
-    "x": 0,
+    "x": 288.57142857142861,
     "y": 0,
-    "z": 2,
-    "height": 144,
-    "width": 1920.0000000000002,
-    "tabOrder": 2
+    "z": 0,
+    "height": 144.28571428571431,
+    "width": 1631.4285714285716,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "cardVisual",
@@ -287,79 +287,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "c0555f0aa37db2e6b8e0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
-              }
-            },
-            "Property": "Workouts this month"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1169dbd235884fdf9cce",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
-              }
-            },
-            "Property": "Workouts this week"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "08f0990676ef3b2ed0fe",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
-              }
-            },
-            "Property": "Workouts last 90 days"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8679502b46e108966358",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
-              }
-            },
-            "Property": "Workouts last year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8e17fe31dc72fe5c2ca5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
-              }
-            },
-            "Property": "Workouts this year"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -79,22 +79,11 @@
                 }
               }
             }
-          }
-        }
-      }
-    ],
-    "outspace": [
-      {
-        "properties": {
-          "color": {
-            "solid": {
-              "color": {
-                "expr": {
-                  "ThemeDataColor": {
-                    "ColorId": 1,
-                    "Percent": 0
-                  }
-                }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
               }
             }
           }

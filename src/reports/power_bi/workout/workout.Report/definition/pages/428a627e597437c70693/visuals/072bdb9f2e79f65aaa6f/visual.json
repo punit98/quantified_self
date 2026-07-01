@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "51cafd615656e2a50ddd",
+  "name": "072bdb9f2e79f65aaa6f",
   "position": {
-    "x": 1280,
+    "x": 640,
     "y": 223.33333333333334,
-    "z": 1,
+    "z": 8,
     "height": 383.33333333333337,
     "width": 640,
-    "tabOrder": 1
+    "tabOrder": 8
   },
   "visual": {
     "visualType": "lineChart",
@@ -45,14 +45,14 @@
                           "Entity": "workout_exercise_details"
                         }
                       },
-                      "Property": "total_volume"
+                      "Property": "number_of_sets"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(workout_exercise_details.total_volume)",
-              "nativeQueryRef": "Sum of total_volume"
+              "queryRef": "Sum(workout_exercise_details.number_of_sets)",
+              "nativeQueryRef": "Sum of number_of_sets"
             }
           ]
         }
@@ -105,7 +105,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(workout_exercise_details.total_volume)"
+            "metadata": "Sum(workout_exercise_details.number_of_sets)"
           }
         }
       ],
@@ -357,7 +357,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Volume'"
+                  "Value": "'Total Sets'"
                 }
               }
             }
@@ -370,26 +370,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4d11af3f98ace5bc204e",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_exercise_details"
-                  }
-                },
-                "Property": "total_volume"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "94804894162f9bf53b44",
+        "name": "994e4eb58d7e67502f15",
         "field": {
           "Column": {
             "Expression": {
@@ -401,6 +382,25 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "878059f6a8d6216b0981",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_exercise_details"
+                  }
+                },
+                "Property": "number_of_sets"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

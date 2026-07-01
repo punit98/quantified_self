@@ -11,6 +11,73 @@
   },
   "visual": {
     "visualType": "waterfallChart",
+    "query": {
+      "queryState": {
+        "Breakdown": {
+          "projections": []
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "calendar"
+                    }
+                  },
+                  "Property": "week_start_date"
+                }
+              },
+              "queryRef": "calendar.week_start_date",
+              "nativeQueryRef": "week_start_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_exercise_details"
+                        }
+                      },
+                      "Property": "total_volume"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(workout_exercise_details.total_volume)",
+              "nativeQueryRef": "Sum of total_volume"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "calendar"
+                  }
+                },
+                "Property": "week_start_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
     "objects": {
       "categoryAxis": [
         {
@@ -24,6 +91,13 @@
                       "Percent": -0.1
                     }
                   }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -152,7 +226,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Average Volume per Set'"
+                  "Value": "'Weekly volume cumulative'"
                 }
               }
             }
@@ -265,6 +339,39 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "79d9a8228309be942ab0",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_exercise_details"
+                  }
+                },
+                "Property": "total_volume"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4ed3b38d06d68cd55dc8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendar"
+              }
+            },
+            "Property": "week_start_date"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

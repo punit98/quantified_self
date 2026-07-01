@@ -139,6 +139,27 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "workout_exercise_details.muscle_group": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "workout_exercise_details",
+			          "ConceptualProperty": "muscle_group"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Muscle Group": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  }
 			}

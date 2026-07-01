@@ -66,21 +66,21 @@
             "relativeRange": {
               "expr": {
                 "Literal": {
-                  "Value": "'Last'"
+                  "Value": "'This'"
                 }
               }
             },
             "relativeDuration": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "0D"
                 }
               }
             },
             "relativePeriod": {
               "expr": {
                 "Literal": {
-                  "Value": "'Months'"
+                  "Value": "'Years'"
                 }
               }
             }
@@ -116,8 +116,9 @@
                 "Where": [
                   {
                     "Condition": {
-                      "Between": {
-                        "Expression": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
                           "Column": {
                             "Expression": {
                               "SourceRef": {
@@ -127,32 +128,12 @@
                             "Property": "date"
                           }
                         },
-                        "LowerBound": {
-                          "DateSpan": {
-                            "Expression": {
-                              "DateAdd": {
-                                "Expression": {
-                                  "DateAdd": {
-                                    "Expression": {
-                                      "Now": {}
-                                    },
-                                    "Amount": 1,
-                                    "TimeUnit": 0
-                                  }
-                                },
-                                "Amount": -12,
-                                "TimeUnit": 2
-                              }
-                            },
-                            "TimeUnit": 0
-                          }
-                        },
-                        "UpperBound": {
+                        "Right": {
                           "DateSpan": {
                             "Expression": {
                               "Now": {}
                             },
-                            "TimeUnit": 0
+                            "TimeUnit": 3
                           }
                         }
                       }
@@ -266,23 +247,5 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d2612c760b90dfc01e15",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendar"
-              }
-            },
-            "Property": "date"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

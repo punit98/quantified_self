@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "c268c2c41be3036c9e7a",
+  "name": "d0aad7c82ed651e2dba9",
   "position": {
     "x": 0,
-    "y": 0,
-    "z": 0,
-    "height": 111.66666666666667,
+    "y": 111.66666666666667,
+    "z": 1000,
+    "height": 88.333333333333343,
     "width": 288.33333333333337,
-    "tabOrder": 0
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,35 +20,20 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendar"
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Property": "date"
+                  "Property": "muscle_group"
                 }
               },
-              "queryRef": "calendar.date",
-              "nativeQueryRef": "date",
+              "queryRef": "workout_set_details.muscle_group",
+              "nativeQueryRef": "muscle_group",
               "active": true
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "calendar"
-                  }
-                },
-                "Property": "date"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -59,7 +44,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Relative'"
+                  "Value": "'Dropdown'"
                 }
               }
             },
@@ -102,47 +87,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "c",
-                    "Entity": "calendar",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Comparison": {
-                        "ComparisonKind": 0,
-                        "Left": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "c"
-                              }
-                            },
-                            "Property": "date"
-                          }
-                        },
-                        "Right": {
-                          "DateSpan": {
-                            "Expression": {
-                              "Now": {}
-                            },
-                            "TimeUnit": 3
-                          }
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "numericInputStyle": [
@@ -181,7 +126,36 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Date'"
+                  "Value": "'Muscle Group'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
                 }
               }
             }
@@ -242,7 +216,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "date",
+      "groupName": "muscle_group",
       "fieldChanges": true,
       "filterChanges": true
     },

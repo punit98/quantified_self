@@ -445,6 +445,30 @@ table calendar
 
 		annotation SummarizationSetBy = Automatic
 
+	column start_of_month
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 16c72b32-8c6d-45e0-b4f0-5d9ab65b67c6
+		summarizeBy: none
+		sourceColumn: start_of_month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_of_month
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: a421ab3e-56b3-4a4d-becf-27c306d6cae8
+		summarizeBy: none
+		sourceColumn: end_of_month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
 	partition calendar = m
 		mode: directQuery
 		source =

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "9f81fbf7cfb6740313e3",
+  "name": "868825b7fab9697e3f38",
   "position": {
     "x": 288.33333333333337,
     "y": 0,
-    "z": 3000,
-    "height": 223.33333333333334,
-    "width": 1631.6666666666667,
-    "tabOrder": 3000
+    "z": 4000,
+    "height": 376.66666666666669,
+    "width": 975,
+    "tabOrder": 4000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "hundredPercentStackedColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,12 +23,30 @@
                       "Entity": "calendar"
                     }
                   },
-                  "Property": "date"
+                  "Property": "start_of_month"
                 }
               },
-              "queryRef": "calendar.date",
-              "nativeQueryRef": "date",
+              "queryRef": "calendar.start_of_month",
+              "nativeQueryRef": "start_of_month",
               "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_muscle_group_details"
+                    }
+                  },
+                  "Property": "muscle_group"
+                }
+              },
+              "queryRef": "workout_muscle_group_details.muscle_group",
+              "nativeQueryRef": "muscle_group"
             }
           ]
         },
@@ -36,17 +54,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "measures_table"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_muscle_group_details"
+                        }
+                      },
+                      "Property": "total_volume"
                     }
                   },
-                  "Property": "ACWR"
+                  "Function": 0
                 }
               },
-              "queryRef": "measures_table.ACWR",
-              "nativeQueryRef": "ACWR"
+              "queryRef": "Sum(workout_muscle_group_details.total_volume)",
+              "nativeQueryRef": "Sum of total_volume"
             }
           ]
         }
@@ -61,7 +84,7 @@
                     "Entity": "calendar"
                   }
                 },
-                "Property": "date"
+                "Property": "start_of_month"
               }
             },
             "direction": "Ascending"
@@ -73,14 +96,25 @@
     "objects": {
       "dataPoint": [
         {
+          "properties": {}
+        },
+        {
           "properties": {
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "80D"
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "Sum(workout_set_details.total_reps)"
           }
         },
         {
@@ -99,73 +133,7 @@
             }
           },
           "selector": {
-            "metadata": "measures_table.ACWR"
-          }
-        }
-      ],
-      "lineStyles": [
-        {
-          "properties": {
-            "areaShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showMarker": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "markerSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "lineChartType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'smooth'"
-                }
-              }
-            },
-            "strokeTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "77D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "markers": [
-        {
-          "properties": {
-            "borderShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "borderColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
+            "metadata": "Sum(workout_set_details.average_weight)"
           }
         }
       ],
@@ -175,7 +143,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -209,6 +177,66 @@
               "expr": {
                 "Literal": {
                   "Value": "1L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "trend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "displayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Trend line 1'"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "style": {
+              "expr": {
+                "Literal": {
+                  "Value": "'solid'"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "combineSeries": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "useHighlightValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -251,139 +279,28 @@
           }
         }
       ],
-      "y1AxisReferenceLine": [
+      "legend": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Safe Zone'"
-                }
-              }
-            },
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "0.8D"
-                }
-              }
-            },
-            "lineColor": {
+            "labelColor": {
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#00B51E'"
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
                     }
                   }
                 }
               }
             },
-            "transparency": {
+            "position": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "style": {
-              "expr": {
-                "Literal": {
-                  "Value": "'solid'"
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
-            "shadeShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "dataLabelShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Value": "'BottomCenter'"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "1"
-          }
-        },
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Safe Zone'"
-                }
-              }
-            },
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "1.3D"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#00B51E'"
-                    }
-                  }
-                }
-              }
-            },
-            "style": {
-              "expr": {
-                "Literal": {
-                  "Value": "'solid'"
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "2"
           }
         }
       ]
@@ -434,7 +351,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Acute: Chronic Workload Ratio'"
+                  "Value": "'Volume Share by Month'"
                 }
               }
             }
@@ -443,5 +360,56 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "84ea9a774bf7009fdfd2",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_muscle_group_details"
+                  }
+                },
+                "Property": "total_volume"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2b010ddbdb5c0943becf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_muscle_group_details"
+              }
+            },
+            "Property": "muscle_group"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ced1991f90b0f59fae28",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "calendar"
+              }
+            },
+            "Property": "start_of_month"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "b4876fd8a4b16137c975",
+  "name": "97862b970fd98b94a97c",
   "position": {
-    "x": 960,
-    "y": 156.66666666666669,
+    "x": 1263.3333333333335,
+    "y": 656.66666666666674,
     "z": 5000,
-    "height": 383.33333333333337,
-    "width": 960,
+    "height": 423.33333333333337,
+    "width": 656.66666666666674,
     "tabOrder": 5000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "calendar"
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Property": "date"
+                  "Property": "muscle_group"
                 }
               },
-              "queryRef": "calendar.date",
-              "nativeQueryRef": "date",
+              "queryRef": "workout_set_details.muscle_group",
+              "nativeQueryRef": "muscle_group",
               "active": true
             }
           ]
@@ -44,37 +44,28 @@
                           "Entity": "workout_set_details"
                         }
                       },
-                      "Property": "average_weight"
+                      "Property": "calendar_key"
                     }
                   },
-                  "Function": 1
+                  "Function": 2
                 }
               },
-              "queryRef": "Sum(workout_set_details.average_weight)",
-              "nativeQueryRef": "Average of average_weight"
-            }
-          ]
-        },
-        "Y2": {
-          "projections": [
+              "queryRef": "CountNonNull(workout_set_details.calendar_key)",
+              "nativeQueryRef": "Count of calendar_key"
+            },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "total_reps"
+                    "SourceRef": {
+                      "Entity": "measures_table"
                     }
                   },
-                  "Function": 1
+                  "Property": "neg Days Since Last Workout"
                 }
               },
-              "queryRef": "Sum(workout_set_details.total_reps)",
-              "nativeQueryRef": "Average of total_reps"
+              "queryRef": "measures_table.neg Days Since Last Workout",
+              "nativeQueryRef": "neg Days Since Last Workout"
             }
           ]
         }
@@ -83,16 +74,21 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "calendar"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "workout_set_details"
+                      }
+                    },
+                    "Property": "calendar_key"
                   }
                 },
-                "Property": "date"
+                "Function": 2
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -102,10 +98,15 @@
       "dataPoint": [
         {
           "properties": {
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "80D"
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }
@@ -148,64 +149,43 @@
           "selector": {
             "metadata": "Sum(workout_set_details.average_weight)"
           }
-        }
-      ],
-      "lineStyles": [
+        },
         {
           "properties": {
-            "areaShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showMarker": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "markerSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "lineChartType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'smooth'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "markers": [
-        {
-          "properties": {
-            "borderShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "borderColor": {
+            "fill": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 1,
+                      "ColorId": 4,
                       "Percent": 0
                     }
                   }
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "measures_table.neg Days Since Last Workout"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CountNonNull(workout_set_details.calendar_key)"
           }
         }
       ],
@@ -215,7 +195,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -224,8 +204,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                      "ColorId": 1,
+                      "Percent": 0
                     }
                   }
                 }
@@ -248,10 +228,43 @@
             "labelPrecision": {
               "expr": {
                 "Literal": {
-                  "Value": "1L"
+                  "Value": "0L"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Auto'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "measures_table.neg Days Since Last Workout"
           }
         }
       ],
@@ -327,6 +340,20 @@
                       "Percent": -0.1
                     }
                   }
+                }
+              }
+            },
+            "switchAxisPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -432,5 +459,56 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a55dc3fd13d1a6a5f714",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "measures_table"
+              }
+            },
+            "Property": "neg Days Since Last Workout"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5a6087128d84e7b552ea",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_set_details"
+              }
+            },
+            "Property": "muscle_group"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "98ce789259f7881cf38f",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_set_details"
+                  }
+                },
+                "Property": "calendar_key"
+              }
+            },
+            "Function": 2
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

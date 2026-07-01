@@ -4,10 +4,10 @@
   "position": {
     "x": 288.33333333333337,
     "y": 156.66666666666669,
-    "z": 6,
+    "z": 6000,
     "height": 383.33333333333337,
     "width": 671.66666666666674,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -413,42 +413,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "c44c77786881c8b84c5e",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "date_time"
-              }
-            },
-            "Function": 5
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "988ddeb8ae7cecf51cc4",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_set_details"
-              }
-            },
-            "Property": "total_reps (bins)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -108,6 +108,13 @@ table measures_table
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'neg Days Since Last Workout' = ```
+			((-1)*(DATEDIFF(MAX(workout_set_details[date_time]), TODAY(), DAY)))
+			
+			```
+		formatString: 0
+		lineageTag: 118e01e8-9551-4d65-9593-f0694d60a111
+
 	column Column
 		formatString: 0
 		lineageTag: 39717055-bead-4cfa-8f45-85c575b554da

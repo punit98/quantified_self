@@ -4,10 +4,10 @@
   "position": {
     "x": 960,
     "y": 540,
-    "z": 7,
+    "z": 7000,
     "height": 540,
     "width": 960,
-    "tabOrder": 7
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "tableEx",
@@ -449,143 +449,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "fbda84fb2cc2745f29c9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_set_details"
-              }
-            },
-            "Property": "date_time"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "af719e41c5e325f80034",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_set_details"
-              }
-            },
-            "Property": "variation"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "c442f2257df8a0a6b0b2",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_set_details"
-              }
-            },
-            "Property": "exercise"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f7c906d4aa78925aeeee",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "total_reps"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "49b1a098befd8bf35ea1",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "weight"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a91ee7dfb5229a10d92f",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "set_volume"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f9f56b9003c71e25587f",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "drop_weight"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d6763a8f8222be5d00bc",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "drop_reps"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

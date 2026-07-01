@@ -147,19 +147,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "muscle_group"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Muscle Group": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    }
 			  }
 			}

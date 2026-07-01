@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 606.66666666666674,
-    "z": 5,
+    "z": 5000,
     "height": 473.33333333333337,
     "width": 640,
-    "tabOrder": 5
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "columnChart",
@@ -351,25 +351,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "1f73fa2a3a5ec544e85d",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_exercise_details"
-                  }
-                },
-                "Property": "average_volume_per_set"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

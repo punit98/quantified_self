@@ -4,10 +4,10 @@
   "position": {
     "x": 1280,
     "y": 606.66666666666674,
-    "z": 4,
+    "z": 4000,
     "height": 473.33333333333337,
     "width": 640,
-    "tabOrder": 4
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -264,70 +264,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "32b2685d2a59500f1c35",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_exercise_details"
-              }
-            },
-            "Property": "average_weight"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "71489e7df777e9b24081",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_exercise_details"
-              }
-            },
-            "Property": "total_volume"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d6f209697bb37d328f7e",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_exercise_details"
-                  }
-                },
-                "Property": "number_of_sets"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4c9ff76dccf726ffdb3d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_exercise_details"
-              }
-            },
-            "Property": "exercise"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

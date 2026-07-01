@@ -4,18 +4,15 @@
   "position": {
     "x": 0,
     "y": 606.66666666666674,
-    "z": 6,
+    "z": 6000,
     "height": 473.33333333333337,
     "width": 640,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "waterfallChart",
     "query": {
       "queryState": {
-        "Breakdown": {
-          "projections": []
-        },
         "Category": {
           "projections": [
             {
@@ -339,39 +336,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "79d9a8228309be942ab0",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_exercise_details"
-                  }
-                },
-                "Property": "total_volume"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4ed3b38d06d68cd55dc8",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendar"
-              }
-            },
-            "Property": "week_start_date"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

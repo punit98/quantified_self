@@ -4,10 +4,10 @@
   "position": {
     "x": 1600,
     "y": 0,
-    "z": 8,
+    "z": 8000,
     "height": 156.66666666666669,
     "width": 320,
-    "tabOrder": 8
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -336,23 +336,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "90bde25a4e066b2feffb",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "measures_table"
-              }
-            },
-            "Property": "Days Since Last Workout"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

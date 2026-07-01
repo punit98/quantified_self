@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 288.33333333333337,
-    "z": 9,
+    "z": 9000,
     "height": 318.33333333333337,
     "width": 640,
-    "tabOrder": 9
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "lineChart",
@@ -366,42 +366,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "cc90282546d58a013c03",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "calendar"
-              }
-            },
-            "Property": "week_start_date"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f38e5e3e0ac8b5a6df83",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_exercise_details"
-                  }
-                },
-                "Property": "number_of_reps"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

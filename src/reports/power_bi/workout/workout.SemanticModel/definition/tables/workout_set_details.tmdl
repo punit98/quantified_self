@@ -178,6 +178,8 @@ table workout_set_details
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"workout_set_details","TableItemName":"total_reps (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
 	column weight_per_rep
 		dataType: double
 		sourceProviderType: double
@@ -188,6 +190,43 @@ table workout_set_details
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'total_reps (bins)' =
+			IF(
+				ISBLANK('workout_set_details'[total_reps]),
+				BLANK(),
+				INT('workout_set_details'[total_reps] / 4) * 4
+			)
+		formatString: 0
+		lineageTag: 44336070-a242-4028-ae93-1d1efcea5136
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "workout_set_details"
+				          }
+				        },
+				        "Property": "total_reps"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 4.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"w","Entity":"workout_set_details"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_reps"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_reps"}},"Size":4.0}}}}
+
+		annotation SummarizationSetBy = Automatic
 
 	partition workout_set_details = m
 		mode: directQuery

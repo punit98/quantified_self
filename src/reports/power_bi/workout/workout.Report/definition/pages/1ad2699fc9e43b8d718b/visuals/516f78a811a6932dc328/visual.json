@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "74b2b8d4c5a7711d595b",
+  "name": "516f78a811a6932dc328",
   "position": {
     "x": 0,
-    "y": 200,
-    "z": 7,
+    "y": 288.33333333333337,
+    "z": 4,
     "height": 88.333333333333343,
     "width": 288.33333333333337,
-    "tabOrder": 7
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "slicer",
@@ -23,11 +23,11 @@
                       "Entity": "workout_set_details"
                     }
                   },
-                  "Property": "exercise"
+                  "Property": "variation"
                 }
               },
-              "queryRef": "workout_set_details.exercise",
-              "nativeQueryRef": "exercise",
+              "queryRef": "workout_set_details.variation",
+              "nativeQueryRef": "variation",
               "active": true
             }
           ]
@@ -126,7 +126,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Exercise'"
+                  "Value": "'Variation'"
                 }
               }
             }
@@ -215,11 +215,24 @@
         }
       ]
     },
-    "syncGroup": {
-      "groupName": "exercise",
-      "fieldChanges": true,
-      "filterChanges": true
-    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2eb0726bec69c2d0b842",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_set_details"
+              }
+            },
+            "Property": "variation"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

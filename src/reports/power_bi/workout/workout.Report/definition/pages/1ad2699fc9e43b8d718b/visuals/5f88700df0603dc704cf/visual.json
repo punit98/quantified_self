@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "ed6bae5843e3bbf38282",
+  "name": "5f88700df0603dc704cf",
   "position": {
-    "x": 288.57142857142861,
+    "x": 288.33333333333337,
     "y": 0,
-    "z": 0,
-    "height": 144.28571428571431,
-    "width": 1631.4285714285716,
-    "tabOrder": 0
+    "z": 3,
+    "height": 145,
+    "width": 1311.6666666666667,
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "cardVisual",
@@ -17,79 +17,105 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_daily"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_set_details"
+                        }
+                      },
+                      "Property": "set_volume"
                     }
                   },
-                  "Property": "Workouts last year"
+                  "Function": 4
                 }
               },
-              "queryRef": "workout_daily.Workouts last year",
-              "nativeQueryRef": "Workouts last year"
+              "queryRef": "Sum(workout_set_details.set_volume)",
+              "nativeQueryRef": "Max of set_volume"
             },
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_daily"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_set_details"
+                        }
+                      },
+                      "Property": "total_reps"
                     }
                   },
-                  "Property": "Workouts this year"
+                  "Function": 4
                 }
               },
-              "queryRef": "workout_daily.Workouts this year",
-              "nativeQueryRef": "Workouts this year"
+              "queryRef": "Sum(workout_set_details.total_reps)",
+              "nativeQueryRef": "Max of total_reps"
             },
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_daily"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_set_details"
+                        }
+                      },
+                      "Property": "weight"
                     }
                   },
-                  "Property": "Workouts last 90 days"
+                  "Function": 4
                 }
               },
-              "queryRef": "workout_daily.Workouts last 90 days",
-              "nativeQueryRef": "Workouts rolling 90 days",
-              "displayName": "Workouts rolling 90 days"
+              "queryRef": "Sum(workout_set_details.weight)",
+              "nativeQueryRef": "Max of weight"
             },
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_daily"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_set_details"
+                        }
+                      },
+                      "Property": "weight_per_rep"
                     }
                   },
-                  "Property": "Workouts this month"
+                  "Function": 4
                 }
               },
-              "queryRef": "workout_daily.Workouts this month",
-              "nativeQueryRef": "Workouts rolling month",
-              "displayName": "Workouts rolling month"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_daily"
-                    }
-                  },
-                  "Property": "Workouts this week"
-                }
-              },
-              "queryRef": "workout_daily.Workouts this week",
-              "nativeQueryRef": "Workouts rolling week",
-              "displayName": "Workouts rolling week"
+              "queryRef": "Sum(workout_set_details.weight_per_rep)",
+              "nativeQueryRef": "Max of weight_per_rep"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "workout_set_details"
+                      }
+                    },
+                    "Property": "set_volume"
+                  }
+                },
+                "Function": 4
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -291,71 +317,77 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "5746cf2e359ad6e9bde1",
+        "name": "c05da1c33544697ae487",
         "field": {
-          "Measure": {
+          "Aggregation": {
             "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_set_details"
+                  }
+                },
+                "Property": "set_volume"
               }
             },
-            "Property": "Workouts last year"
+            "Function": 4
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "25bc79eecc957608d7bc",
+        "name": "862d8b12a8d1f5e921dd",
         "field": {
-          "Measure": {
+          "Aggregation": {
             "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_set_details"
+                  }
+                },
+                "Property": "total_reps"
               }
             },
-            "Property": "Workouts this year"
+            "Function": 4
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "ab81966fb66d00d4deb3",
+        "name": "811c1f518c0ea203291d",
         "field": {
-          "Measure": {
+          "Aggregation": {
             "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_set_details"
+                  }
+                },
+                "Property": "weight"
               }
             },
-            "Property": "Workouts last 90 days"
+            "Function": 4
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "7296dca129f563dfa383",
+        "name": "a22e38b57ef618e79baf",
         "field": {
-          "Measure": {
+          "Aggregation": {
             "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "workout_set_details"
+                  }
+                },
+                "Property": "weight_per_rep"
               }
             },
-            "Property": "Workouts this month"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "470e0db1509ca6d97b47",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_daily"
-              }
-            },
-            "Property": "Workouts this week"
+            "Function": 4
           }
         },
         "type": "Advanced"

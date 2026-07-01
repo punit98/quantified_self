@@ -105,7 +105,7 @@ table workout_exercise_details
 		summarizeBy: sum
 		sourceColumn: max_weight
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

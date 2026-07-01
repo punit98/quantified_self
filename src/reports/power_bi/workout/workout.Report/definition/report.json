@@ -48,6 +48,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "dataCube19740818"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",

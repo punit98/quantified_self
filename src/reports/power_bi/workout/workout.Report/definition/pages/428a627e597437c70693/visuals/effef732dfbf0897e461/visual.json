@@ -20,16 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "workout_exercise_details"
+                      "Entity": "workout_set_details"
                     }
                   },
                   "Property": "muscle_group"
                 }
               },
-              "queryRef": "workout_exercise_details.muscle_group",
-              "nativeQueryRef": "Muscle Group",
-              "active": true,
-              "displayName": "Muscle Group"
+              "queryRef": "workout_set_details.muscle_group",
+              "nativeQueryRef": "muscle_group",
+              "active": true
             }
           ]
         }
@@ -88,7 +87,49 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "w",
+                    "Entity": "workout_set_details",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "w"
+                                }
+                              },
+                              "Property": "muscle_group"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'chest'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ],
       "numericInputStyle": [
@@ -222,23 +263,5 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2fb034b88a99cd748665",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_exercise_details"
-              }
-            },
-            "Property": "muscle_group"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

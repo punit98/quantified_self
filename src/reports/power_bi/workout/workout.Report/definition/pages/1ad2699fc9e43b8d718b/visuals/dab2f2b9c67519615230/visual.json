@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "74b2b8d4c5a7711d595b",
+  "name": "dab2f2b9c67519615230",
   "position": {
     "x": 0,
     "y": 200,
-    "z": 7,
+    "z": 2,
     "height": 88.333333333333343,
     "width": 288.33333333333337,
-    "tabOrder": 7
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "slicer",
@@ -221,5 +221,23 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "47e172a9a28af3c79f81",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_set_details"
+              }
+            },
+            "Property": "exercise"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

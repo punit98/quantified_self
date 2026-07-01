@@ -35,6 +35,8 @@ def calendar():
         .withColumn("quarter", sf.quarter("date"))
         .withColumn("week_of_month", sf.ceil(sf.dayofmonth("date") / 7))
         .withColumn("day_of_week", sf.dayofweek("date"))
+        .withColumn("start_of_month", sf.trunc("date", "month"))
+        .withColumn("end_of_month", sf.last_day("date"))
     )
 
     # Flags

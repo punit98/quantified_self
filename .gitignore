@@ -188,3 +188,5 @@ resources/.DS_Store
 
 .env.private
 /src/data
+src/reports/power_bi/workout/workout.Report/.pbi/localSettings.json
+/src/reports/power_bi/workout/workout.Report/.pbi

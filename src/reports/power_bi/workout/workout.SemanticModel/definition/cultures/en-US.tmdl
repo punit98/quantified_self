@@ -1,0 +1,143 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "workout_daily.total_days_worked_out_text": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "workout_daily",
+			          "ConceptualProperty": "total days worked out text"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "workout_daily.workouts_last_90_days": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "workout_daily",
+			          "ConceptualProperty": "Workouts last 90 days"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Workouts rolling 90 days": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "workout_daily.workouts_this_month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "workout_daily",
+			          "ConceptualProperty": "Workouts this month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Workouts rolling month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "workout_daily.workouts_this_week": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "workout_daily",
+			          "ConceptualProperty": "Workouts this week"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "calendar.calendar_day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendar",
+			          "ConceptualProperty": "calendar_day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendar.day_of_week": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendar",
+			          "ConceptualProperty": "day_of_week"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Weekday": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendar.week_start_date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendar",
+			          "ConceptualProperty": "week_start_date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Start of Week": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "workout_exercise_details.muscle_group": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "workout_exercise_details",
+			          "ConceptualProperty": "muscle_group"
+			        }
+			      },
+			      "State": "Generated"
+			    }
+			  }
+			}
+		contentType: json
+

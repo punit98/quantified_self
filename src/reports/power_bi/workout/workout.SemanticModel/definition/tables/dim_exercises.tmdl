@@ -1,0 +1,25 @@
+table dim_exercises
+	lineageTag: 7e8ca605-f11b-41d7-a6f3-896fef8bf17b
+
+	column exercise
+		dataType: string
+		sourceProviderType: nvarchar(65535)
+		lineageTag: 8d3754cb-3252-44cc-a7c0-c3f528fb7eac
+		summarizeBy: none
+		sourceColumn: exercise
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_exercises = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", null),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    gold_Schema = quantified_self_Database{[Name="gold",Kind="Schema"]}[Data],
+				    dim_exercises_View = gold_Schema{[Name="dim_exercises",Kind="View"]}[Data]
+				in
+				    dim_exercises_View
+
+	annotation PBI_ResultType = Table
+

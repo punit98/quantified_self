@@ -1,0 +1,171 @@
+table measures_table
+	lineageTag: b908411b-ceaf-48dd-b66e-ae1f870dc41b
+
+	measure 'Total Volume' = SUM(workout_set_details[set_volume])
+		lineageTag: f34d3ae5-2cf2-492f-a10c-1b7a37e36302
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Volume (Exercise Grain)' = ```
+			SUM(workout_exercise_details[total_volume])
+			
+			```
+		lineageTag: 32bf4a29-1613-4128-93ba-cb037a58ebf8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Volume (Daily Grain)' = ```
+			SUM(workout_daily[total_volume])
+			
+			```
+		lineageTag: 20c12964-84e1-43ad-aa2f-9416f5903b94
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lifetime Volume' = ```
+			CALCULATE([Total Volume (Daily Grain)], ALL(calendar))
+			
+			```
+		lineageTag: 5aacd3e1-ff1b-4e9f-8895-669c648179d3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rolling 7d Volume' = ```
+			CALCULATE([Total Volume (Daily Grain)], DATESINPERIOD(calendar[date], MAX(calendar[date]), -7, DAY))
+			
+			```
+		lineageTag: aeca6ebd-c525-40ea-8951-fe003a6e328e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rolling 28d Volume' = ```
+			CALCULATE([Total Volume (Daily Grain)], DATESINPERIOD(calendar[date], MAX(calendar[date]), -28, DAY))
+			
+			```
+		lineageTag: 5e20c70b-e383-4787-b827-9df0c699e6ce
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ACWR = ```
+			DIVIDE([Rolling 7d Volume] / 7, [Rolling 28d Volume] / 28)
+			
+			```
+		lineageTag: 9fc9d71b-12e8-4d16-aa3c-bcaccd462e51
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Est 1RM (Epley)' = ```
+			AVERAGEX(workout_set_details, workout_set_details[weight] * (1 + workout_set_details[reps] / 30))
+			
+			```
+		lineageTag: b8bbb011-f72d-4157-bb63-a5fbc595d3d5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Est 1RM (Brzycki)' = ```
+			AVERAGEX(workout_set_details, workout_set_details[weight] * 36 / (37 - workout_set_details[reps]))
+			
+			```
+		lineageTag: 39938b07-8eb8-43d9-a5a4-8ac784f33d03
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Est 1RM' = ```
+			MAXX(workout_set_details, workout_set_details[weight] * (1 + workout_set_details[reps] / 30))
+			
+			```
+		lineageTag: a89be142-2d9b-4def-8c08-1cfa57207986
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Workout Days' = ```
+			DISTINCTCOUNT(workout_daily[calendar_key])
+			
+			```
+		formatString: 0
+		lineageTag: 184e8b2a-8301-4a37-8a33-9c611a8f7f87
+
+	measure 'Days Since Last Workout' = ```
+			DATEDIFF(MAX(workout_set_details[date_time]), TODAY(), DAY)
+			
+			```
+		formatString: 0
+		lineageTag: c9997776-05c6-4881-a6ad-2ed9e4f9dedf
+
+	measure 'Avg Volume per Minute' = ```
+			AVERAGE(workout_daily[volume_per_minute])
+			
+			```
+		lineageTag: 42dd7f31-d387-451c-8a5a-60358fb846e5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Reps per Minute' = ```
+			AVERAGE(workout_daily[reps_per_minute])
+			
+			```
+		lineageTag: c1d5faec-25b0-45f6-b8e8-3d8e63aaf23e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'neg Days Since Last Workout' = ```
+			((-1)*(DATEDIFF(MAX(workout_set_details[date_time]), TODAY(), DAY)))
+			
+			```
+		formatString: 0
+		lineageTag: 118e01e8-9551-4d65-9593-f0694d60a111
+
+	measure 'Current Streak' = ```
+			
+			VAR LastWorkoutKey = 
+			    CALCULATE(MAX(workout_daily[calendar_key]), ALL('calendar'))
+			
+			VAR LastWorkoutDate = 
+			    MAXX(
+			        FILTER(ALL('calendar'), 'calendar'[calendar_key] = LastWorkoutKey),
+			        'calendar'[date]
+			    )
+			
+			VAR AllDates = 
+			    ADDCOLUMNS(
+			        FILTER(
+			            ALL('calendar'),
+			            'calendar'[date] <= LastWorkoutDate
+			        ),
+			        "HasWorkout",
+			        CALCULATE(COUNTROWS(workout_daily))
+			    )
+			
+			VAR LastGapDate = 
+			    MAXX(
+			        FILTER(AllDates, [HasWorkout] = BLANK()),
+			        'calendar'[date]
+			    )
+			
+			RETURN
+			    COUNTROWS(
+			        FILTER(
+			            AllDates,
+			            [HasWorkout] > 0 &&
+			            'calendar'[date] > LastGapDate
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: 935728a5-3182-4a0f-93b6-f51eec52de92
+
+	column Column
+		formatString: 0
+		lineageTag: 39717055-bead-4cfa-8f45-85c575b554da
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition measures_table = calculated
+		mode: import
+		source = 1
+
+	annotation PBI_Id = 5ece376c51384a68a6dac1b3e92f2125
+

@@ -1,0 +1,25 @@
+table dim_variations
+	lineageTag: d9a4fc26-9dc3-4470-954e-fbe52d096d0b
+
+	column variation
+		dataType: string
+		sourceProviderType: nvarchar(65535)
+		lineageTag: 09dab816-a05b-40e6-bb85-800782fa6a90
+		summarizeBy: none
+		sourceColumn: variation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_variations = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", null),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    gold_Schema = quantified_self_Database{[Name="gold",Kind="Schema"]}[Data],
+				    dim_variations_View = gold_Schema{[Name="dim_variations",Kind="View"]}[Data]
+				in
+				    dim_variations_View
+
+	annotation PBI_ResultType = Table
+

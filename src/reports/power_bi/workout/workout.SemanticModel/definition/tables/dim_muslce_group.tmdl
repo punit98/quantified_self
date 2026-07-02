@@ -1,0 +1,25 @@
+table dim_muslce_group
+	lineageTag: 1a05eb62-a47d-450c-947f-dc8866c7fb86
+
+	column muscle_group
+		dataType: string
+		sourceProviderType: nvarchar(65535)
+		lineageTag: 731cff40-74f4-48a3-ab54-bddea5f4b3ae
+		summarizeBy: none
+		sourceColumn: muscle_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_muslce_group = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", null),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    gold_Schema = quantified_self_Database{[Name="gold",Kind="Schema"]}[Data],
+				    dim_muslce_group_View = gold_Schema{[Name="dim_muslce_group",Kind="View"]}[Data]
+				in
+				    dim_muslce_group_View
+
+	annotation PBI_ResultType = Table
+

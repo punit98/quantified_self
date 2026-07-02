@@ -1,0 +1,287 @@
+table workout_set_details
+	lineageTag: 6f5c5c9e-ebc3-4570-9ea7-9c7e8ba5a4bc
+
+	column date_time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: c8abce62-a115-4d17-b198-d9e3063f8681
+		summarizeBy: none
+		sourceColumn: date_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column utc_offset
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 40902f15-b19a-4396-901a-9ce0c67bb571
+		summarizeBy: none
+		sourceColumn: utc_offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column muscle_group
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 95b856a3-208b-47bb-a9b8-d6e7dcc537ee
+		summarizeBy: none
+		sourceColumn: muscle_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column exercise
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: ba2e52af-1e03-4fa8-b162-bbd27f3f4039
+		summarizeBy: none
+		sourceColumn: exercise
+
+		annotation SummarizationSetBy = Automatic
+
+	column variation
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 44c80470-cde0-4547-b68e-eef29cd996cf
+		summarizeBy: none
+		sourceColumn: variation
+
+		annotation SummarizationSetBy = Automatic
+
+	column weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: e60f3aae-7707-4a6c-a2cb-fe552a1fc8a6
+		summarizeBy: sum
+		sourceColumn: weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column drop_weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 5f3070af-6716-4e09-9956-099bf04a6800
+		summarizeBy: sum
+		sourceColumn: drop_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column second_drop_weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: ccb5445e-5a5c-4d0a-abe6-f5f62e0f3cea
+		summarizeBy: sum
+		sourceColumn: second_drop_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d207fb0a-753d-4265-8cf4-12cfd8f65549
+		summarizeBy: sum
+		sourceColumn: reps
+
+		annotation SummarizationSetBy = Automatic
+
+	column drop_reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d6e830ee-b34c-4bbc-8076-2b6669c215f1
+		summarizeBy: sum
+		sourceColumn: drop_reps
+
+		annotation SummarizationSetBy = Automatic
+
+	column second_drop_reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5d322ad7-8016-4ac6-b9b7-474465510567
+		summarizeBy: sum
+		sourceColumn: second_drop_reps
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 3ff1a03e-102c-4b97-bd4f-4378c65732d1
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_key
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: e1d043e0-2bb6-49bb-848d-d9dab225c5af
+		summarizeBy: none
+		sourceColumn: calendar_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column clock_key
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 64aa5a20-38c9-4f0f-9abf-55b5d686a039
+		summarizeBy: none
+		sourceColumn: clock_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column _rescued_data
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: ae686982-d8f2-417b-9e8d-1ea006794b1f
+		summarizeBy: none
+		sourceColumn: _rescued_data
+
+		annotation SummarizationSetBy = Automatic
+
+	column set_volume
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 9dc4b202-4ff7-49aa-9faf-8ae48f633170
+		summarizeBy: sum
+		sourceColumn: set_volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"workout_set_details","TableItemName":"set_volume (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column average_weight
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 72bd8261-be5b-4c43-ba9f-f087d12075c4
+		summarizeBy: sum
+		sourceColumn: average_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_reps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 78c62199-76c1-4fc6-8d01-58a7ec3967c6
+		summarizeBy: sum
+		sourceColumn: total_reps
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"workout_set_details","TableItemName":"total_reps (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column weight_per_rep
+		dataType: double
+		sourceProviderType: double
+		lineageTag: 848840ab-a2e2-41c1-a7aa-a61433d6001e
+		summarizeBy: sum
+		sourceColumn: weight_per_rep
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'total_reps (bins)' =
+			IF(
+				ISBLANK('workout_set_details'[total_reps]),
+				BLANK(),
+				INT('workout_set_details'[total_reps] / 4) * 4
+			)
+		formatString: 0
+		lineageTag: 44336070-a242-4028-ae93-1d1efcea5136
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "workout_set_details"
+				          }
+				        },
+				        "Property": "total_reps"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 4.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"w","Entity":"workout_set_details"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_reps"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_reps"}},"Size":4.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'set_volume (bins)' =
+			IF(
+				ISBLANK('workout_set_details'[set_volume]),
+				BLANK(),
+				IF(
+					'workout_set_details'[set_volume] >= 0,
+					ROUNDDOWN('workout_set_details'[set_volume] / 200, 0) * 200,
+					ROUNDUP('workout_set_details'[set_volume] / 200, 0) * 200
+				)
+			)
+		lineageTag: e1248e09-3f1c-4474-9a73-98e97ccc62d3
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "workout_set_details"
+				          }
+				        },
+				        "Property": "set_volume"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 200.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"w","Entity":"workout_set_details"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"set_volume"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"set_volume"}},"Size":200.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition workout_set_details = m
+		mode: directQuery
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    quantified_self_Database = Source{[Name="quantified_self",Kind="Database"]}[Data],
+				    gold_Schema = quantified_self_Database{[Name="gold",Kind="Schema"]}[Data],
+				    workout_set_details_View = gold_Schema{[Name="workout_set_details",Kind="View"]}[Data]
+				in
+				    workout_set_details_View
+
+	annotation PBI_ResultType = Table
+

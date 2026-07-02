@@ -1,7 +1,6 @@
 bundle:
   name: quantified_self
   uuid: 20386458-24aa-4b81-8281-e5cba1970d12
-  # Removed: engine: direct (not a valid DABs bundle field)
 
 include:
   - resources/*/*.yml
@@ -29,18 +28,13 @@ variables:
 targets:
   dev:
     default: true
-    mode: development
-    # Disable dev-mode's automatic `dev_<short_name>_` name prefix. It rewrites resource
-    # names (schemas/volumes/pipelines) but NOT the schema strings passed via the pipeline
-    # `configuration:` block, so leaving it on makes the schema RESOURCE and the CONFIG
-    # value diverge and transformations can't find the schema. We instead set the full
-    # schema names explicitly below, and add the [dev punit98] pipeline label manually.
-
+    mode: development  # Adds dev_punit98_ prefix to resources
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self_dev
+      # Schema variables use base names - mode: development will add prefix automatically
       raw_schema: raw
       bronze_schema: bronze
       silver_schema: silver
@@ -51,6 +45,8 @@ targets:
       pipelines:
         quantified_self_etl_pipeline:
           continuous: false
+          development: true
+          # Pipeline configuration uses prefixed schema names to match the actual created schemas
           configuration:
             raw_schema: dev_punit98_raw
             bronze_schema: dev_punit98_bronze

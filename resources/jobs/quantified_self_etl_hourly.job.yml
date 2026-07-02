@@ -5,12 +5,9 @@
       trigger:
         pause_status: UNPAUSED
         periodic:
-          interval: 1
+          interval: 5
           unit: HOURS
       tasks:
         - task_key: refresh_pipeline
           pipeline_task:
             pipeline_id: ${resources.pipelines.quantified_self_etl_pipeline.id}
-      email_notifications:
-        on_failure:
-          - your.email@example.com

@@ -157,6 +157,8 @@ table workout_set_details
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"workout_set_details","TableItemName":"set_volume (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
 	column average_weight
 		dataType: double
 		sourceProviderType: double
@@ -227,6 +229,48 @@ table workout_set_details
 		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"w","Entity":"workout_set_details"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_reps"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_reps"}},"Size":4.0}}}}
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'set_volume (bins)' =
+			IF(
+				ISBLANK('workout_set_details'[set_volume]),
+				BLANK(),
+				IF(
+					'workout_set_details'[set_volume] >= 0,
+					ROUNDDOWN('workout_set_details'[set_volume] / 200, 0) * 200,
+					ROUNDUP('workout_set_details'[set_volume] / 200, 0) * 200
+				)
+			)
+		lineageTag: e1248e09-3f1c-4474-9a73-98e97ccc62d3
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "workout_set_details"
+				          }
+				        },
+				        "Property": "set_volume"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 200.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"w","Entity":"workout_set_details"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"set_volume"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"set_volume"}},"Size":200.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition workout_set_details = m
 		mode: directQuery

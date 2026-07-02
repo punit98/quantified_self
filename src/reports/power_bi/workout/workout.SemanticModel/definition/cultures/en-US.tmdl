@@ -63,19 +63,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "Workouts this week"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Workouts rolling week": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "calendar.calendar_day": {
 			      "Definition": {

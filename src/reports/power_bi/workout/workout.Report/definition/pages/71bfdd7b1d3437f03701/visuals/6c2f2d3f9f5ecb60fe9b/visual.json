@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "1d3fdc3228fb919d866a",
+  "name": "6c2f2d3f9f5ecb60fe9b",
   "position": {
-    "x": 1263.3333333333335,
-    "y": 0,
-    "z": 6001,
-    "height": 376.66666666666669,
-    "width": 656.66666666666674,
-    "tabOrder": 6001
+    "x": 0,
+    "y": 270,
+    "z": 6000,
+    "height": 270,
+    "width": 1920,
+    "tabOrder": 6000
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "areaChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "workout_set_details"
+                      "Entity": "calendar"
                     }
                   },
-                  "Property": "muscle_group"
+                  "Property": "date"
                 }
               },
-              "queryRef": "workout_set_details.muscle_group",
-              "nativeQueryRef": "muscle_group",
+              "queryRef": "calendar.date",
+              "nativeQueryRef": "date",
               "active": true
             }
           ]
@@ -36,17 +36,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "measures_table"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_daily"
+                        }
+                      },
+                      "Property": "reps_per_minute"
                     }
                   },
-                  "Property": "Days Since Last Workout"
+                  "Function": 0
                 }
               },
-              "queryRef": "measures_table.Days Since Last Workout",
-              "nativeQueryRef": "Days Since Last Workout"
+              "queryRef": "Sum(workout_daily.reps_per_minute)",
+              "nativeQueryRef": "Sum of reps_per_minute"
             }
           ]
         }
@@ -55,16 +60,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "measures_table"
+                    "Entity": "calendar"
                   }
                 },
-                "Property": "Days Since Last Workout"
+                "Property": "date"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
@@ -73,7 +78,19 @@
     "objects": {
       "dataPoint": [
         {
-          "properties": {}
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00E80C'"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         {
           "properties": {
@@ -119,49 +136,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "FillRule": {
-                      "Input": {
-                        "Measure": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "measures_table"
-                            }
-                          },
-                          "Property": "Days Since Last Workout"
-                        }
-                      },
-                      "FillRule": {
-                        "linearGradient3": {
-                          "min": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#00BD1F'"
-                              }
-                            }
-                          },
-                          "mid": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'midColor'"
-                              }
-                            }
-                          },
-                          "max": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#D80000'"
-                              }
-                            }
-                          },
-                          "nullColoringStrategy": {
-                            "strategy": {
-                              "Literal": {
-                                "Value": "'asZero'"
-                              }
-                            }
-                          }
-                        }
-                      }
+                    "Literal": {
+                      "Value": "'#00E80C'"
                     }
                   }
                 }
@@ -169,13 +145,7 @@
             }
           },
           "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ]
+            "metadata": "Sum(workout_daily.reps_per_minute)"
           }
         }
       ],
@@ -185,7 +155,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -195,7 +165,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 0,
-                      "Percent": 0
+                      "Percent": -0.1
                     }
                   }
                 }
@@ -218,14 +188,7 @@
             "labelPrecision": {
               "expr": {
                 "Literal": {
-                  "Value": "0L"
-                }
-              }
-            },
-            "labelPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "'OutsideEnd'"
+                  "Value": "1L"
                 }
               }
             }
@@ -306,34 +269,6 @@
                   }
                 }
               }
-            },
-            "switchAxisPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "concatenateLabels": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
             }
           }
         }
@@ -350,20 +285,6 @@
                       "Percent": -0.1
                     }
                   }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
                 }
               }
             }
@@ -391,18 +312,17 @@
                   "Value": "'BottomCenter'"
                 }
               }
-            },
-            "showGradientLegend": {
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "lineChartType": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Value": "'smooth'"
                 }
               }
             }
@@ -456,7 +376,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Days Since Last Workout'"
+                  "Value": "'Volume per Minute'"
                 }
               }
             }
@@ -469,32 +389,77 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "695c49e3c723ccab69aa",
+        "name": "4db2de56bc619f9e8ba1",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "workout_set_details"
+                "Entity": "workout_daily"
               }
             },
-            "Property": "muscle_group"
+            "Property": "primary_muscle_group"
           }
         },
-        "type": "Categorical"
-      },
-      {
-        "name": "ab6aa5627a2a53e0e194",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "measures_table"
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "w",
+              "Entity": "workout_daily",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "w"
+                              }
+                            },
+                            "Property": "primary_muscle_group"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'cardio'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
               }
-            },
-            "Property": "Days Since Last Workout"
-          }
+            }
+          ]
         },
-        "type": "Advanced"
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
       }
     ]
   }

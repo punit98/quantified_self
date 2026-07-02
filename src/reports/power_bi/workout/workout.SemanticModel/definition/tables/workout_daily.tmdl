@@ -279,6 +279,8 @@ table workout_daily
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"workout_daily","TableItemName":"total_minutes_duration (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
 	column total_seconds_duration
 		dataType: int64
 		formatString: 0
@@ -374,6 +376,43 @@ table workout_daily
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'total_minutes_duration (bins)' =
+			IF(
+				ISBLANK('workout_daily'[total_minutes_duration]),
+				BLANK(),
+				INT('workout_daily'[total_minutes_duration] / 10) * 10
+			)
+		formatString: 0
+		lineageTag: 9eb552bd-5274-4e4c-a33e-7ad297c7ba16
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "workout_daily"
+				          }
+				        },
+				        "Property": "total_minutes_duration"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 10.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"w","Entity":"workout_daily"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_minutes_duration"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"w"}},"Property":"total_minutes_duration"}},"Size":10.0}}}}
+
+		annotation SummarizationSetBy = Automatic
 
 	partition workout_daily = m
 		mode: directQuery

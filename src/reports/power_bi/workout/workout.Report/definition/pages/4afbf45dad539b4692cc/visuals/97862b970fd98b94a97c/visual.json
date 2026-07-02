@@ -3,11 +3,11 @@
   "name": "97862b970fd98b94a97c",
   "position": {
     "x": 1263.3333333333335,
-    "y": 656.66666666666674,
-    "z": 5000,
-    "height": 423.33333333333337,
+    "y": 265,
+    "z": 2000,
+    "height": 438.33333333333337,
     "width": 656.66666666666674,
-    "tabOrder": 5000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "barChart",
@@ -450,7 +450,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Weight x Reps'"
+                  "Value": "'Number of workouts & Days since last session'"
                 }
               }
             }
@@ -459,56 +459,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a55dc3fd13d1a6a5f714",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "measures_table"
-              }
-            },
-            "Property": "neg Days Since Last Workout"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5a6087128d84e7b552ea",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_set_details"
-              }
-            },
-            "Property": "muscle_group"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "98ce789259f7881cf38f",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "workout_set_details"
-                  }
-                },
-                "Property": "calendar_key"
-              }
-            },
-            "Function": 2
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

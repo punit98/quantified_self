@@ -401,6 +401,20 @@
                   "Value": "18D"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Time of Day vs Weekday'"
+                }
+              }
             }
           }
         }

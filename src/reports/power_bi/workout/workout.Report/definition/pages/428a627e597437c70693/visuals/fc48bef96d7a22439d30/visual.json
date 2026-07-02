@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "d5fbee315a6c371164d5",
+  "name": "fc48bef96d7a22439d30",
   "position": {
     "x": 0,
-    "y": 288.33333333333337,
-    "z": 3000,
+    "y": 111.66666666666667,
+    "z": 9001,
     "height": 88.333333333333343,
     "width": 288.33333333333337,
-    "tabOrder": 3000
+    "tabOrder": 9001
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "workout_set_details"
+                      "Entity": "workout_exercise_details"
                     }
                   },
-                  "Property": "variation"
+                  "Property": "muscle_group"
                 }
               },
-              "queryRef": "workout_set_details.variation",
-              "nativeQueryRef": "variation",
+              "queryRef": "workout_exercise_details.muscle_group",
+              "nativeQueryRef": "muscle_group",
               "active": true
             }
           ]
@@ -126,7 +126,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Variation'"
+                  "Value": "'Muscle Group'"
                 }
               }
             }
@@ -136,6 +136,18 @@
       "items": [
         {
           "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
             "fontColor": {
               "solid": {
                 "color": {
@@ -143,17 +155,6 @@
                     "ThemeDataColor": {
                       "ColorId": 0,
                       "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "background": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#000000'"
                     }
                   }
                 }

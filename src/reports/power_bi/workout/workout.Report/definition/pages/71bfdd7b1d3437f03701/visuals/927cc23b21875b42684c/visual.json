@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "868825b7fab9697e3f38",
+  "name": "927cc23b21875b42684c",
   "position": {
-    "x": 776.66666666666674,
-    "y": 703.33333333333337,
-    "z": 1000,
-    "height": 376.66666666666669,
-    "width": 1143.3333333333335,
-    "tabOrder": 1000
+    "x": 1280,
+    "y": 540,
+    "z": 5000,
+    "height": 540,
+    "width": 640,
+    "tabOrder": 5000
   },
   "visual": {
-    "visualType": "hundredPercentStackedColumnChart",
+    "visualType": "scatterChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,30 +23,59 @@
                       "Entity": "calendar"
                     }
                   },
-                  "Property": "start_of_month"
+                  "Property": "date"
                 }
               },
-              "queryRef": "calendar.start_of_month",
-              "nativeQueryRef": "start_of_month",
+              "queryRef": "calendar.date",
+              "nativeQueryRef": "date",
               "active": true
             }
           ]
         },
-        "Series": {
+        "Tooltips": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_muscle_group_details"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_daily"
+                        }
+                      },
+                      "Property": "primary_muscle_group"
                     }
                   },
-                  "Property": "muscle_group"
+                  "Function": 3
                 }
               },
-              "queryRef": "workout_muscle_group_details.muscle_group",
-              "nativeQueryRef": "muscle_group"
+              "queryRef": "Min(workout_daily.primary_muscle_group)",
+              "nativeQueryRef": "First primary_muscle_group"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_daily"
+                        }
+                      },
+                      "Property": "reps_per_minute"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(workout_daily.reps_per_minute)",
+              "nativeQueryRef": "Average of reps_per_minute",
+              "active": true
             }
           ]
         },
@@ -59,17 +88,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "workout_muscle_group_details"
+                          "Entity": "workout_daily"
                         }
                       },
-                      "Property": "total_volume"
+                      "Property": "weight_per_rep"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(workout_muscle_group_details.total_volume)",
-              "nativeQueryRef": "Sum of total_volume"
+              "queryRef": "Avg(workout_daily.weight_per_rep)",
+              "nativeQueryRef": "Average of weight_per_rep"
             }
           ]
         }
@@ -84,7 +113,7 @@
                     "Entity": "calendar"
                   }
                 },
-                "Property": "start_of_month"
+                "Property": "date"
               }
             },
             "direction": "Ascending"
@@ -96,7 +125,19 @@
     "objects": {
       "dataPoint": [
         {
-          "properties": {}
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00E80C'"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         {
           "properties": {
@@ -135,111 +176,60 @@
           "selector": {
             "metadata": "Sum(workout_set_details.average_weight)"
           }
-        }
-      ],
-      "labels": [
+        },
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "color": {
+            "fill": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "14D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "trend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Trend line 1'"
-                }
-              }
-            },
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 8,
                       "Percent": 0
                     }
                   }
                 }
               }
-            },
-            "style": {
-              "expr": {
-                "Literal": {
-                  "Value": "'solid'"
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "combineSeries": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "useHighlightValues": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+            }
+          },
+          "selector": {
+            "metadata": "Sum(workout_daily.reps_per_minute)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00E80C'"
+                    }
+                  }
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "Sum(workout_daily.weight_per_rep)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00E80C'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Avg(workout_daily.weight_per_rep)"
           }
         }
       ],
@@ -351,7 +341,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Volume Share by Month and Muscle Group'"
+                  "Value": "'Volume per Minute'"
                 }
               }
             }
@@ -360,5 +350,82 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4db2de56bc619f9e8ba1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "workout_daily"
+              }
+            },
+            "Property": "primary_muscle_group"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "w",
+              "Entity": "workout_daily",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "w"
+                              }
+                            },
+                            "Property": "primary_muscle_group"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'cardio'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

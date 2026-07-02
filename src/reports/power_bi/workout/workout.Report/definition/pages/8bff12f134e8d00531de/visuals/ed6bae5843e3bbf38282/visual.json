@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "ed6bae5843e3bbf38282",
   "position": {
-    "x": 288.57142857142861,
+    "x": 288.33333333333337,
     "y": 0,
     "z": 0,
-    "height": 144.28571428571431,
-    "width": 1631.4285714285716,
+    "height": 145,
+    "width": 1631.6666666666667,
     "tabOrder": 0
   },
   "visual": {
@@ -72,21 +72,6 @@
               "queryRef": "workout_daily.Workouts this month",
               "nativeQueryRef": "Workouts rolling month",
               "displayName": "Workouts rolling month"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_daily"
-                    }
-                  },
-                  "Property": "Workouts this week"
-                }
-              },
-              "queryRef": "workout_daily.Workouts this week",
-              "nativeQueryRef": "Workouts rolling week",
-              "displayName": "Workouts rolling week"
             }
           ]
         }

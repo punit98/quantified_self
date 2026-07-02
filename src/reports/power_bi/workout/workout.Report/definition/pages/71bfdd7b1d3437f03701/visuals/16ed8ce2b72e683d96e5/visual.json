@@ -1,112 +1,33 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "98ca8b8fe8d08c548c35",
+  "name": "16ed8ce2b72e683d96e5",
   "position": {
-    "x": 0,
+    "x": 640,
     "y": 540,
-    "z": 9000,
+    "z": 4000,
     "height": 540,
-    "width": 960,
-    "tabOrder": 9000
+    "width": 640,
+    "tabOrder": 4000
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "areaChart",
     "query": {
       "queryState": {
-        "Series": {
+        "Category": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "workout_set_details"
+                      "Entity": "workout_daily"
                     }
                   },
-                  "Property": "exercise"
+                  "Property": "total_minutes_duration (bins)"
                 }
               },
-              "queryRef": "workout_set_details.exercise",
-              "nativeQueryRef": "exercise"
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "variation"
-                    }
-                  },
-                  "Function": 3
-                }
-              },
-              "queryRef": "Min(workout_set_details.variation)",
-              "nativeQueryRef": "First variation"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "muscle_group"
-                    }
-                  },
-                  "Function": 3
-                }
-              },
-              "queryRef": "Min(workout_set_details.muscle_group)",
-              "nativeQueryRef": "First muscle_group"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "exercise"
-                    }
-                  },
-                  "Function": 3
-                }
-              },
-              "queryRef": "Min(workout_set_details.exercise)",
-              "nativeQueryRef": "First exercise"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_set_details"
-                    }
-                  },
-                  "Property": "average_weight"
-                }
-              },
-              "queryRef": "Sum(workout_set_details.average_weight)",
-              "nativeQueryRef": "average_weight",
+              "queryRef": "workout_daily.total_minutes_duration (bins)",
+              "nativeQueryRef": "total_minutes_duration (bins)",
               "active": true
             }
           ]
@@ -115,20 +36,48 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "workout_set_details"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "workout_daily"
+                        }
+                      },
+                      "Property": "total_minutes_duration (bins)"
                     }
                   },
-                  "Property": "total_reps"
+                  "Function": 5
                 }
               },
-              "queryRef": "Sum(workout_set_details.total_reps)",
-              "nativeQueryRef": "total_reps"
+              "queryRef": "CountNonNull(workout_daily.total_minutes_duration (bins))",
+              "nativeQueryRef": "Count of total_minutes_duration (bins)"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "workout_daily"
+                      }
+                    },
+                    "Property": "total_minutes_duration (bins)"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -162,7 +111,7 @@
             "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Average Weight'"
+                  "Value": "'Frequency'"
                 }
               }
             },
@@ -175,6 +124,13 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -206,7 +162,7 @@
             "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Reps'"
+                  "Value": "'Volume'"
                 }
               }
             },
@@ -219,6 +175,13 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -561,6 +524,24 @@
               }
             ]
           }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00E80C'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CountNonNull(workout_daily.total_minutes_duration (bins))"
+          }
         }
       ],
       "markers": [
@@ -859,36 +840,11 @@
               }
             ]
           }
-        },
-        {
-          "properties": {
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "borderShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
         }
       ],
       "legend": [
         {
           "properties": {
-            "showGradientLegend": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "show": {
               "expr": {
                 "Literal": {
@@ -899,32 +855,20 @@
           }
         }
       ],
-      "categoryLabels": [
+      "lineStyles": [
         {
           "properties": {
-            "show": {
+            "lineChartType": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'smooth'"
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
+            "interpolationSmooth": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "'monotoneX'"
                 }
               }
             }
@@ -971,7 +915,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Weight x Reps x Exercise'"
+                  "Value": "'Distribution of Workout Duration'"
                 }
               }
             }
@@ -993,82 +937,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "99cd80db147ddf903030",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "workout_set_details"
-              }
-            },
-            "Property": "muscle_group"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "w",
-              "Entity": "workout_set_details",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "w"
-                              }
-                            },
-                            "Property": "muscle_group"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "'cardio'"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User",
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      }
-    ]
   }
 }

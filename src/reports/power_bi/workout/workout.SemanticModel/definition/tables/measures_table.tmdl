@@ -115,6 +115,45 @@ table measures_table
 		formatString: 0
 		lineageTag: 118e01e8-9551-4d65-9593-f0694d60a111
 
+	measure 'Current Streak' = ```
+			
+			VAR LastWorkoutKey = 
+			    CALCULATE(MAX(workout_daily[calendar_key]), ALL('calendar'))
+			
+			VAR LastWorkoutDate = 
+			    MAXX(
+			        FILTER(ALL('calendar'), 'calendar'[calendar_key] = LastWorkoutKey),
+			        'calendar'[date]
+			    )
+			
+			VAR AllDates = 
+			    ADDCOLUMNS(
+			        FILTER(
+			            ALL('calendar'),
+			            'calendar'[date] <= LastWorkoutDate
+			        ),
+			        "HasWorkout",
+			        CALCULATE(COUNTROWS(workout_daily))
+			    )
+			
+			VAR LastGapDate = 
+			    MAXX(
+			        FILTER(AllDates, [HasWorkout] = BLANK()),
+			        'calendar'[date]
+			    )
+			
+			RETURN
+			    COUNTROWS(
+			        FILTER(
+			            AllDates,
+			            [HasWorkout] > 0 &&
+			            'calendar'[date] > LastGapDate
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: 935728a5-3182-4a0f-93b6-f51eec52de92
+
 	column Column
 		formatString: 0
 		lineageTag: 39717055-bead-4cfa-8f45-85c575b554da

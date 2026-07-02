@@ -37,6 +37,20 @@
                       "Entity": "workout_set_details"
                     }
                   },
+                  "Property": "muscle_group"
+                }
+              },
+              "queryRef": "workout_set_details.muscle_group",
+              "nativeQueryRef": "muscle_group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "workout_set_details"
+                    }
+                  },
                   "Property": "exercise"
                 }
               },
@@ -59,98 +73,73 @@
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "weight"
+                    "SourceRef": {
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Function": 0
+                  "Property": "weight"
                 }
               },
               "queryRef": "Sum(workout_set_details.weight)",
-              "nativeQueryRef": "Sum of weight"
+              "nativeQueryRef": "weight"
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "drop_weight"
+                    "SourceRef": {
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Function": 0
+                  "Property": "drop_weight"
                 }
               },
               "queryRef": "Sum(workout_set_details.drop_weight)",
-              "nativeQueryRef": "Sum of drop_weight"
+              "nativeQueryRef": "drop_weight"
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "total_reps"
+                    "SourceRef": {
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Function": 0
+                  "Property": "total_reps"
                 }
               },
               "queryRef": "Sum(workout_set_details.total_reps)",
-              "nativeQueryRef": "Sum of total_reps"
+              "nativeQueryRef": "total_reps"
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "drop_reps"
+                    "SourceRef": {
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Function": 0
+                  "Property": "drop_reps"
                 }
               },
               "queryRef": "Sum(workout_set_details.drop_reps)",
-              "nativeQueryRef": "Sum of drop_reps"
+              "nativeQueryRef": "drop_reps"
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "workout_set_details"
-                        }
-                      },
-                      "Property": "set_volume"
+                    "SourceRef": {
+                      "Entity": "workout_set_details"
                     }
                   },
-                  "Function": 0
+                  "Property": "set_volume"
                 }
               },
               "queryRef": "Sum(workout_set_details.set_volume)",
-              "nativeQueryRef": "Sum of set_volume"
+              "nativeQueryRef": "set_volume"
             }
           ]
         }
@@ -213,7 +202,15 @@
       ],
       "grid": [
         {
-          "properties": {}
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ],
       "general": [
@@ -333,10 +330,101 @@
                   "Value": "'Center'"
                 }
               }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
             }
           },
           "selector": {
             "metadata": "Sum(workout_set_details.total_reps)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(workout_set_details.weight)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(workout_set_details.drop_weight)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(workout_set_details.drop_reps)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(workout_set_details.set_volume)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "workout_set_details.muscle_group"
           }
         }
       ]

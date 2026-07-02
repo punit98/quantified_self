@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "29ac09a6f1db31199f6c",
+  "name": "1d341399783e31c7c5eb",
   "position": {
     "x": 0,
-    "y": 200,
-    "z": 2000,
-    "height": 88.333333333333343,
-    "width": 288.33333333333337,
-    "tabOrder": 2000
+    "y": 0,
+    "z": 0,
+    "height": 111.66666666666667,
+    "width": 300,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "slicer",
@@ -20,20 +20,35 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "workout_set_details"
+                      "Entity": "calendar"
                     }
                   },
-                  "Property": "exercise"
+                  "Property": "date"
                 }
               },
-              "queryRef": "workout_set_details.exercise",
-              "nativeQueryRef": "exercise",
+              "queryRef": "calendar.date",
+              "nativeQueryRef": "date",
               "active": true
             }
           ]
         }
       },
       "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "calendar"
+                  }
+                },
+                "Property": "date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
         "isDefaultSort": true
       }
     },
@@ -44,7 +59,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Relative'"
                 }
               }
             },
@@ -87,7 +102,47 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "c",
+                    "Entity": "calendar",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "c"
+                              }
+                            },
+                            "Property": "date"
+                          }
+                        },
+                        "Right": {
+                          "DateSpan": {
+                            "Expression": {
+                              "Now": {}
+                            },
+                            "TimeUnit": 3
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ],
       "numericInputStyle": [
@@ -126,36 +181,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Exercise'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "items": [
-        {
-          "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "background": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#000000'"
-                    }
-                  }
+                  "Value": "'Date'"
                 }
               }
             }
@@ -216,7 +242,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "exercise",
+      "groupName": "date",
       "fieldChanges": true,
       "filterChanges": true
     },

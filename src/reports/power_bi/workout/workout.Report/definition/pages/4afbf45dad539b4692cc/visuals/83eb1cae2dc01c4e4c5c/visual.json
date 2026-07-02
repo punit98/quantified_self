@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "072bdb9f2e79f65aaa6f",
+  "name": "83eb1cae2dc01c4e4c5c",
   "position": {
-    "x": 640,
-    "y": 223.33333333333334,
+    "x": 0,
+    "y": 0,
     "z": 8000,
-    "height": 383.33333333333337,
-    "width": 640,
+    "height": 218.33333333333334,
+    "width": 1920,
     "tabOrder": 8000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "calendarHeatmapVisualA1B2C3D4E5F6A7B8C9D0E1F2A3B4C5D6",
     "query": {
       "queryState": {
-        "Category": {
+        "dateField": {
           "projections": [
             {
               "field": {
@@ -23,17 +23,15 @@
                       "Entity": "calendar"
                     }
                   },
-                  "Property": "week_start_date"
+                  "Property": "date"
                 }
               },
-              "queryRef": "calendar.week_start_date",
-              "nativeQueryRef": "Start of Week",
-              "active": true,
-              "displayName": "Start of Week"
+              "queryRef": "calendar.date",
+              "nativeQueryRef": "date"
             }
           ]
         },
-        "Y": {
+        "valueField": {
           "projections": [
             {
               "field": {
@@ -42,7 +40,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "workout_exercise_details"
+                          "Entity": "workout_muscle_group_details"
                         }
                       },
                       "Property": "number_of_sets"
@@ -51,7 +49,7 @@
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(workout_exercise_details.number_of_sets)",
+              "queryRef": "Sum(workout_muscle_group_details.number_of_sets)",
               "nativeQueryRef": "Sum of number_of_sets"
             }
           ]
@@ -67,7 +65,7 @@
                     "Entity": "calendar"
                   }
                 },
-                "Property": "week_start_date"
+                "Property": "date"
               }
             },
             "direction": "Ascending"
@@ -77,161 +75,10 @@
       }
     },
     "objects": {
-      "dataPoint": [
+      "todayMarker": [
         {
           "properties": {
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "80D"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(workout_exercise_details.number_of_sets)"
-          }
-        }
-      ],
-      "lineStyles": [
-        {
-          "properties": {
-            "areaShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "showMarker": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "markerSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "lineChartType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'smooth'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "markers": [
-        {
-          "properties": {
-            "borderShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "borderColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "14D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "trend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Trend line 1'"
-                }
-              }
-            },
-            "lineColor": {
+            "todayMarkerColor": {
               "solid": {
                 "color": {
                   "expr": {
@@ -242,29 +89,59 @@
                   }
                 }
               }
-            },
-            "style": {
-              "expr": {
-                "Literal": {
-                  "Value": "'solid'"
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "combineSeries": {
+            }
+          }
+        }
+      ],
+      "markerSettings": [
+        {
+          "properties": {
+            "showMinMaxMarkers": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
             },
-            "useHighlightValues": {
+            "maxMarkerColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "summarySettings": [
+        {
+          "properties": {
+            "showSummary": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "aggregationSettings": [
+        {
+          "properties": {
+            "aggregationMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'daily'"
+                }
+              }
+            },
+            "showComparison": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -274,16 +151,111 @@
           }
         }
       ],
-      "categoryAxis": [
+      "thresholdSettings": [
         {
           "properties": {
-            "labelColor": {
+            "enableThresholds": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "cellSettings": [
+        {
+          "properties": {
+            "emptyColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            },
+            "weekStartsOnMonday": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showDataLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "dataLabelSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "dataLabelColor": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 0,
-                      "Percent": -0.1
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "cellGap": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "colorSettings": [
+        {
+          "properties": {
+            "colorPalette": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "colorSteps": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "customColorStart": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#006825'"
+                    }
+                  }
+                }
+              }
+            },
+            "customColorEnd": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00FF50'"
                     }
                   }
                 }
@@ -292,18 +264,115 @@
           }
         }
       ],
-      "valueAxis": [
+      "labelSettings": [
         {
           "properties": {
-            "labelColor": {
+            "monthLabelColor": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 0,
-                      "Percent": -0.1
+                      "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "monthLabelSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "dayLabelSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "dayLabelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "yearLabelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "showWeekNumbers": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "weekNumberColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "weekNumberSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "showYearLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legendSettings": [
+        {
+          "properties": {
+            "showLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "anomalySettings": [
+        {
+          "properties": {
+            "showAnomalies": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -325,39 +394,39 @@
           }
         }
       ],
-      "title": [
+      "border": [
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "18D"
-                }
-              }
-            },
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
-            },
-            "text": {
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Sets'"
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

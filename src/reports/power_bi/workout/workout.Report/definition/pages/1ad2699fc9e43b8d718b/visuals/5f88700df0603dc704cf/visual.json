@@ -32,7 +32,8 @@
                 }
               },
               "queryRef": "Sum(workout_set_details.set_volume)",
-              "nativeQueryRef": "Max of set_volume"
+              "nativeQueryRef": "Set Volume",
+              "displayName": "Set Volume"
             },
             {
               "field": {
@@ -51,7 +52,8 @@
                 }
               },
               "queryRef": "Sum(workout_set_details.total_reps)",
-              "nativeQueryRef": "Max of total_reps"
+              "nativeQueryRef": "Total Reps",
+              "displayName": "Total Reps"
             },
             {
               "field": {
@@ -70,7 +72,8 @@
                 }
               },
               "queryRef": "Sum(workout_set_details.weight)",
-              "nativeQueryRef": "Max of weight"
+              "nativeQueryRef": "Set Weight",
+              "displayName": "Set Weight"
             },
             {
               "field": {
@@ -89,7 +92,8 @@
                 }
               },
               "queryRef": "Sum(workout_set_details.weight_per_rep)",
-              "nativeQueryRef": "Max of weight_per_rep"
+              "nativeQueryRef": "Weight Per Rep",
+              "displayName": "Weight Per Rep"
             }
           ]
         }
@@ -305,6 +309,38 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'All Time Maximum'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }

@@ -1,0 +1,14 @@
+resources:
+  jobs:
+    quantified_self_etl_on_arrival:
+      name: quantified_self_etl_on_arrival
+      trigger:
+        pause_status: UNPAUSED
+        file_arrival:
+          url: /Volumes/${var.catalog}/${var.raw_schema}/your_volume_name/
+          min_time_between_triggers_seconds: 60   # debounce rapid uploads
+          wait_after_last_change_seconds: 60       # wait for upload to settle
+      tasks:
+        - task_key: refresh_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.quantified_self_etl_pipeline.id}

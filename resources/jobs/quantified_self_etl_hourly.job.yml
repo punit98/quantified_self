@@ -1,0 +1,13 @@
+ resources:
+  jobs:
+    quantified_self_etl_hourly:
+      name: quantified_self_etl_hourly
+      trigger:
+        pause_status: UNPAUSED
+        periodic:
+          interval: 5
+          unit: HOURS
+      tasks:
+        - task_key: refresh_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.quantified_self_etl_pipeline.id}

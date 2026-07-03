@@ -5,8 +5,8 @@
       trigger:
         pause_status: UNPAUSED
         periodic:
-          interval: 5
-          unit: HOURS
+          interval: 30
+          unit: MINUTES
       tasks:
         - task_key: refresh_pipeline
           pipeline_task:

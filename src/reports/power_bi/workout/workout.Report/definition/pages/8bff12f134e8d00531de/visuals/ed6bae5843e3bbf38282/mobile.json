@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.2.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 97,
+    "z": 2,
+    "height": 287,
+    "width": 324
+  },
+  "objects": {
+    "fillCustom": [],
+    "value": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "15D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      },
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "label": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "8D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ],
+    "outline": [],
+    "divider": [],
+    "layout": [
+      {
+        "properties": {
+          "columnCount": {
+            "expr": {
+              "Literal": {
+                "Value": "2L"
+              }
+            }
+          },
+          "orientation": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "style": {
+            "expr": {
+              "Literal": {
+                "Value": "'Cards'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "border": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ]
+  }
+}

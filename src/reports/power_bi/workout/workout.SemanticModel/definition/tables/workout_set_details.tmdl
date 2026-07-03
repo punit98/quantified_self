@@ -9,6 +9,11 @@ table workout_set_details
 		summarizeBy: none
 		sourceColumn: date_time
 
+		variation Variation
+			isDefault
+			relationship: 1b8820f0-062c-4185-b848-9577f2efcaf2
+			defaultHierarchy: LocalDateTable_fcc18e8d-9cce-448f-a0de-e20c3d622b3a.'Date Hierarchy'
+
 		annotation SummarizationSetBy = Automatic
 
 	column utc_offset
@@ -273,7 +278,7 @@ table workout_set_details
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition workout_set_details = m
-		mode: directQuery
+		mode: import
 		source =
 				let
 				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),

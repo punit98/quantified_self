@@ -103,6 +103,11 @@ table workout_daily
 		summarizeBy: none
 		sourceColumn: start_timestamp
 
+		variation Variation
+			isDefault
+			relationship: ce5e3781-21de-4f9b-a319-cb89628a1e5e
+			defaultHierarchy: LocalDateTable_770f1e42-d9af-47c5-8753-6678b4d58333.'Date Hierarchy'
+
 		annotation SummarizationSetBy = Automatic
 
 	column end_timestamp
@@ -112,6 +117,11 @@ table workout_daily
 		lineageTag: 657d49ca-aab9-40c7-a2c0-30ed352d499f
 		summarizeBy: none
 		sourceColumn: end_timestamp
+
+		variation Variation
+			isDefault
+			relationship: 509e86af-4be0-4cf2-9107-711f7e3dbb61
+			defaultHierarchy: LocalDateTable_2f701e55-66f3-44e5-a799-bdd49b3ae501.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -415,7 +425,7 @@ table workout_daily
 		annotation SummarizationSetBy = Automatic
 
 	partition workout_daily = m
-		mode: directQuery
+		mode: import
 		source =
 				let
 				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),

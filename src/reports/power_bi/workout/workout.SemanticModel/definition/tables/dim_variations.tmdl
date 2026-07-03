@@ -11,7 +11,7 @@ table dim_variations
 		annotation SummarizationSetBy = Automatic
 
 	partition dim_variations = m
-		mode: directQuery
+		mode: import
 		source =
 				let
 				    Source = DatabricksMultiCloud.Catalogs("dbc-22d2b1a2-c7c9.cloud.databricks.com", "/sql/1.0/warehouses/6d330c1084ed50c6", null),

@@ -190,3 +190,4 @@ resources/.DS_Store
 /src/data
 src/reports/power_bi/workout/workout.Report/.pbi/localSettings.json
 src/reports/power_bi/workout/workout.Report/.pbi
+/src/reports/power_bi/workout/workout.SemanticModel/.pbi

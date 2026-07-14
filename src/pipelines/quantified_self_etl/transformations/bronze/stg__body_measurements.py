@@ -34,7 +34,7 @@ stg__body_measurements_schema = StructType(
 ddl_schema = utils.struct_to_ddl(stg__body_measurements_schema)
 
 @dp.table(
-    name = paths.STG__BODY_MEASUREMENTS_PATH
+    name = paths.STG__BODY_MEASUREMENTS_PATH,
     comment = 
     """
     The staging table for body measurements with cleaned columns, correct datatypes and deduplication
@@ -49,6 +49,8 @@ def stg_body_measurements():
     raw_body_measurements = utils.preserve_timezone(raw_body_measurements, "date_time")
 
     raw_body_measurements = raw_body_measurements.withColumnRenamed("tond", "belly").withColumnRenamed("ass", "glutes")
+
+    raw_workoutlog = utils.type_cast_columns(raw_workoutlog, ["date_time"], "timestamp")
 
     float_columns: list[str] = ["chest", "shoulder", "left_bicep", "left_forearm", "right_bicep", "right_forearm", "waist", "belly", "glutes", "left_thigh", "left_calf", "right_thigh", "right_calf", "weight", "height", "neck"]
     raw_body_measurements = utils.type_cast_columns(raw_body_measurements, column_list=float_columns, column_type="float")

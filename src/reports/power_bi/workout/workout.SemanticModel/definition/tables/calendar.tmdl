@@ -1,5 +1,6 @@
 table calendar
 	lineageTag: 02dfa75c-bd09-42d3-906f-ac77e00e0432
+	dataCategory: Time
 
 	column id
 		dataType: int64
@@ -13,16 +14,12 @@ table calendar
 
 	column date
 		dataType: dateTime
+		isKey
 		formatString: dd mmmm yyyy
 		sourceProviderType: date
 		lineageTag: 3f5ab021-78b3-496f-bd08-c39e4d57b4d1
 		summarizeBy: none
 		sourceColumn: date
-
-		variation Variation
-			isDefault
-			relationship: 77c6d448-cdca-4cb0-b6ae-8333ac51c373
-			defaultHierarchy: LocalDateTable_c994bd9a-9602-4d03-8f0c-5008c4b44e5e.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -199,11 +196,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: week_start_date
 
-		variation Variation
-			isDefault
-			relationship: d7d726e6-3212-46bd-a4a7-b1dce0487068
-			defaultHierarchy: LocalDateTable_20cb6448-392d-46dd-bdbc-951c2eaff1d9.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -215,11 +207,6 @@ table calendar
 		lineageTag: f7be420f-b4c8-4b5f-ad43-6ccf4c675b5d
 		summarizeBy: none
 		sourceColumn: week_end_date
-
-		variation Variation
-			isDefault
-			relationship: 99754ad9-27cb-424b-bb7e-3daf3a2402b0
-			defaultHierarchy: LocalDateTable_82c07853-2a2f-44fe-aa0f-1473284ce77f.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -233,11 +220,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: next_day
 
-		variation Variation
-			isDefault
-			relationship: fc7bb937-7473-40fc-9a1c-0fec38cbada7
-			defaultHierarchy: LocalDateTable_3a024689-0bd2-485c-a69f-9526e364c63f.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -249,11 +231,6 @@ table calendar
 		lineageTag: b4211e74-19d1-4b76-af0c-5c9519ffb533
 		summarizeBy: none
 		sourceColumn: prev_day
-
-		variation Variation
-			isDefault
-			relationship: e1db8ca4-0cb1-446d-a82e-0b07c770baf7
-			defaultHierarchy: LocalDateTable_0f42c342-1ecb-4776-abff-3cb73d1ed186.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -267,11 +244,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: next_week
 
-		variation Variation
-			isDefault
-			relationship: c482a098-3566-44b8-90da-08c40c6094c7
-			defaultHierarchy: LocalDateTable_2cce40d7-f4b6-4552-9252-cee8b8fc82a0.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -283,11 +255,6 @@ table calendar
 		lineageTag: 3a802f87-e9dc-44af-b0a7-03579d7c2a38
 		summarizeBy: none
 		sourceColumn: prev_week
-
-		variation Variation
-			isDefault
-			relationship: f5e05d9a-caa5-4786-85bd-0db0d9269633
-			defaultHierarchy: LocalDateTable_e2591d4b-7419-4785-bcdb-16bfdcb4ae86.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -301,11 +268,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: next_month
 
-		variation Variation
-			isDefault
-			relationship: 57ffcde0-290b-47f6-a763-96c5eb983c94
-			defaultHierarchy: LocalDateTable_30f6b921-5858-44d6-8db5-0e757d835f4c.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -317,11 +279,6 @@ table calendar
 		lineageTag: 59aa24bf-9995-4cd2-811d-9af993a25e1b
 		summarizeBy: none
 		sourceColumn: prev_month
-
-		variation Variation
-			isDefault
-			relationship: d72fdd14-06d5-41ef-9197-fbdb418879c0
-			defaultHierarchy: LocalDateTable_c49c6582-917e-4c42-943b-0705b7a167aa.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -335,11 +292,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: next_quarter
 
-		variation Variation
-			isDefault
-			relationship: fa171743-b108-4d5c-aa6f-593e733f911e
-			defaultHierarchy: LocalDateTable_ceb2369e-6052-456f-aae1-f65fcaad001c.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -351,11 +303,6 @@ table calendar
 		lineageTag: 10270b59-5bfb-4d4e-a040-8a54a2945977
 		summarizeBy: none
 		sourceColumn: prev_quarter
-
-		variation Variation
-			isDefault
-			relationship: 79ca4d52-a754-4abd-a295-03ab305300c4
-			defaultHierarchy: LocalDateTable_37775171-00c0-4902-830e-076bed343ecc.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -369,11 +316,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: next_year
 
-		variation Variation
-			isDefault
-			relationship: ef28b196-68c9-4ff1-b4cf-f310eb241231
-			defaultHierarchy: LocalDateTable_278e998d-82a5-4c10-b400-91aff9139221.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -385,11 +327,6 @@ table calendar
 		lineageTag: a0776059-4874-4466-8f7a-12ad24af4b95
 		summarizeBy: none
 		sourceColumn: prev_year
-
-		variation Variation
-			isDefault
-			relationship: 68481fc8-41ff-43af-a67e-a63a941eae0f
-			defaultHierarchy: LocalDateTable_9abb50a8-dd18-48c9-8da9-cda7ece6dda2.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -518,11 +455,6 @@ table calendar
 		summarizeBy: none
 		sourceColumn: start_of_month
 
-		variation Variation
-			isDefault
-			relationship: dfa29f9f-ee79-450b-85ef-395e737a1a9e
-			defaultHierarchy: LocalDateTable_f1a41004-5386-43f5-a006-f2c8a8bf79bb.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -534,11 +466,6 @@ table calendar
 		lineageTag: a421ab3e-56b3-4a4d-becf-27c306d6cae8
 		summarizeBy: none
 		sourceColumn: end_of_month
-
-		variation Variation
-			isDefault
-			relationship: 623a4d40-db76-490c-b104-c974585c45ac
-			defaultHierarchy: LocalDateTable_1dfed37b-4af5-42b6-8c5b-b711face9f84.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 

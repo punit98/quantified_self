@@ -3,9 +3,10 @@
   "position": {
     "x": 0,
     "y": 334,
-    "z": 5,
+    "z": 4000,
     "height": 665,
-    "width": 324
+    "width": 324,
+    "tabOrder": 0
   },
   "objects": {
     "columnHeaders": [

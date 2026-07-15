@@ -3,8 +3,9 @@
   "position": {
     "x": 0,
     "y": 169,
-    "z": 3,
+    "z": 2000,
     "height": 86,
-    "width": 324
+    "width": 324,
+    "tabOrder": 3000
   }
 }

@@ -3,9 +3,10 @@
   "position": {
     "x": 0,
     "y": 911,
-    "z": 7,
+    "z": 6000,
     "height": 184,
-    "width": 324
+    "width": 324,
+    "tabOrder": 3000
   },
   "objects": {
     "dataPoint": [],

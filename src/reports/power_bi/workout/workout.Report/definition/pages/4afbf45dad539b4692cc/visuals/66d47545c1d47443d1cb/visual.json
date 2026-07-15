@@ -3,7 +3,7 @@
   "name": "66d47545c1d47443d1cb",
   "position": {
     "x": 593.33333333333337,
-    "y": 421.66666666666669,
+    "y": 38.333333333333314,
     "z": 4000,
     "height": 51.666666666666671,
     "width": 155,
@@ -50,5 +50,6 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  }
+  },
+  "parentGroupName": "e0c1f5aa63828ceaeeba"
 }

@@ -3,9 +3,10 @@
   "position": {
     "x": 0,
     "y": 172,
-    "z": 4,
+    "z": 3000,
     "height": 289,
-    "width": 324
+    "width": 324,
+    "tabOrder": 0
   },
   "objects": {
     "general": [],

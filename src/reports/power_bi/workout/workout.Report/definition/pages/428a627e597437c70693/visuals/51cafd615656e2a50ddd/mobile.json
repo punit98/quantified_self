@@ -3,9 +3,10 @@
   "position": {
     "x": 0,
     "y": 166,
-    "z": 3,
+    "z": 2000,
     "height": 181,
-    "width": 324
+    "width": 324,
+    "tabOrder": 2000
   },
   "visualContainerObjects": {
     "background": [],

@@ -2,10 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.2.0/schema.json",
   "position": {
     "x": 0,
-    "y": 180,
-    "z": 2,
+    "y": 93,
+    "z": 1000,
     "height": 333,
-    "width": 324
+    "width": 324,
+    "tabOrder": 2000
   },
   "objects": {
     "dataPoint": [],
@@ -30,7 +31,19 @@
       }
     ],
     "trend": [],
-    "categoryAxis": [],
+    "categoryAxis": [
+      {
+        "properties": {
+          "concatenateLabels": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ],
     "valueAxis": [],
     "legend": [
       {

@@ -9,7 +9,9 @@ variables:
   catalog:
     description: The catalog to use
     default: ${bundle.name}_${bundle.target}
-
+  pipeline_name:
+    description: Name of the pipeline
+    default: quantified_self_etl_pipeline
   raw_schema:
     description: Raw schema
     default: raw

@@ -28,15 +28,16 @@ def calendar():
         calendar.withColumn("calendar_year", sf.year("date"))
         .withColumn("calendar_month", sf.month("date"))
         .withColumn("calendar_day", sf.dayofmonth("date"))
-        .withColumn("day_of_week", sf.date_format("date", "E"))
         .withColumn("day_of_year", sf.dayofyear("date"))
-        .withColumn("week_of_year", sf.weekofyear("date"))
         .withColumn("month_name", sf.date_format("date", "MMMM"))
         .withColumn("quarter", sf.quarter("date"))
         .withColumn("week_of_month", sf.ceil(sf.dayofmonth("date") / 7))
-        .withColumn("day_of_week", sf.dayofweek("date"))
         .withColumn("start_of_month", sf.trunc("date", "month"))
         .withColumn("end_of_month", sf.last_day("date"))
+        .withColumn("day_of_week", sf.expr("((dayofweek(date) + 5) % 7) + 1"))
+        .withColumn("week_start_date", sf.date_sub("date", sf.expr("((dayofweek(date) + 5) % 7)")))
+        .withColumn("week_end_date", sf.date_add("week_start_date", 6))
+        .withColumn("week_of_year", sf.weekofyear("week_start_date"))
     )
 
     # Flags
@@ -52,11 +53,6 @@ def calendar():
         .withColumn("is_year_start", sf.date_format("date", "MM-dd") == sf.lit("01-01"))
         .withColumn("is_year_end", sf.date_format("date", "MM-dd") == sf.lit("12-31"))
     )
-
-    # Week start/end (ISO week: Monday = 1)
-    calendar = calendar.withColumn(
-        "week_start_date", sf.date_sub("date", sf.dayofweek("date") - 2)
-    ).withColumn("week_end_date", sf.date_add("week_start_date", 6))
 
     # Next/previous dates
     calendar = (

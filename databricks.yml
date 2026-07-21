@@ -35,11 +35,11 @@ targets:
     variables:
       catalog: quantified_self_dev
       # Schema variables use base names - mode: development will add prefix automatically
-      raw_schema: dev_punit98_raw
-      bronze_schema: dev_punit98_bronze
-      silver_schema: dev_punit98_silver
-      gold_schema: dev_punit98_gold
-      seed_schema: dev_punit98_seed
+      raw_schema: raw
+      bronze_schema: bronze
+      silver_schema: silver
+      gold_schema: gold
+      seed_schema: seed
 
     resources:
       pipelines:

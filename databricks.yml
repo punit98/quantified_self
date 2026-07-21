@@ -29,31 +29,31 @@ variables:
 targets:
   dev:
     default: true
-    mode: development
+    # mode: development   <-- REMOVE THIS
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
 
-    # 🔹 IMPORTANT: use base names here, no dev_punit98_ anywhere
     variables:
       catalog: quantified_self_dev
-      raw_schema: raw
-      bronze_schema: bronze
-      silver_schema: silver
-      gold_schema: gold
-      seed_schema: seed
+      raw_schema: dev_punit98_raw
+      bronze_schema: dev_punit98_bronze
+      silver_schema: dev_punit98_silver
+      gold_schema: dev_punit98_gold
+      seed_schema: dev_punit98_seed
 
     resources:
       pipelines:
         quantified_self_etl_pipeline:
           continuous: false
-          development: true
+          # development: true   <-- REMOVE THIS
           configuration:
             raw_schema: ${var.raw_schema}
             bronze_schema: ${var.bronze_schema}
             silver_schema: ${var.silver_schema}
             gold_schema: ${var.gold_schema}
             seed_schema: ${var.seed_schema}
+
 
   prod:
     mode: production

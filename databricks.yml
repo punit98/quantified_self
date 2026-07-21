@@ -28,18 +28,18 @@ variables:
 targets:
   dev:
     default: true
-    mode: development  # Adds dev_punit98_ prefix to resources
+    mode: production  # Adds dev_punit98_ prefix to resources
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: quantified_self_dev
       # Schema variables use base names - mode: development will add prefix automatically
-      raw_schema: raw
-      bronze_schema: bronze
-      silver_schema: silver
-      gold_schema: gold
-      seed_schema: seed
+      raw_schema: dev_punit98_raw
+      bronze_schema: dev_punit98_bronze
+      silver_schema: dev_punit98_silver
+      gold_schema: dev_punit98_gold
+      seed_schema: dev_punit98_seed
 
     resources:
       pipelines:

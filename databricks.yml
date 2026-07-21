@@ -28,7 +28,7 @@ variables:
 targets:
   dev:
     default: true
-    mode: production  # Adds dev_punit98_ prefix to resources
+    mode: development  # Adds dev_punit98_ prefix to resources
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}

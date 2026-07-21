@@ -35,6 +35,7 @@ targets:
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
 
     variables:
+      pipeline_name: quantified_self_etl_pipeline_dev
       catalog: quantified_self_dev
       raw_schema: dev_punit98_raw
       bronze_schema: dev_punit98_bronze
@@ -62,6 +63,7 @@ targets:
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
 
     variables:
+      pipeline_name: quantified_self_etl_pipeline
       catalog: quantified_self
       raw_schema: raw
       bronze_schema: bronze

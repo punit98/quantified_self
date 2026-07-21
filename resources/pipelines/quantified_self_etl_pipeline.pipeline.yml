@@ -1,7 +1,7 @@
 resources:
   pipelines:
     quantified_self_etl_pipeline:
-      name: quantified_self_etl_pipeline
+      name: ${var.pipeline_name}
       catalog: ${var.catalog}
       schema: default
       serverless: true

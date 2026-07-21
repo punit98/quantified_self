@@ -9,64 +9,71 @@ variables:
   catalog:
     description: The catalog to use
     default: ${bundle.name}_${bundle.target}
+
   raw_schema:
-    description: The schema to use for raw data
+    description: Raw schema
     default: raw
   bronze_schema:
-    description: The schema to use for bronze data
+    description: Bronze schema
     default: bronze
   silver_schema:
-    description: The schema to use for silver data
+    description: Silver schema
     default: silver
   gold_schema:
-    description: The schema to use for gold data
+    description: Gold schema
     default: gold
   seed_schema:
-    description: The schema to use for seed data
+    description: Seed schema
     default: seed
 
 targets:
   dev:
     default: true
-    mode: development  # Adds dev_punit98_ prefix to resources
+    mode: development
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
+
+    # 🔹 IMPORTANT: use base names here, no dev_punit98_ anywhere
     variables:
       catalog: quantified_self_dev
-      # Schema variables use base names - mode: development will add prefix automatically
-      raw_schema: quantified_self_dev.dev_punit98_raw
-      bronze_schema: quantified_self_dev.dev_punit98_bronze
-      silver_schema: quantified_self_dev.dev_punit98_silver
-      gold_schema: quantified_self_dev.dev_punit98_gold
-      seed_schema: quantified_self_dev.dev_punit98_seed
-
+      raw_schema: raw
+      bronze_schema: bronze
+      silver_schema: silver
+      gold_schema: gold
+      seed_schema: seed
 
     resources:
       pipelines:
         quantified_self_etl_pipeline:
           continuous: false
           development: true
-          # Pipeline configuration uses prefixed schema names to match the actual created schemas
           configuration:
-            raw_schema: dev_punit98_raw
-            bronze_schema: dev_punit98_bronze
-            silver_schema: dev_punit98_silver
-            gold_schema: dev_punit98_gold
-            seed_schema: dev_punit98_seed
-            
+            raw_schema: ${var.raw_schema}
+            bronze_schema: ${var.bronze_schema}
+            silver_schema: ${var.silver_schema}
+            gold_schema: ${var.gold_schema}
+            seed_schema: ${var.seed_schema}
 
   prod:
     mode: production
     workspace:
       host: https://dbc-22d2b1a2-c7c9.cloud.databricks.com
       root_path: /Workspace/Users/punit98@protonmail.com/.bundle/${bundle.name}/${bundle.target}
+
     variables:
       catalog: quantified_self
+      raw_schema: raw
+      bronze_schema: bronze
+      silver_schema: silver
+      gold_schema: gold
+      seed_schema: seed
+
     resources:
       pipelines:
         quantified_self_etl_pipeline:
           continuous: false
+
     permissions:
       - user_name: punit98@protonmail.com
         level: CAN_MANAGE

@@ -53,7 +53,7 @@ def stg_body_measurements():
         "tond", "belly"
     ).withColumnRenamed("ass", "glutes")
 
-    raw_workoutlog = utils.type_cast_columns(raw_workoutlog, ["date_time"], "timestamp")
+    raw_body_measurements = utils.type_cast_columns(raw_body_measurements, ["date_time"], "timestamp")
 
     float_columns: list[str] = [
         "chest",

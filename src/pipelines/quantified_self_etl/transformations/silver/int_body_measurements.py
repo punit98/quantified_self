@@ -69,7 +69,7 @@ def _safe_ratio(numerator_col, denominator_col):
 )
 def int_body_measurements():
     # NOTE: update this to your actual STG constant name if it differs
-    bodymeasurements_df = spark.readStream.table(paths.STG__BODYMEASUREMENTS_PATH)
+    bodymeasurements_df = spark.readStream.table(paths.STG__BODY_MEASUREMENTS_PATH)
 
     int_body_measurements = bodymeasurements_df.withColumnRenamed(
         "tond", "belly"

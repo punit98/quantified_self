@@ -52,6 +52,8 @@ STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
 
 INT_WORKOUT_DETAILS_PATH = f"{SILVER_SCHEMA}.int_workout_details"
 
+INT_BODY_MEASUREMENTS_PATH = f"{SILVER_SCHEMA}.int_body_measurements"
+
 
 ############ Gold Facts ####################
 

@@ -1,6 +1,6 @@
 resources:
   volumes:
-    apple_workouts_export:
-      name: apple_workouts_export
+    workouts_export:
+      name: workouts_export
       catalog_name: ${var.catalog}
       schema_name: ${var.raw_schema}

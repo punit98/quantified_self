@@ -28,11 +28,11 @@ ddl_schema = utils.struct_to_ddl(stg__workoutlog_schema)
 @dp.table(
     name=paths.STG__WORKOUTLOG_PATH,
     comment="""
-        The base table for workouts with cleaned columns, correct datatypes and deduplication
+        The staging table for workouts with cleaned columns, correct datatypes and deduplication
         """,
     schema=ddl_schema,
 )
-def base__workoutlog():
+def stg__workoutlog():
     raw_workoutlog = spark.readStream.table(paths.RAW_WORKOUTLOG_PATH)
 
     lower_case_columns = ["muscle_group", "exercise", "variation"]

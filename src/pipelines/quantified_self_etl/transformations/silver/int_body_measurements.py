@@ -1,4 +1,3 @@
-from functools import partial
 
 from pyspark import pipelines as dp
 from pyspark.sql import functions as sf

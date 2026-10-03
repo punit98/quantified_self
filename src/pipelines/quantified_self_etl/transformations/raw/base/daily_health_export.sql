@@ -5,5 +5,4 @@ FROM STREAM read_files(
     '/Volumes/${catalog}/${raw_schema}/daily_health_export',
     format => 'csv',
     header => 'true',
-    filenamepattern => 'DailyHealthExport-HealthMetrics
 )

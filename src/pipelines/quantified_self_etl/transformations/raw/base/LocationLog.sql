@@ -5,6 +5,6 @@ FROM STREAM read_files(
     '/Volumes/${catalog}/${raw_schema}/landing_zone',
     FORMAT => 'csv',
     HEADER => 'true',
-    INFERSCHEMA => 'false',
+    SCHEMA => 'timestamp STRING, latitude STRING, longitude STRING',
     FILENAMEPATTERN => 'LocationLog.csv'
 )

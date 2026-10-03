@@ -1,5 +1,6 @@
 import pyspark.sql.functions as sf
-
+from pyspark.sql import types
+from pyspark.sql.types import StructField, StructType
 from transformations.utilities import paths, utils
 
 stg__workout_export_schema = StructType(

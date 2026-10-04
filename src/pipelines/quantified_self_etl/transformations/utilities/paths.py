@@ -33,6 +33,9 @@ RAW_WORKOUTLOG_PATH = f"{RAW_SCHEMA}.workoutlog"
 
 RAW_WORKOUTS_EXPORT_PATH = f"{RAW_SCHEMA}.workouts_export"
 
+RAW_HOURLY_HEALTH_EXPORT_PATH = f"{RAW_SCHEMA}.hourly_health_export"
+
+RAW_DAILY_HEALTH_EXPORT_PATH = f"{RAW_SCHEMA}.daily_health_export"
 
 # SOURCE_LOCATION_LOG_PATH =
 

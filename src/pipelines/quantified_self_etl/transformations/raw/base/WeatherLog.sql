@@ -5,6 +5,8 @@ FROM STREAM read_files(
     '/Volumes/${catalog}/${raw_schema}/landing_zone',
     FORMAT => 'csv',
     HEADER => 'true',
-    SCHEMA => 'timestamp STRING, temp STRING, feelslike STRING, humidity STRING, pressure STRING, precipitation STRING, uv_index STRING, aqi STRING',
+    SCHEMA => 'timestamp STRING, temp STRING, feelslike STRING,
+    humidity STRING, pressure STRING, precipitation STRING,
+    uv_index STRING, aqi STRING',
     FILENAMEPATTERN => 'WeatherLog.csv'
 )

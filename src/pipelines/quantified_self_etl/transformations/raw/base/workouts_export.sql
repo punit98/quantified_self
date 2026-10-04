@@ -1,19 +1,19 @@
-CREATE OR REFRESH STREAMING TABLE ${raw_schema}.workouts_export
-AS
+create or refresh streaming table ${raw_schema}.workouts_export
+as
 
-with read_files as(
+with read_files as (
 
-SELECT
-  *,
-  _metadata.file_path      AS source_file,
-  _metadata.file_name      AS source_filename
-FROM STREAM read_files(
-  '/Volumes/${catalog}/${raw_schema}/workouts_export',
-  FORMAT => 'binaryFile'
+    select
+        *,
+        _metadata.file_path as source_file,
+        _metadata.file_name as source_filename
+    from stream read_files(
+        '/volumes/${catalog}/${raw_schema}/workouts_export',
+        format => 'binaryfile'
+    )
 )
-)
 
-SELECT
-  source_file,
-  CAST(content AS STRING) AS raw_json
-  FROM read_files;
+select
+    source_file,
+    cast(content as string) as raw_json
+from read_files;

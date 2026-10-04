@@ -4,5 +4,6 @@ AS SELECT *
 FROM STREAM read_files(
     '/Volumes/${catalog}/${raw_schema}/hourly_health_export',
     format => 'csv',
-    header => 'true'
+    header => 'true',
+    primitivesAsString => 'true'
 )

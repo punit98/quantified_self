@@ -55,6 +55,10 @@ STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
 
 STG__WORKOUTS_EXPORT_PATH = f"{BRONZE_SCHEMA}.stg__workouts_export"
 
+STG__HOURLY_HEALTH_EXPORT_PATH = f"{BRONZE_SCHEMA}.stg__hourly_health_export"
+
+STG__DAILY_HEALTH_EXPORT_PATH = f"{BRONZE_SCHEMA}.stg__daily_health_export"
+
 ############ Silver ####################
 
 INT_WORKOUT_DETAILS_PATH = f"{SILVER_SCHEMA}.int_workout_details"

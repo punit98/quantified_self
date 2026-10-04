@@ -31,6 +31,8 @@ RAW_WEATHERLOG_PATH = f"{RAW_SCHEMA}.weatherlog"
 
 RAW_WORKOUTLOG_PATH = f"{RAW_SCHEMA}.workoutlog"
 
+RAW_WORKOUTS_EXPORT_PATH = f"{RAW_SCHEMA}.workouts_export"
+
 
 # SOURCE_LOCATION_LOG_PATH =
 
@@ -47,6 +49,8 @@ STG__TIMESTAMPLOG_PATH = f"{BRONZE_SCHEMA}.stg__timestamplog"
 STG__WEATHERLOG_PATH = f"{BRONZE_SCHEMA}.stg__weatherlog"
 
 STG__WORKOUTLOG_PATH = f"{BRONZE_SCHEMA}.stg__workoutlog"
+
+STG__WORKOUTS_EXPORT_PATH = f"{BRONZE_SCHEMA}.stg__workouts_export"
 
 ############ Silver ####################
 

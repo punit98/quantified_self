@@ -98,7 +98,7 @@ def preserve_timezone(dataframe: DataFrame, timestamp_col: str) -> DataFrame:
         dataframe.withColumn(
             "utc_offset",
             sf.when(sf.col(timestamp_col).endswith("Z"), sf.lit("+00:00")).otherwise(
-                sf.right(sf.col(timestamp_col), 6)
+                sf.substring(timestamp_col, -6, 6)
             ),
         )
         # Spark normalises to UTC on parse

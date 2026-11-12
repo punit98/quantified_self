@@ -9,6 +9,8 @@ int_body_measurements_schema = StructType(
         # Passthrough / source columns
         StructField("date_time", types.TimestampType(), False),
         StructField("utc_offset", types.StringType(), False),
+        StructField("utc_timestamp", types.TimestampType(), False),
+        StructField("local_timestamp", types.TimestampType(), False),
         StructField("calendar_key", types.StringType(), False),
         StructField("clock_key", types.StringType(), False),
         StructField("is_pump", types.StringType(), False),

@@ -10,6 +10,8 @@ int_workout_detail_schema = StructType(
     [
         StructField("date_time", types.TimestampType(), False),
         StructField("utc_offset", types.StringType(), False),
+        StructField("utc_timestamp", types.TimestampType(), False),
+        StructField("local_timestamp", types.TimestampType(), False),
         StructField("calendar_key", types.StringType(), False),
         StructField("clock_key", types.StringType(), False),
         StructField("muscle_group", types.StringType(), False),

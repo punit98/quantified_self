@@ -7,6 +7,8 @@ stg__body_measurements_schema = StructType(
     [
         StructField("date_time", types.TimestampType(), False),
         StructField("utc_offset", types.StringType(), False),
+        StructField("utc_timestamp", types.TimestampType(), False),
+        StructField("local_timestamp", types.TimestampType(), False),
         StructField("is_pump", types.StringType(), False),
         StructField("chest", types.FloatType(), False),
         StructField("shoulder", types.FloatType(), False),

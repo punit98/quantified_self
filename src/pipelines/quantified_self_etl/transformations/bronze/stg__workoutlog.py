@@ -7,6 +7,8 @@ stg__workoutlog_schema = StructType(
     [
         StructField("date_time", types.TimestampType(), False),
         StructField("utc_offset", types.StringType(), False),
+        StructField("utc_timestamp", types.TimestampType(), False),
+        StructField("local_timestamp", types.TimestampType(), False),
         StructField("muscle_group", types.StringType(), False),
         StructField("exercise", types.StringType(), False),
         StructField("variation", types.StringType(), False),

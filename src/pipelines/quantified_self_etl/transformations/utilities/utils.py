@@ -85,17 +85,30 @@ def create_clock_key(dataframe: DataFrame, timestamp_column: str) -> DataFrame:
 
 
 def preserve_timezone(dataframe: DataFrame, timestamp_col: str) -> DataFrame:
-    """Takes a timestamo column which is in the format `yyyy-MM-ddTHH:mm:ssXXX`
-
-    Args:
-        dataframe (DataFrame): the dataframe
-        timestamp_col (str): the name of the timestamp column
-
-    Returns:
-        DataFrame: Original dataframe with timestamo converted to UTC time and the timezone column preserved
     """
-    dataframe = dataframe.withColumn("utc_offset", sf.substring(timestamp_col, -6, 6))
+    Takes an ISO8601 timestamp column and preserves the original
+    timezone offset whilst creating local and UTC timestamps.
 
+    Example:
+        2026-07-06T07:17:00+01:00
+        2026-11-06T19:10:26Z
+    """
+
+    dataframe = (
+        dataframe.withColumn(
+            "utc_offset",
+            sf.when(sf.col(timestamp_col).endswith("Z"), sf.lit("+00:00")).otherwise(
+                sf.right(sf.col(timestamp_col), 6)
+            ),
+        )
+        # Spark normalises to UTC on parse
+        .withColumn("utc_timestamp", sf.to_timestamp(sf.col(timestamp_col)))
+        # Extract the wall-clock time exactly as recorded
+        .withColumn(
+            "local_timestamp",
+            sf.to_timestamp(sf.substring(sf.col(timestamp_col), 1, 19), "yyyy-MM-dd'T'HH:mm:ss"),
+        )
+    )
     return dataframe
 
 

@@ -95,7 +95,9 @@ def preserve_timezone(dataframe: DataFrame, timestamp_col: str) -> DataFrame:
     """
 
     dataframe = (
-        dataframe.withColumn(
+        # Raw exports can carry stray whitespace (e.g. "2026-11-11T20:01:25Z ")
+        dataframe.withColumn(timestamp_col, sf.trim(sf.col(timestamp_col)))
+        .withColumn(
             "utc_offset",
             sf.when(sf.col(timestamp_col).endswith("Z"), sf.lit("+00:00")).otherwise(
                 sf.substring(timestamp_col, -6, 6)
